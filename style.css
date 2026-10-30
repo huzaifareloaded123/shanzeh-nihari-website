@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --red: #d71920;
+  --dark-red: #a80d16;
+  --gold: #ffc83d;
+  --black: #101010;
+  --white: #fffaf1;
+  --gray: #bcbcbc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR */
+
+.navbar {
+  width: 100%;
+  min-height: 88px;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: rgba(16, 16, 16, 0.96);
+  border-bottom: 1px solid rgba(255, 200, 61, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(14px);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+.logo span {
+  color: var(--red);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav a {
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.order-btn,
+.hero-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--red);
+  color: white;
+  padding: 15px 29px;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.order-btn:hover,
+.hero-btn:hover {
+  background: var(--dark-red);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(215, 25, 32, 0.35);
+}
+
+/* HERO SECTION */
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 90px 7%;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+      90deg,
+      rgba(10, 10, 10, 0.97) 0%,
+      rgba(10, 10, 10, 0.86) 48%,
+      rgba(10, 10, 10, 0.35) 100%
+    ),
+    url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1800&q=85');
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  background: linear-gradient(transparent, var(--black));
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  animation: fadeUp 1s ease both;
+}
+
+.tagline {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5.5vw, 78px);
+  line-height: 1.14;
+  margin-bottom: 26px;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--gold);
+}
+
+.description {
+  color: #e0e0e0;
+  font-size: 17px;
+  line-height: 1.9;
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+
+.hero-btn {
+  padding: 18px 36px;
+  font-size: 15px;
+}
+
+/* SECTIONS */
+
+#menu,
+#about,
+#contact {
+  padding: 110px 7%;
+  text-align: center;
+  scroll-margin-top: 88px;
+}
+
+#menu {
+  background: #151515;
+}
+
+#about {
+  background: #1b1110;
+}
+
+#contact {
+  background: #111;
+}
+
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+section > p {
+  color: var(--gray);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 18px 5%;
+  }
+
+  nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .hero {
+    min-height: 75vh;
+    padding: 90px 6%;
+    background-position: 65% center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 21px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .order-btn {
+    padding: 11px 18px;
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .tagline {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  #menu,
+  #about,
+  #contact {
+    padding: 75px 6%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* PREMIUM FOOD MENU */
+
+.menu-section {
+  background: #151515;
+}
+
+.menu-label {
+  color: #ffc83d !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.menu-description {
+  max-width: 600px;
+  margin: 0 auto 55px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  text-align: left;
+}
+
+.food-card {
+  background: #202020;
+  border: 1px solid #333;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-9px);
+  border-color: #ffc83d;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.food-image {
+  height: 190px;
+  background: radial-gradient(circle at center, #5a211b, #261413 75%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.food-icon {
+  font-size: 75px;
+  transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.food-info {
+  padding: 23px;
+}
+
+.food-info h3 {
+  font-size: 19px;
+  color: #fffaf1;
+  margin-bottom: 12px;
+}
+
+.food-info > p {
+  color: #aaa;
+  font-size: 13px;
+  line-height: 1.7;
+  min-height: 45px;
+  margin-bottom: 20px;
+}
+
+.food-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffc83d;
+}
+
+.add-btn {
+  background: #d71920;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 11px 17px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.add-btn:hover {
+  background: #a80d16;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1100px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-image {
+    height: 210px;
+  }
+}
