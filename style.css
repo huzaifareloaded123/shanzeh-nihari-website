@@ -1867,3 +1867,27 @@ body {
     animation: none;
   }
 }
+
+/* SMOOTH CONTINUOUS PLATE ROTATION */
+
+.hero .hero-visual .hero-image-wrap {
+  animation: smoothPlateSpin 20s linear infinite !important;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes smoothPlateSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Stop unwanted shaking */
+
+.hero-image-ring {
+  animation: none !important;
+}
