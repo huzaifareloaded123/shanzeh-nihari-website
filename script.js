@@ -547,4 +547,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
   });
+
+/* TEMPORARY: ALWAYS SHOW ORDER POPUP FOR TESTING */
+
+window.addEventListener("load", () => {
+  const popup = document.getElementById("orderModal");
+
+  if (popup) {
+    popup.classList.remove("is-hidden");
+    document.body.style.overflow = "hidden";
+  }
+});
     

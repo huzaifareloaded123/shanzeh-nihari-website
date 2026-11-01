@@ -2345,3 +2345,26 @@ html {
     animation: none !important;
   }
 }
+
+/* RESTORE PLATE ROTATION */
+
+.hero .hero-visual .hero-image-wrap {
+  animation: shanzehPlateRotation 18s linear infinite !important;
+  transform-origin: 50% 50% !important;
+}
+
+@keyframes shanzehPlateRotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Keep decorative ring still */
+
+.hero .hero-image-ring {
+  animation: none !important;
+}
