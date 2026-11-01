@@ -338,9 +338,10 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.getItem("shanzehOrderPreference")
       );
   
-      if (saved && saved.type) {
-        modal.classList.add("is-hidden");
-        return;
+      // Keep all click handlers active even when a preference was saved.
+      // The popup is shown on each page load while testing.
+      if (saved && saved.type === "pickup") {
+        orderType = "pickup";
       }
     } catch (error) {
       // Ignore unavailable or invalid saved data
@@ -488,7 +489,8 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "hidden";
     }
   
-    changeType("delivery");
+    modal.classList.remove("is-hidden");
+    changeType(orderType);
   });
 
 /* ==========================================
@@ -497,11 +499,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
    document.addEventListener("DOMContentLoaded", () => {
 
+    // Headings, story and delivery already use the original .reveal system.
+    // Animate only menu cards and footer here to avoid competing transforms.
     const selectors = [
-      ".section-heading",
       ".food-card",
-      ".story-inner",
-      ".delivery-inner",
       ".footer-top"
     ];
   
@@ -548,14 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   });
 
-/* TEMPORARY: ALWAYS SHOW ORDER POPUP FOR TESTING */
-
-window.addEventListener("load", () => {
-  const popup = document.getElementById("orderModal");
-
-  if (popup) {
-    popup.classList.remove("is-hidden");
-    document.body.style.overflow = "hidden";
-  }
-});
+/* Popup testing mode: show on every page refresh.
+   To remember the customer's choice and skip the popup later,
+   this behavior can be changed after client approval. */
     
