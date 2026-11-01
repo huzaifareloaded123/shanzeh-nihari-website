@@ -1891,3 +1891,310 @@ body {
 .hero-image-ring {
   animation: none !important;
 }
+
+/* ==========================================
+   SHANZEH NIHARI — ORDER SELECTION POPUP
+   ========================================== */
+
+/* Blurred website background */
+
+.order-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow-y: auto;
+}
+
+.order-modal-overlay.is-hidden {
+  display: none;
+}
+
+/* Compact popup */
+
+.order-modal {
+  width: 100%;
+  max-width: 525px;
+  max-height: calc(100dvh - 36px);
+  margin: auto;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #202938;
+  border-radius: 23px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  font-family: "DM Sans", sans-serif;
+  animation: orderModalAppear 0.35s ease both;
+}
+
+/* Yellow header */
+
+.order-modal-banner {
+  height: 108px;
+  background: #ffb900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 23px 23px 0 0;
+}
+
+.order-modal-logo {
+  width: 83px;
+  height: 83px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.14);
+}
+
+.order-modal-logo span {
+  font-size: 48px;
+  line-height: 1;
+}
+
+/* Popup body */
+
+.order-modal-content {
+  padding: 17px 18px 14px;
+}
+
+.order-modal-content h2 {
+  margin: 0 0 17px;
+  color: #202938;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* Delivery / Pick-Up switch */
+
+.order-type-switch {
+  width: fit-content;
+  display: flex;
+  gap: 4px;
+  margin: 0 auto 14px;
+  padding: 6px;
+  background: #f1f2f4;
+  border: 1px solid #e2e5e9;
+  border-radius: 19px;
+}
+
+.order-type-btn {
+  min-width: 95px;
+  padding: 12px 20px;
+  background: transparent;
+  color: #707989;
+  border: 0;
+  border-radius: 13px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background 0.2s, color 0.2s;
+}
+
+.order-type-btn.active {
+  background: #d71920;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(215, 25, 32, 0.18);
+}
+
+/* Location description */
+
+.order-modal-help {
+  margin: 0 0 12px;
+  text-align: center;
+  color: #596477;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Current location button */
+
+.use-location-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 13px;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #d71920;
+  border: 1.5px solid #ffb900;
+  border-radius: 28px;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.use-location-btn:hover {
+  background: #fff8e3;
+  transform: translateY(-1px);
+}
+
+.location-status {
+  margin: 0;
+  color: #536172;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.location-status:not(:empty) {
+  margin-bottom: 12px;
+}
+
+/* Dropdown fields */
+
+#deliveryOptions label,
+#pickupOptions label {
+  display: block;
+  margin: 0 0 8px;
+  color: #374357;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+#deliveryArea,
+#pickupBranch {
+  display: block;
+  width: 100%;
+  min-height: 49px;
+  padding: 12px 16px;
+  border: 2px solid #e2e5ea;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #374357;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#deliveryArea:focus,
+#pickupBranch:focus {
+  border-color: #d71920;
+  outline: none;
+}
+
+/* Important: respect hidden attribute */
+
+#deliveryOptions[hidden],
+#pickupOptions[hidden] {
+  display: none !important;
+}
+
+/* Branch information */
+
+.branch-location-card {
+  margin-top: 12px;
+  padding: 16px;
+  background: #fffaf0;
+  border: 1px solid #ffdfaa;
+  border-radius: 15px;
+}
+
+.branch-location-card strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #202938;
+  font-size: 13px;
+}
+
+.branch-location-card p {
+  margin: 0 0 8px;
+  color: #596477;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.branch-location-card span {
+  color: #b24a16;
+  font-size: 11px;
+}
+
+/* Bottom Select button */
+
+.order-modal-footer {
+  padding: 14px 16px 16px;
+  border-top: 1px solid #eceef1;
+  background: #ffffff;
+}
+
+.order-modal-select {
+  width: 100%;
+  min-height: 50px;
+  background: #d71920;
+  color: #ffffff;
+  border: 0;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 4px 9px rgba(215, 25, 32, 0.15);
+  transition: background 0.2s;
+}
+
+.order-modal-select:hover {
+  background: #b9131a;
+}
+
+/* Popup opening animation */
+
+@keyframes orderModalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile responsive */
+
+@media (max-width: 600px) {
+  .order-modal-overlay {
+    padding: 12px;
+  }
+
+  .order-modal {
+    max-width: 100%;
+    max-height: calc(100dvh - 24px);
+    border-radius: 20px;
+  }
+
+  .order-modal-banner {
+    height: 95px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .order-modal-logo {
+    width: 73px;
+    height: 73px;
+  }
+
+  .order-modal-content {
+    padding: 15px 14px 12px;
+  }
+
+  .order-modal-content h2 {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-modal {
+    animation: none;
+  }
+}
+
+/* Respect hidden elements inside order popup */
+.order-modal [hidden] {
+  display: none !important;
+}

@@ -309,3 +309,185 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Shanzeh Nihari demo loaded.");
 });
+
+/* ==========================================
+   SHANZEH NIHARI — ORDER TYPE POPUP
+   ========================================== */
+
+   document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("orderModal");
+    const deliveryTab = document.getElementById("deliveryTab");
+    const pickupTab = document.getElementById("pickupTab");
+    const deliveryOptions = document.getElementById("deliveryOptions");
+    const pickupOptions = document.getElementById("pickupOptions");
+    const deliveryArea = document.getElementById("deliveryArea");
+    const pickupBranch = document.getElementById("pickupBranch");
+    const locationButton = document.getElementById("useLocationBtn");
+    const locationStatus = document.getElementById("locationStatus");
+    const helpText = document.getElementById("orderModalHelp");
+    const confirmButton = document.getElementById("confirmOrderType");
+  
+    if (!modal) return;
+  
+    let orderType = "delivery";
+    let currentCoordinates = null;
+  
+    // Restore the customer's previous choice
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem("shanzehOrderPreference")
+      );
+  
+      if (saved && saved.type) {
+        modal.classList.add("is-hidden");
+        return;
+      }
+    } catch (error) {
+      // Ignore unavailable or invalid saved data
+    }
+  
+    function changeType(type) {
+      orderType = type;
+      currentCoordinates = null;
+      locationStatus.textContent = "";
+  
+      const isDelivery = type === "delivery";
+  
+      deliveryTab.classList.toggle("active", isDelivery);
+      pickupTab.classList.toggle("active", !isDelivery);
+  
+      deliveryOptions.hidden = !isDelivery;
+      pickupOptions.hidden = isDelivery;
+  
+      helpText.textContent = isDelivery
+        ? "Please select your location"
+        : "Which outlet would you like to pick-up from?";
+  
+      locationButton.hidden = !isDelivery;
+    }
+  
+    deliveryTab.addEventListener("click", () => {
+      changeType("delivery");
+    });
+  
+    pickupTab.addEventListener("click", () => {
+      changeType("pickup");
+    });
+  
+    // Get device coordinates with browser permission
+    locationButton.addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        locationStatus.textContent =
+          "Location is not supported. Please select your area.";
+        return;
+      }
+  
+      locationStatus.textContent = "Getting your location...";
+      locationButton.disabled = true;
+  
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+  
+          locationButton.disabled = false;
+  
+          // Approximate Karachi geographical bounds.
+          // This is not a delivery-service boundary.
+          const inKarachi =
+            lat >= 24.7 && lat <= 25.5 &&
+            lon >= 66.6 && lon <= 67.6;
+  
+          if (!inKarachi) {
+            currentCoordinates = null;
+            locationStatus.textContent =
+              "Location appears outside Karachi. Please select a Karachi area.";
+            return;
+          }
+  
+          currentCoordinates = { lat, lon };
+          deliveryArea.value = "";
+  
+          locationStatus.textContent =
+            "Location detected! Confirm your address during checkout.";
+        },
+        (error) => {
+          locationButton.disabled = false;
+  
+          if (error.code === 1) {
+            locationStatus.textContent =
+              "Location permission denied. Please select your area.";
+          } else {
+            locationStatus.textContent =
+              "Could not get location. Please select your area.";
+          }
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 12000,
+          maximumAge: 60000
+        }
+      );
+    });
+  
+    // Manually selected area overrides GPS
+    deliveryArea.addEventListener("change", () => {
+      if (deliveryArea.value) {
+        currentCoordinates = null;
+        locationStatus.textContent = "";
+      }
+    });
+  
+    // Confirm choice
+    confirmButton.addEventListener("click", () => {
+      let preference;
+  
+      if (orderType === "delivery") {
+        const area = deliveryArea.value;
+  
+        if (!area && !currentCoordinates) {
+          locationStatus.textContent =
+            "Please select your Karachi area or use current location.";
+          deliveryArea.focus();
+          return;
+        }
+  
+        preference = {
+          type: "delivery",
+          area: area || "Current Location",
+          coordinates: currentCoordinates
+        };
+      } else {
+        if (!pickupBranch.value) {
+          locationStatus.textContent =
+            "Please select a pickup branch.";
+          return;
+        }
+  
+        preference = {
+          type: "pickup",
+          branch: pickupBranch.value
+        };
+      }
+  
+      try {
+        localStorage.setItem(
+          "shanzehOrderPreference",
+          JSON.stringify(preference)
+        );
+      } catch (error) {
+        // Continue even if browser storage is disabled
+      }
+  
+      modal.classList.add("is-hidden");
+      document.body.style.overflow = "";
+    });
+  
+    // Keep the page behind the modal from scrolling
+    if (!modal.classList.contains("is-hidden")) {
+      document.body.style.overflow = "hidden";
+    }
+  
+    changeType("delivery");
+  });
+  

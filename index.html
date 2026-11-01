@@ -282,6 +282,113 @@
     </div>
   </div>
 
+<!-- ORDER TYPE SELECTION POPUP -->
+<div class="order-modal-overlay" id="orderModal">
+  <div class="order-modal" role="dialog"
+       aria-modal="true"
+       aria-labelledby="orderModalTitle">
+
+    <div class="order-modal-banner">
+      <div class="order-modal-logo">
+        <span>🐮</span>
+      </div>
+    </div>
+
+    <div class="order-modal-content">
+      <h2 id="orderModalTitle">Select Your Order Type</h2>
+
+      <div class="order-type-switch">
+        <button type="button"
+                class="order-type-btn active"
+                id="deliveryTab">
+          Delivery
+        </button>
+        <button type="button"
+                class="order-type-btn"
+                id="pickupTab">
+          Pick-Up
+        </button>
+      </div>
+
+      <p class="order-modal-help" id="orderModalHelp">
+        Please select your location
+      </p>
+
+      <button type="button"
+              class="use-location-btn"
+              id="useLocationBtn">
+        ◎ &nbsp; Use Current Location
+      </button>
+
+      <p class="location-status"
+         id="locationStatus"
+         aria-live="polite"></p>
+
+      <!-- DELIVERY OPTIONS -->
+      <div id="deliveryOptions">
+        <label for="deliveryArea">Select Your Area</label>
+        <select id="deliveryArea">
+          <option value="">Please select your location</option>
+          <option>Gulshan-e-Iqbal</option>
+          <option>Gulistan-e-Johar</option>
+          <option>North Nazimabad</option>
+          <option>Nazimabad</option>
+          <option>Federal B Area</option>
+          <option>Saddar</option>
+          <option>Clifton</option>
+          <option>DHA</option>
+          <option>PECHS</option>
+          <option>Bahadurabad</option>
+          <option>Tariq Road</option>
+          <option>Malir</option>
+          <option>Korangi</option>
+          <option>Landhi</option>
+          <option>Shah Faisal Colony</option>
+          <option>Gulberg</option>
+          <option>North Karachi</option>
+          <option>New Karachi</option>
+          <option>Buffer Zone</option>
+          <option>Orangi Town</option>
+          <option>Baldia Town</option>
+          <option>Lyari</option>
+          <option>Garden</option>
+          <option>Jamshed Road</option>
+          <option>Defence View</option>
+          <option>Scheme 33</option>
+          <option>Safoora</option>
+          <option>Surjani Town</option>
+          <option>Other Karachi Area</option>
+        </select>
+      </div>
+
+      <!-- PICKUP OPTIONS -->
+      <div id="pickupOptions" hidden>
+        <label for="pickupBranch">Select Branch</label>
+        <select id="pickupBranch">
+          <option value="main">
+            Shanzeh Nihari — Main Branch
+          </option>
+        </select>
+
+        <div class="branch-location-card">
+          <strong>📍 Branch Location</strong>
+          <p>XYZ Street, Karachi (Temporary Address)</p>
+          <span>Directions available after address confirmation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-modal-footer">
+      <button type="button"
+              class="order-modal-select"
+              id="confirmOrderType">
+        Select
+      </button>
+    </div>
+
+  </div>
+</div>
+
   <script src="script.js"></script>
 </body>
 </html>
