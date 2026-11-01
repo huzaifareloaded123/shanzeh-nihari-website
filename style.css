@@ -2362,23 +2362,64 @@ html {
 /* Ensure scroll reveal content remains visible with reduced motion. */
 @media (prefers-reduced-motion: reduce) { .cinematic-reveal, .menu-grid .food-card.cinematic-reveal { opacity: 1 !important; transform: none !important; } }
 
-/* SCROLL ANIMATIONS V2 — triggered by real viewport entry */
-@keyframes shanzehScrollEnter {
-  0% { opacity: .18; transform: translate3d(0, 58px, 0) scale(.97); filter: blur(5px); }
-  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+
+/* PREMIUM REPLAY ANIMATIONS — short, restrained, repeatable */
+/* No menu item entrance animations. Preserve the hover interaction. */
+.menu-grid .food-card,
+.menu-grid .food-card.cinematic-reveal {
+  opacity: 1 !important;
+  filter: none !important;
+  animation: none !important;
+  transform: none;
+  transition: transform 220ms ease, box-shadow 220ms ease !important;
+  transition-delay: 0ms !important;
 }
-.section-heading.shanzeh-enter,
-.story-inner.shanzeh-enter,
-.delivery-inner.shanzeh-enter,
-.footer-top.shanzeh-enter,
-.menu-grid .food-card.shanzeh-enter {
-  animation: shanzehScrollEnter 1050ms cubic-bezier(.16, 1, .3, 1) both;
-  animation-delay: var(--shanzeh-delay, 0ms);
+.menu-grid .food-card:hover,
+.menu-grid .food-card.cinematic-reveal:hover {
+  transform: translateY(-5px) !important;
+}
+/* Always keep section containers visible; animate text inside them instead. */
+.section-heading, .story-inner, .delivery-inner, .footer-top {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+@keyframes shanzehTitleSweep {
+  from { opacity: .35; transform: translate3d(0, 16px, 0); filter: blur(3px); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+@keyframes shanzehAccentGrow {
+  from { transform: scaleX(.15); opacity: .45; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+.section-heading.shanzeh-play h2,
+.story-inner.shanzeh-play h2,
+.delivery-inner.shanzeh-play h2 {
+  animation: shanzehTitleSweep 460ms cubic-bezier(.2,.8,.2,1) both;
+}
+.section-heading.shanzeh-play .section-kicker,
+.story-inner.shanzeh-play .section-kicker,
+.delivery-inner.shanzeh-play .section-kicker {
+  animation: shanzehTitleSweep 360ms ease-out both;
+}
+.section-heading h2::after {
+  transform-origin: center;
+  transition: none !important;
+  width: 70px !important;
+}
+.section-heading.shanzeh-play h2::after {
+  animation: shanzehAccentGrow 440ms ease-out both;
+}
+.footer-top.shanzeh-play .footer-brand {
+  animation: shanzehTitleSweep 440ms ease-out both;
 }
 @media (prefers-reduced-motion: reduce) {
-  .section-heading.shanzeh-enter,
-  .story-inner.shanzeh-enter,
-  .delivery-inner.shanzeh-enter,
-  .footer-top.shanzeh-enter,
-  .menu-grid .food-card.shanzeh-enter { animation: none !important; }
+  .section-heading.shanzeh-play h2,
+  .story-inner.shanzeh-play h2,
+  .delivery-inner.shanzeh-play h2,
+  .section-heading.shanzeh-play .section-kicker,
+  .story-inner.shanzeh-play .section-kicker,
+  .delivery-inner.shanzeh-play .section-kicker,
+  .section-heading.shanzeh-play h2::after,
+  .footer-top.shanzeh-play .footer-brand { animation: none !important; }
 }

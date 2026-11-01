@@ -474,44 +474,25 @@ document.addEventListener("DOMContentLoaded", () => {
     changeType(orderType);
   });
 
-/* SHANZEH NIHARI — SCROLL-TRIGGERED ENTRANCE ANIMATIONS */
+/* PREMIUM REPLAY SCROLL EFFECTS — no food-card animations. */
 document.addEventListener("DOMContentLoaded", () => {
-  const targets = Array.from(document.querySelectorAll(
-    ".section-heading, .food-card, .story-inner, .delivery-inner, .footer-top"
-  ));
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return;
+  const targets = document.querySelectorAll(
+    ".section-heading, .story-inner, .delivery-inner, .footer-top"
+  );
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  // Only animate sections when the visitor actually scrolls to them.
-  // Do not hide content beforehand: the page stays usable if JS is interrupted.
-  const pending = new Set(targets.filter(el =>
-    el.getBoundingClientRect().top > window.innerHeight * 0.85
-  ));
-  let scheduled = false;
-  function checkScroll() {
-    scheduled = false;
-    for (const el of pending) {
-      if (el.getBoundingClientRect().top <= window.innerHeight * 0.88) {
-        pending.delete(el);
-        if (el.classList.contains("food-card")) {
-          const i = Array.prototype.indexOf.call(el.parentElement.children, el);
-          el.style.setProperty("--shanzeh-delay", `${(i % 4) * 95}ms`);
-        }
-        el.classList.add("shanzeh-enter");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Entering the viewport: replay the short cinematic animation.
+        entry.target.classList.add("shanzeh-play");
+      } else {
+        // Leaving the viewport: reset for the next scroll pass.
+        entry.target.classList.remove("shanzeh-play");
       }
-    }
-    if (!pending.size) {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    }
-  }
-  function onScroll() {
-    if (!scheduled) {
-      scheduled = true;
-      window.requestAnimationFrame(checkScroll);
-    }
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  checkScroll();
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -35px 0px" });
+
+  targets.forEach((element) => observer.observe(element));
 });
