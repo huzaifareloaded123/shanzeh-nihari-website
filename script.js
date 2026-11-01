@@ -490,4 +490,61 @@ document.addEventListener("DOMContentLoaded", () => {
   
     changeType("delivery");
   });
+
+/* ==========================================
+   SHANZEH NIHARI — SCROLL ANIMATION ENGINE
+   ========================================== */
+
+   document.addEventListener("DOMContentLoaded", () => {
+
+    const selectors = [
+      ".section-heading",
+      ".food-card",
+      ".story-inner",
+      ".delivery-inner",
+      ".footer-top"
+    ];
   
+    const elements = document.querySelectorAll(
+      selectors.join(", ")
+    );
+  
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+  
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -35px 0px"
+      }
+    );
+  
+    elements.forEach((element, index) => {
+      element.classList.add("cinematic-reveal");
+  
+      if (element.classList.contains("food-card")) {
+        const cardIndex = Array.from(
+          element.parentElement.children
+        ).indexOf(element);
+  
+        element.style.transitionDelay =
+          `${(cardIndex % 4) * 110}ms`;
+      }
+  
+      observer.observe(element);
+    });
+  
+  });
+    
