@@ -1371,3 +1371,253 @@
     }
   }
   
+/* SHANZEH NIHARI — RED YELLOW WHITE BRAND */
+
+:root {
+  --burgundy: #d71920;
+  --deep: #ffffff;
+  --red: #d71920;
+  --red-hover: #b51219;
+  --gold: #ffda00;
+  --cream: #ffffff;
+  --muted: #666666;
+  --panel: #ffffff;
+  --border: rgba(0, 0, 0, .12);
+}
+
+body {
+  background: #ffffff;
+  color: #202020;
+}
+
+.site-header {
+  background: #ffffff;
+  border-bottom: 3px solid #ffda00;
+}
+
+.brand-name,
+.desktop-nav a,
+.cart-trigger {
+  color: #202020;
+}
+
+.brand-name strong,
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: #d71920;
+}
+
+.brand-icon,
+.nav-order,
+.add-btn {
+  background: #d71920;
+  color: #ffffff;
+}
+
+.announcement {
+  background: #d71920;
+  color: #ffffff;
+}
+
+.announcement-dot,
+.announcement-separator {
+  color: #ffda00;
+}
+
+.hero {
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 218, 0, .16),
+      transparent 48%
+    ),
+    linear-gradient(120deg, #fffdf3, #ffffff);
+  color: #202020;
+}
+
+.hero::before {
+  opacity: .04;
+}
+
+.hero h1 {
+  color: #202020;
+  text-shadow: none;
+}
+
+.hero-title-gold,
+.hero-eyebrow,
+.feature-symbol {
+  color: #d71920;
+}
+
+.title-period {
+  color: #ffbd00;
+}
+
+.hero-subtitle,
+.hero-feature,
+.hero-bottom {
+  color: #494949;
+}
+
+.eyebrow-line,
+.scroll-line {
+  background: #d71920;
+}
+
+.hero-glow-one {
+  background: rgba(255, 218, 0, .18);
+}
+
+.hero-glow-two {
+  background: rgba(215, 25, 32, .08);
+}
+
+.hero-image-ring {
+  border-color: #ffda00;
+  box-shadow:
+    0 0 0 35px rgba(255, 218, 0, .08),
+    0 0 0 75px rgba(255, 218, 0, .04);
+}
+
+.hero-image-wrap {
+  background: #ffffff;
+  border-color: #ffda00;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, .13);
+}
+
+.hero-decoration {
+  color: #ffda00;
+}
+
+.primary-button,
+.checkout-button {
+  background: #d71920;
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(215, 25, 32, .18);
+}
+
+.secondary-button {
+  background: #ffffff;
+  border-color: #d71920;
+  color: #d71920;
+}
+
+.secondary-button:hover {
+  background: #fff2f2;
+}
+
+.promise-strip {
+  background: #ffda00;
+  color: #202020;
+}
+
+.menu-section {
+  background: #ffffff;
+  color: #202020;
+}
+
+.menu-section .section-kicker,
+.section-heading h2 em,
+.price {
+  color: #d71920;
+}
+
+.section-heading p,
+.food-info p {
+  color: #666666;
+}
+
+.food-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+.food-card:hover {
+  box-shadow: 0 22px 45px rgba(215, 25, 32, .12);
+}
+
+.food-image {
+  background: #fff2d2;
+}
+
+.food-info h3 {
+  color: #202020;
+}
+
+.food-badge {
+  background: #ffda00;
+  color: #202020;
+}
+
+.story-section {
+  background: #d71920;
+  color: #ffffff;
+}
+
+.story-section .section-kicker,
+.story-section h2 em,
+.story-decoration {
+  color: #ffda00;
+}
+
+.story-section p {
+  color: #ffffff;
+}
+
+.story-section .primary-button {
+  background: #ffda00;
+  color: #202020;
+  box-shadow: none;
+}
+
+.delivery-section {
+  background: #ffda00;
+  color: #202020;
+}
+
+.delivery-section .section-kicker {
+  color: #d71920;
+}
+
+.delivery-section p {
+  color: #444444;
+}
+
+.footer {
+  background: #ffffff;
+  color: #202020;
+  border-top: 5px solid #d71920;
+}
+
+.footer-brand .brand-name,
+.footer-links a {
+  color: #202020;
+}
+
+.footer-brand .brand-name strong,
+.footer-links a:hover {
+  color: #d71920;
+}
+
+.footer-brand p,
+.footer-bottom {
+  color: #666666;
+}
+
+.cart-drawer,
+.checkout-modal {
+  background: #ffffff;
+  color: #202020;
+}
+
+.cart-header .section-kicker,
+.checkout-modal .section-kicker {
+  color: #d71920;
+}
+
+.cart-item-price,
+.checkout-summary .grand-total {
+  color: #d71920;
+}
