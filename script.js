@@ -1,32 +1,311 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Smooth scrolling for navigation links
-  const links = document.querySelectorAll('a[href^="#"]');
 
-  links.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const targetId = link.getAttribute('href');
-      const target = document.querySelector(targetId);
+/* SHANZEH NIHARI — ORDERING SYSTEM */
 
-      if (target) {
-        event.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    });
+document.addEventListener("DOMContentLoaded", () => {
+  const DELIVERY_FEE = 200;
+
+  const menu = [
+    {
+      id: 1,
+      name: "Single Nihari",
+      price: 500,
+      description: "Traditional nihari with rich aromatic gravy.",
+      badge: "CLASSIC"
+    },
+    {
+      id: 2,
+      name: "Single Nihari Fry",
+      price: 600,
+      description: "Our classic nihari with a delicious fried finish.",
+      badge: "POPULAR"
+    },
+    {
+      id: 3,
+      name: "Double Nihari",
+      price: 1050,
+      description: "A generous serving of authentic nihari.",
+      badge: "HEARTY"
+    },
+    {
+      id: 4,
+      name: "Nalli Nihari",
+      price: 800,
+      description: "Rich nihari with flavourful nalli.",
+      badge: "SPECIAL"
+    },
+    {
+      id: 5,
+      name: "Maghaz Nihari",
+      price: 800,
+      description: "A traditional Karachi specialty.",
+      badge: "SPECIAL"
+    },
+    {
+      id: 6,
+      name: "Desi Ghee Tarka",
+      price: 150,
+      description: "Extra desi ghee tarka for a richer flavour.",
+      badge: "ADD-ON"
+    },
+    {
+      id: 7,
+      name: "Single Special Nihari",
+      price: 1350,
+      description: "Our premium special nihari serving.",
+      badge: "PREMIUM"
+    },
+    {
+      id: 8,
+      name: "Special Nihari Thaal",
+      price: 1850,
+      description: "Our signature nihari thaal experience.",
+      badge: "SIGNATURE"
+    }
+  ];
+
+  // Temporary food image.
+  // Replace with original restaurant photographs later.
+  const foodImage =
+    "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80";
+
+  const cart = new Map();
+
+  const $ = (selector) => document.querySelector(selector);
+
+  const menuGrid = $("#menuGrid");
+  const cartDrawer = $("#cartDrawer");
+  const cartOverlay = $("#cartOverlay");
+  const cartItems = $("#cartItems");
+  const checkoutOverlay = $("#checkoutOverlay");
+
+  const money = (amount) =>
+    "Rs. " + amount.toLocaleString("en-PK");
+
+  function getSubtotal() {
+    return [...cart.entries()].reduce((total, [id, quantity]) => {
+      const item = menu.find((product) => product.id === id);
+      return total + (item ? item.price * quantity : 0);
+    }, 0);
+  }
+
+  function getItemCount() {
+    return [...cart.values()].reduce((sum, quantity) => sum + quantity, 0);
+  }
+
+  // MENU CARDS
+  function renderMenu() {
+    menuGrid.innerHTML = menu.map((item) => `
+      <article class="food-card">
+        <div class="food-image">
+          <img
+            src="${foodImage}"
+            alt="${item.name} — illustrative food photo"
+            loading="lazy"
+          >
+          <span class="food-badge">${item.badge}</span>
+        </div>
+
+        <div class="food-info">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+
+          <div class="food-bottom">
+            <span class="price">${money(item.price)}</span>
+            <button
+              class="add-btn"
+              type="button"
+              data-add="${item.id}"
+            >
+              + ADD TO CART
+            </button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  // CART
+  function updateCart() {
+    const count = getItemCount();
+    const subtotal = getSubtotal();
+
+    $("#cartCount").textContent = count;
+    $("#cartTitleCount").textContent = `(${count})`;
+    $("#cartSubtotal").textContent = money(subtotal);
+    $("#checkoutSubtotal").textContent = money(subtotal);
+    $("#checkoutTotal").textContent = money(
+      count ? subtotal + DELIVERY_FEE : 0
+    );
+
+    $("#checkoutOpen").disabled = count === 0;
+
+    if (count === 0) {
+      cartItems.innerHTML =
+        '<p class="empty-cart">Your cart is empty. Add something delicious!</p>';
+      return;
+    }
+
+    cartItems.innerHTML = [...cart.entries()].map(([id, quantity]) => {
+      const item = menu.find((product) => product.id === id);
+      if (!item) return "";
+
+      return `
+        <div class="cart-item">
+          <div>
+            <h3>${item.name}</h3>
+            <span class="cart-item-price">
+              ${money(item.price * quantity)}
+            </span>
+          </div>
+
+          <div class="quantity-controls">
+            <button type="button" data-decrease="${id}"
+              aria-label="Decrease ${item.name}">−</button>
+            <strong>${quantity}</strong>
+            <button type="button" data-increase="${id}"
+              aria-label="Increase ${item.name}">+</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function addItem(id) {
+    if (!menu.some((item) => item.id === id)) return;
+
+    cart.set(id, (cart.get(id) || 0) + 1);
+    updateCart();
+    openCart();
+  }
+
+  function changeQuantity(id, difference) {
+    if (!cart.has(id)) return;
+
+    const next = cart.get(id) + difference;
+
+    if (next <= 0) {
+      cart.delete(id);
+    } else {
+      cart.set(id, next);
+    }
+
+    updateCart();
+  }
+
+  function openCart() {
+    cartDrawer.classList.add("open");
+    cartOverlay.classList.add("open");
+    document.body.classList.add("no-scroll");
+    $("#cartClose").focus();
+  }
+
+  function closeCart() {
+    cartDrawer.classList.remove("open");
+    cartOverlay.classList.remove("open");
+    document.body.classList.remove("no-scroll");
+  }
+
+  // CHECKOUT
+  function openCheckout() {
+    if (getItemCount() === 0) return;
+
+    closeCart();
+    checkoutOverlay.classList.add("open");
+    document.body.classList.add("no-scroll");
+    $("#customerName").focus();
+  }
+
+  function closeCheckout() {
+    checkoutOverlay.classList.remove("open");
+    document.body.classList.remove("no-scroll");
+  }
+
+  // CLICK HANDLERS
+  menuGrid.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-add]");
+    if (button) addItem(Number(button.dataset.add));
   });
 
-  // Navbar shadow when scrolling
-  const navbar = document.querySelector('.navbar');
+  cartItems.addEventListener("click", (event) => {
+    const increase = event.target.closest("[data-increase]");
+    const decrease = event.target.closest("[data-decrease]");
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      navbar.style.boxShadow = '0 8px 30px rgba(0,0,0,0.35)';
-    } else {
-      navbar.style.boxShadow = 'none';
+    if (increase) {
+      changeQuantity(Number(increase.dataset.increase), 1);
+    }
+
+    if (decrease) {
+      changeQuantity(Number(decrease.dataset.decrease), -1);
     }
   });
 
-  console.log('Shanzeh Nihari website loaded!');
+  $("#cartOpen").addEventListener("click", openCart);
+  $("#cartClose").addEventListener("click", closeCart);
+  cartOverlay.addEventListener("click", closeCart);
+
+  $("#checkoutOpen").addEventListener("click", openCheckout);
+  $("#checkoutClose").addEventListener("click", closeCheckout);
+
+  checkoutOverlay.addEventListener("click", (event) => {
+    if (event.target === checkoutOverlay) closeCheckout();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      if (checkoutOverlay.classList.contains("open")) {
+        closeCheckout();
+      } else {
+        closeCart();
+      }
+    }
+  });
+
+  // DEMO CHECKOUT — DOES NOT SEND AN ORDER
+  $("#checkoutForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (getItemCount() === 0) return;
+
+    const name = $("#customerName").value.trim();
+    const phone = $("#customerPhone").value.trim();
+    const address = $("#customerAddress").value.trim();
+
+    if (!name || !phone || !address) {
+      $("#checkoutMessage").textContent =
+        "Please complete all required fields.";
+      return;
+    }
+
+    $("#checkoutMessage").textContent =
+      "Demo only: your details were checked, but no order was sent. Online ordering will be activated later.";
+  });
+
+  // SCROLL ANIMATIONS
+  const animatedSections = document.querySelectorAll(
+    ".section-heading, .story-inner, .delivery-inner"
+  );
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    animatedSections.forEach((element) => {
+      element.classList.add("reveal");
+      observer.observe(element);
+    });
+  }
+
+  // COPYRIGHT YEAR
+  $("#year").textContent = new Date().getFullYear();
+
+  renderMenu();
+  updateCart();
+
+  console.log("Shanzeh Nihari demo loaded.");
 });
