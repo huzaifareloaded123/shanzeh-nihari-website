@@ -2208,41 +2208,34 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Sections entering the viewport */
+/* One consistent scroll reveal system; JS attaches classes after cards render. */
 .cinematic-reveal {
   opacity: 0;
-  transform: translate3d(0, 55px, 0);
-  transition:
-    opacity 850ms cubic-bezier(.2,.7,.2,1),
-    transform 850ms cubic-bezier(.2,.7,.2,1);
+  transform: translate3d(0, 38px, 0);
+  transition: opacity 850ms cubic-bezier(.22,1,.36,1),
+              transform 850ms cubic-bezier(.22,1,.36,1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
-
 .cinematic-reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
-
-/* Staggered menu card entrance */
-.menu-grid .food-card {
-  transition:
-    opacity 750ms ease,
-    transform 750ms cubic-bezier(.2,.7,.2,1),
-    box-shadow 350ms ease;
-}
-
 .menu-grid .food-card.cinematic-reveal {
-  transform: translate3d(0, 45px, 0) scale(.97);
+  opacity: 0;
+  transform: translate3d(0, 42px, 0) scale(.975);
+  transition: opacity 850ms cubic-bezier(.22,1,.36,1),
+              transform 850ms cubic-bezier(.22,1,.36,1),
+              box-shadow 350ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
-
 .menu-grid .food-card.cinematic-reveal.is-visible {
+  opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
 }
-
-.menu-grid .food-card.is-visible:hover {
-  transform: translate3d(0, -9px, 0) scale(1.015);
+.menu-grid .food-card.cinematic-reveal.is-visible:hover {
+  transform: translate3d(0, -9px, 0) scale(1.01);
+  transition-delay: 0ms;
 }
-
-/* Animated underline for section headings */
 .section-heading h2::after {
   content: "";
   display: block;
@@ -2253,10 +2246,7 @@ html {
   background: #ffda00;
   transition: width 950ms ease 250ms;
 }
-
-.section-heading.is-visible h2::after {
-  width: 88px;
-}
+.section-heading.is-visible h2::after { width: 88px; }
 
 /* Food photo hover zoom */
 .food-image {
@@ -2368,3 +2358,6 @@ html {
 .hero .hero-image-ring {
   animation: none !important;
 }
+
+/* Ensure scroll reveal content remains visible with reduced motion. */
+@media (prefers-reduced-motion: reduce) { .cinematic-reveal, .menu-grid .food-card.cinematic-reveal { opacity: 1 !important; transform: none !important; } }

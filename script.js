@@ -280,26 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "Demo only: your details were checked, but no order was sent. Online ordering will be activated later.";
   });
 
-  // SCROLL ANIMATIONS
-  const animatedSections = document.querySelectorAll(
-    ".section-heading, .story-inner, .delivery-inner"
-  );
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    animatedSections.forEach((element) => {
-      element.classList.add("reveal");
-      observer.observe(element);
-    });
-  }
+  // Scroll animations are initialized once after the menu is rendered.
 
   // COPYRIGHT YEAR
   $("#year").textContent = new Date().getFullYear();
@@ -494,62 +475,46 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 /* ==========================================
-   SHANZEH NIHARI — SCROLL ANIMATION ENGINE
+   SHANZEH NIHARI — SINGLE SCROLL ANIMATION ENGINE
+   All menu cards are already rendered by the first DOMContentLoaded
+   listener before this listener runs.
    ========================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const elements = Array.from(document.querySelectorAll(
+    ".section-heading, .food-card, .story-inner, .delivery-inner, .footer-top"
+  ));
 
-   document.addEventListener("DOMContentLoaded", () => {
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    elements.forEach(el => el.classList.add("is-visible"));
+    return;
+  }
 
-    // Headings, story and delivery already use the original .reveal system.
-    // Animate only menu cards and footer here to avoid competing transforms.
-    const selectors = [
-      ".food-card",
-      ".footer-top"
-    ];
-  
-    const elements = document.querySelectorAll(
-      selectors.join(", ")
-    );
-  
-    if (
-      !("IntersectionObserver" in window) ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
-  
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-  
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -35px 0px"
-      }
-    );
-  
-    elements.forEach((element, index) => {
-      element.classList.add("cinematic-reveal");
-  
-      if (element.classList.contains("food-card")) {
-        const cardIndex = Array.from(
-          element.parentElement.children
-        ).indexOf(element);
-  
-        element.style.transitionDelay =
-          `${(cardIndex % 4) * 110}ms`;
-      }
-  
-      observer.observe(element);
+  // Only animate content below the first viewport, so nothing flashes
+  // or disappears when the popup is dismissed.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
     });
-  
-  });
+  }, { threshold: 0.08, rootMargin: "0px 0px -25px 0px" });
 
-/* Popup testing mode: show on every page refresh.
-   To remember the customer's choice and skip the popup later,
-   this behavior can be changed after client approval. */
-    
+  elements.forEach(el => {
+    const card = el.classList.contains("food-card");
+    if (card) {
+      const index = Array.prototype.indexOf.call(el.parentElement.children, el);
+      el.style.setProperty("--reveal-delay", `${(index % 4) * 100}ms`);
+    }
+    // Never hide items already in the visible viewport.
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+      el.classList.add("is-visible");
+    } else {
+      el.classList.add("cinematic-reveal");
+      observer.observe(el);
+    }
+  });
+});
+
+/* Popup testing mode remains unchanged: show on every refresh. */
