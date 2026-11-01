@@ -474,47 +474,44 @@ document.addEventListener("DOMContentLoaded", () => {
     changeType(orderType);
   });
 
-/* ==========================================
-   SHANZEH NIHARI — SINGLE SCROLL ANIMATION ENGINE
-   All menu cards are already rendered by the first DOMContentLoaded
-   listener before this listener runs.
-   ========================================== */
+/* SHANZEH NIHARI — SCROLL-TRIGGERED ENTRANCE ANIMATIONS */
 document.addEventListener("DOMContentLoaded", () => {
-  const reduceMotion = window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const elements = Array.from(document.querySelectorAll(
+  const targets = Array.from(document.querySelectorAll(
     ".section-heading, .food-card, .story-inner, .delivery-inner, .footer-top"
   ));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return;
 
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    elements.forEach(el => el.classList.add("is-visible"));
-    return;
+  // Only animate sections when the visitor actually scrolls to them.
+  // Do not hide content beforehand: the page stays usable if JS is interrupted.
+  const pending = new Set(targets.filter(el =>
+    el.getBoundingClientRect().top > window.innerHeight * 0.85
+  ));
+  let scheduled = false;
+  function checkScroll() {
+    scheduled = false;
+    for (const el of pending) {
+      if (el.getBoundingClientRect().top <= window.innerHeight * 0.88) {
+        pending.delete(el);
+        if (el.classList.contains("food-card")) {
+          const i = Array.prototype.indexOf.call(el.parentElement.children, el);
+          el.style.setProperty("--shanzeh-delay", `${(i % 4) * 95}ms`);
+        }
+        el.classList.add("shanzeh-enter");
+      }
+    }
+    if (!pending.size) {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    }
   }
-
-  // Only animate content below the first viewport, so nothing flashes
-  // or disappears when the popup is dismissed.
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.08, rootMargin: "0px 0px -25px 0px" });
-
-  elements.forEach(el => {
-    const card = el.classList.contains("food-card");
-    if (card) {
-      const index = Array.prototype.indexOf.call(el.parentElement.children, el);
-      el.style.setProperty("--reveal-delay", `${(index % 4) * 100}ms`);
+  function onScroll() {
+    if (!scheduled) {
+      scheduled = true;
+      window.requestAnimationFrame(checkScroll);
     }
-    // Never hide items already in the visible viewport.
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
-      el.classList.add("is-visible");
-    } else {
-      el.classList.add("cinematic-reveal");
-      observer.observe(el);
-    }
-  });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  checkScroll();
 });
-
-/* Popup testing mode remains unchanged: show on every refresh. */
