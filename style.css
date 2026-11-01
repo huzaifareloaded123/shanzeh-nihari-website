@@ -1621,3 +1621,249 @@ body {
 .checkout-summary .grand-total {
   color: #d71920;
 }
+
+/* ==========================================
+   SHANZEH NIHARI — PREMIUM DESIGN REFINEMENT
+   RED + YELLOW + WHITE
+   ========================================== */
+
+/* 1. PREMIUM HERO BACKGROUND */
+
+.hero {
+  background:
+    radial-gradient(
+      ellipse at 82% 45%,
+      rgba(255, 218, 0, 0.14),
+      transparent 48%
+    ),
+    linear-gradient(
+      115deg,
+      #8f1017 0%,
+      #c71923 48%,
+      #a7131b 100%
+    );
+  color: #ffffff;
+}
+
+.hero::before {
+  opacity: 0.08;
+}
+
+/* 2. FIX BIG HEADING READABILITY */
+
+.hero h1 {
+  color: #ffffff;
+  font-size: clamp(46px, 5.8vw, 86px);
+  line-height: 1.17;
+  letter-spacing: -1.5px;
+  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero-title-gold {
+  color: #ffda00;
+  margin-top: 14px;
+  line-height: 1.2;
+}
+
+.title-period {
+  color: #ffffff;
+}
+
+.hero-eyebrow {
+  color: #ffda00;
+  line-height: 1.7;
+}
+
+.eyebrow-line {
+  background: #ffda00;
+}
+
+.hero-subtitle {
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.95;
+  max-width: 520px;
+  margin-top: 30px;
+}
+
+.hero-feature,
+.hero-bottom {
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.feature-symbol {
+  color: #ffda00;
+}
+
+/* 3. HERO BUTTONS */
+
+.hero .primary-button {
+  background: #ffda00;
+  color: #202020;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+}
+
+.hero .primary-button:hover {
+  background: #ffe53d;
+}
+
+.hero .secondary-button {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.hero .secondary-button:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+/* 4. SMOOTH PLATE ROTATION */
+
+.hero-image-wrap {
+  animation: plateRotate 90s linear infinite;
+  will-change: transform;
+}
+
+@keyframes plateRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Remove shaking / pulsing rings */
+
+.hero-image-ring {
+  animation: none;
+}
+
+.hero-decoration {
+  animation: none;
+}
+
+.hero-glow-one,
+.hero-glow-two {
+  animation: none;
+}
+
+/* 5. SECTION HEADINGS */
+
+.section-heading h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.24;
+  letter-spacing: -0.8px;
+  margin: 20px 0;
+}
+
+.section-heading p {
+  color: #555555;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.section-kicker {
+  line-height: 1.8;
+}
+
+/* 6. MENU CARD READABILITY */
+
+.food-info h3 {
+  font-size: 21px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.food-info p {
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.food-bottom {
+  margin-top: 25px;
+}
+
+.price {
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+/* 7. STORY SECTION READABILITY */
+
+.story-section h2 {
+  font-size: clamp(36px, 4.5vw, 62px);
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+  margin: 25px 0;
+}
+
+.story-section p {
+  font-size: 17px;
+  line-height: 2;
+  max-width: 680px;
+}
+
+/* 8. DELIVERY SECTION */
+
+.delivery-section h2 {
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+  margin: 18px 0;
+}
+
+.delivery-section p {
+  color: #333333;
+  line-height: 1.8;
+}
+
+/* 9. NAVIGATION CONTRAST */
+
+.site-header {
+  background: #ffffff;
+}
+
+.desktop-nav a {
+  color: #202020;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: #c71923;
+}
+
+/* 10. MOBILE READABILITY */
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(40px, 10vw, 57px);
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+  }
+
+  .hero-title-gold {
+    margin-top: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .section-heading h2,
+  .story-section h2 {
+    line-height: 1.3;
+  }
+
+  .hero-features {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-wrap {
+    animation: none;
+  }
+}
