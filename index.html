@@ -454,19 +454,16 @@
 
       function restart() {
         clearInterval(timer);
-        if (!reducedMotion) timer = setInterval(() => show(current + 1), 5000);
+        // Autoplay must work even when the device prefers reduced motion.
+        // That preference only disables visual animation, not slide changes.
+        timer = setInterval(() => show(current + 1), 5000);
       }
       function go(index) { show(index); restart(); }
 
       slider.querySelector('.sn-hero-prev').addEventListener('click', () => go(current - 1));
       slider.querySelector('.sn-hero-next').addEventListener('click', () => go(current + 1));
       dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
-      slider.addEventListener('mouseenter', () => clearInterval(timer));
-      slider.addEventListener('mouseleave', restart);
-      slider.addEventListener('focusin', () => clearInterval(timer));
-      slider.addEventListener('focusout', event => {
-        if (!slider.contains(event.relatedTarget)) restart();
-      });
+      // Keep autoplay running while the cursor is on the banner or a control has focus.
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) clearInterval(timer);
         else restart();
