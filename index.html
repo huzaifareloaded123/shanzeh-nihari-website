@@ -11,6 +11,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Promotional hero slider — scoped styles to avoid changing existing sections */
+    .sn-hero-slider{position:relative;width:min(96%,1500px);height:clamp(440px,48vw,650px);margin:18px auto 34px;overflow:hidden;border-radius:22px;background:#171717;isolation:isolate;box-shadow:0 20px 55px rgba(0,0,0,.16)}
+    .sn-hero-track,.sn-hero-slide{position:absolute;inset:0}
+    .sn-hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .65s ease,visibility .65s ease;background:#171717;overflow:hidden}
+    .sn-hero-slide.active{opacity:1;visibility:visible;z-index:1}
+    .sn-hero-slide:before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(12,12,12,.98) 0%,rgba(12,12,12,.93) 35%,rgba(12,12,12,.55) 56%,rgba(12,12,12,.06) 100%)}
+    .sn-hero-slide:after{content:"";position:absolute;z-index:1;right:-13%;top:-40%;width:63%;height:180%;border-radius:50%;background:#f5a20b;opacity:.22;pointer-events:none}
+    .sn-hero-slide:nth-child(2):after{background:#c91627}
+    .sn-hero-photo{position:absolute;inset:0 0 0 36%;z-index:1}
+    .sn-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(1.12) contrast(1.04)}
+    .sn-hero-copy{position:absolute;z-index:3;left:7%;top:50%;transform:translateY(-50%);width:57%;color:#fff}
+    .sn-hero-kicker{display:inline-block;margin:0 0 24px;color:#ffc21a;font:800 12px/1.3 "Outfit",sans-serif;letter-spacing:3px}
+    .sn-hero-copy h1,.sn-hero-copy h2{margin:0;color:#fff;font:900 clamp(44px,6.2vw,91px)/.98 "Outfit",sans-serif;letter-spacing:-2.5px;text-transform:uppercase}
+    .sn-hero-copy h1 em,.sn-hero-copy h2 em{font-style:normal;color:#ffb20e}
+    .sn-hero-copy p{max-width:430px;margin:23px 0 27px;color:#f0ece5;font:500 clamp(14px,1.35vw,18px)/1.65 "DM Sans",sans-serif}
+    .sn-hero-cta{display:inline-flex;align-items:center;gap:24px;padding:15px 21px;background:#f4a10b;color:#171717;text-decoration:none;font:800 11px/1 "Outfit",sans-serif;letter-spacing:1.2px;border-radius:3px;transition:background .2s,transform .2s}
+    .sn-hero-cta:hover{background:#ffd04a;transform:translateY(-2px)}
+    .sn-hero-cta span{font-size:17px}
+    .sn-hero-side-label{position:absolute;z-index:3;right:25px;top:25px;padding:13px 15px;border:1px solid rgba(255,255,255,.55);color:#fff;font:700 9px "Outfit",sans-serif;letter-spacing:2px;writing-mode:vertical-rl}
+    .sn-hero-arrow{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#171717;font-size:30px;line-height:1;cursor:pointer}
+    .sn-hero-arrow:hover{background:#ffbd1b}
+    .sn-hero-prev{left:15px}.sn-hero-next{right:15px}
+    .sn-hero-dots{position:absolute;z-index:5;bottom:23px;left:50%;transform:translateX(-50%);display:flex;gap:9px}
+    .sn-hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:20px;background:rgba(255,255,255,.58);cursor:pointer;transition:width .25s,background .25s}
+    .sn-hero-dots button.active{width:32px;background:#ffc21a}
+    .sn-hero-progress{position:absolute;z-index:5;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.18)}
+    .sn-hero-progress span{display:block;width:0;height:100%;background:#ffc21a}
+    .sn-hero-progress span.run{animation:snHeroProgress 5s linear forwards}
+    .sn-demo-disclaimer{position:absolute;z-index:5;left:18px;bottom:12px;margin:0;color:rgba(255,255,255,.65);font:700 8px "DM Sans",sans-serif;letter-spacing:1px}
+    @keyframes snHeroProgress{to{width:100%}}
+    @media(max-width:700px){
+      .sn-hero-slider{width:calc(100% - 20px);height:590px;margin:12px auto 25px;border-radius:15px}
+      .sn-hero-slide:before{background:linear-gradient(0deg,rgba(10,10,10,.98) 0%,rgba(10,10,10,.88) 39%,rgba(10,10,10,.05) 100%)}
+      .sn-hero-photo{inset:0 0 27% 0}
+      .sn-hero-photo img{object-position:center 43%}
+      .sn-hero-slide:after{right:-35%;top:-38%;width:95%;height:110%;opacity:.16}
+      .sn-hero-copy{left:8%;top:auto;bottom:68px;transform:none;width:84%}
+      .sn-hero-kicker{font-size:9px;letter-spacing:2px;margin-bottom:13px}
+      .sn-hero-copy h1,.sn-hero-copy h2{font-size:clamp(39px,10vw,60px);letter-spacing:-1.4px}
+      .sn-hero-copy p{font-size:13px;margin:13px 0 17px;max-width:310px}
+      .sn-hero-cta{padding:13px 15px;font-size:9px}
+      .sn-hero-side-label{top:13px;right:13px;font-size:7px;padding:9px}
+      .sn-hero-arrow{width:32px;height:32px;font-size:24px}
+      .sn-hero-prev{left:8px}.sn-hero-next{right:8px}
+      .sn-hero-dots{bottom:22px}
+      .sn-demo-disclaimer{font-size:6px;left:9px;bottom:8px;letter-spacing:.45px}
+    }
+    @media(prefers-reduced-motion:reduce){.sn-hero-slide{transition:none}.sn-hero-progress span.run{animation:none}}
+  </style>
+
 </head>
 
 <body>
@@ -57,79 +109,61 @@
 
   <main>
 
-    <!-- PREMIUM HERO -->
-    <section class="hero" id="home">
-      <div class="hero-glow hero-glow-one"></div>
-      <div class="hero-glow hero-glow-two"></div>
-
-      <div class="hero-inner">
-
-        <div class="hero-copy">
-          <div class="hero-eyebrow">
-            <span class="eyebrow-line"></span>
-            THE LEGENDARY TASTE OF KARACHI
+    <!-- SHANZEH NIHARI PROMOTIONAL HERO SLIDER -->
+    <section class="sn-hero-slider" id="home" aria-label="Shanzeh Nihari promotions">
+      <div class="sn-hero-track">
+        <article class="sn-hero-slide active" aria-hidden="false">
+          <div class="sn-hero-photo">
+            <img src="https://nutriscan.app/calories-nutrition/images/nihari-a0961.webp"
+                 alt="Demo photograph of Pakistani nihari in a clay bowl">
           </div>
-
-          <h1>
-            KARACHI KI
-            <span class="hero-title-gold">ASLI NIHARI<span class="title-period">.</span></span>
-          </h1>
-
-          <p class="hero-subtitle">
-            A tradition of rich flavours, slow-cooked perfection
-            and unforgettable taste.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#menu" class="primary-button">
-              ORDER YOUR NIHARI <span>↗</span>
-            </a>
-            <a href="#story" class="secondary-button">
-              DISCOVER OUR STORY <span>→</span>
-            </a>
+          <div class="sn-hero-copy">
+            <span class="sn-hero-kicker">SHANZEH NIHARI · KARACHI</span>
+            <h1>THE TASTE<br>OF <em>KARACHI.</em></h1>
+            <p>Rich, warming flavour. A classic worth coming back for.</p>
+            <a href="#menu" class="sn-hero-cta">EXPLORE OUR MENU <span>↗</span></a>
           </div>
+          <span class="sn-hero-side-label">AUTHENTIC DESI FLAVOUR</span>
+        </article>
 
-          <div class="hero-features">
-            <div class="hero-feature">
-              <span class="feature-symbol">✦</span>
-              <span>AUTHENTIC<br>KARACHI TASTE</span>
-            </div>
-            <div class="feature-divider"></div>
-            <div class="hero-feature">
-              <span class="feature-symbol">✦</span>
-              <span>FRESHLY<br>PREPARED</span>
-            </div>
-            <div class="feature-divider"></div>
-            <div class="hero-feature">
-              <span class="feature-symbol">✦</span>
-              <span>DELIVERED<br>TO YOUR DOOR</span>
-            </div>
+        <article class="sn-hero-slide" aria-hidden="true">
+          <div class="sn-hero-photo">
+            <img src="https://assets-global.website-files.com/60d34b8627f6e735cf28df18/627b52e32833af41c139abf6_Beef%20Nihari%20Hero%204.3.jpg"
+                 alt="Demo photograph of richly garnished beef nihari">
           </div>
-        </div>
+          <div class="sn-hero-copy">
+            <span class="sn-hero-kicker">A CLASSIC, FULL OF CHARACTER</span>
+            <h2>SLOW COOKED.<br><em>RICHLY LOVED.</em></h2>
+            <p>Deep colour, warming spices and the comfort of a true favourite.</p>
+            <a href="#menu" class="sn-hero-cta">FIND YOUR FAVOURITE <span>↗</span></a>
+          </div>
+          <span class="sn-hero-side-label">MADE FOR NIHARI LOVERS</span>
+        </article>
 
-        <div class="hero-visual">
-          <div class="hero-image-ring"></div>
-          <div class="hero-image-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1100&q=85"
-              alt="Rich traditional South Asian curry"
-              class="hero-food-image">
+        <article class="sn-hero-slide" aria-hidden="true">
+          <div class="sn-hero-photo">
+            <img src="https://desi-bites.net/assets/dish-nihari-B46cdm7I.webp"
+                 alt="Demo photograph of nihari served with naan">
           </div>
-          <div class="floating-stamp">
-            <span>MADE WITH</span>
-            <strong>PASSION</strong>
-            <span>✦ EVERY DAY ✦</span>
+          <div class="sn-hero-copy">
+            <span class="sn-hero-kicker">YOUR KARACHI FOOD CRAVING</span>
+            <h2>MAKE EVERY<br><em>BITE COUNT.</em></h2>
+            <p>Your nihari moment is just a few clicks away.</p>
+            <a href="#menu" class="sn-hero-cta">ORDER ONLINE <span>↗</span></a>
           </div>
-          <div class="hero-decoration">✳</div>
-        </div>
-
+          <span class="sn-hero-side-label">SHANZEH NIHARI</span>
+        </article>
       </div>
 
-      <div class="hero-bottom">
-        <span>SCROLL TO EXPLORE</span>
-        <span class="scroll-line"></span>
-        <span>THE TASTE YOU LOVE</span>
+      <button class="sn-hero-arrow sn-hero-prev" type="button" aria-label="Previous banner">‹</button>
+      <button class="sn-hero-arrow sn-hero-next" type="button" aria-label="Next banner">›</button>
+      <div class="sn-hero-dots" aria-label="Choose promotional banner">
+        <button class="active" type="button" aria-label="Banner 1" aria-current="true"></button>
+        <button type="button" aria-label="Banner 2"></button>
+        <button type="button" aria-label="Banner 3"></button>
       </div>
+      <div class="sn-hero-progress"><span></span></div>
+      <p class="sn-demo-disclaimer">DEMO FOOD PHOTOGRAPHY · WILL BE REPLACED WITH SHANZEH NIHARI'S OWN PHOTOS</p>
     </section>
 
     <!-- PROMISE STRIP -->
@@ -388,6 +422,59 @@
 
   </div>
 </div>
+
+
+  <script>
+    (() => {
+      const slider = document.querySelector('.sn-hero-slider');
+      if (!slider) return;
+      const slides = [...slider.querySelectorAll('.sn-hero-slide')];
+      const dots = [...slider.querySelectorAll('.sn-hero-dots button')];
+      const progress = slider.querySelector('.sn-hero-progress span');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let current = 0;
+      let timer;
+
+      function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => {
+          const active = i === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', String(!active));
+        });
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === current);
+          if (i === current) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+        progress.classList.remove('run');
+        void progress.offsetWidth;
+        if (!reducedMotion) progress.classList.add('run');
+      }
+
+      function restart() {
+        clearInterval(timer);
+        if (!reducedMotion) timer = setInterval(() => show(current + 1), 5000);
+      }
+      function go(index) { show(index); restart(); }
+
+      slider.querySelector('.sn-hero-prev').addEventListener('click', () => go(current - 1));
+      slider.querySelector('.sn-hero-next').addEventListener('click', () => go(current + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
+      slider.addEventListener('mouseenter', () => clearInterval(timer));
+      slider.addEventListener('mouseleave', restart);
+      slider.addEventListener('focusin', () => clearInterval(timer));
+      slider.addEventListener('focusout', event => {
+        if (!slider.contains(event.relatedTarget)) restart();
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) clearInterval(timer);
+        else restart();
+      });
+      show(0);
+      restart();
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>
