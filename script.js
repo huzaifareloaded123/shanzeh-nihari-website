@@ -280,7 +280,26 @@ document.addEventListener("DOMContentLoaded", () => {
       "Demo only: your details were checked, but no order was sent. Online ordering will be activated later.";
   });
 
-  // Scroll animations are initialized once after the menu is rendered.
+  // SCROLL ANIMATIONS
+  const animatedSections = document.querySelectorAll(
+    ".section-heading, .story-inner, .delivery-inner"
+  );
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    animatedSections.forEach((element) => {
+      element.classList.add("reveal");
+      observer.observe(element);
+    });
+  }
 
   // COPYRIGHT YEAR
   $("#year").textContent = new Date().getFullYear();
@@ -474,25 +493,63 @@ document.addEventListener("DOMContentLoaded", () => {
     changeType(orderType);
   });
 
-/* PREMIUM REPLAY SCROLL EFFECTS — no food-card animations. */
-document.addEventListener("DOMContentLoaded", () => {
-  const targets = document.querySelectorAll(
-    ".section-heading, .story-inner, .delivery-inner, .footer-top"
-  );
-  if (!("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+/* ==========================================
+   SHANZEH NIHARI — SCROLL ANIMATION ENGINE
+   ========================================== */
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Entering the viewport: replay the short cinematic animation.
-        entry.target.classList.add("shanzeh-play");
-      } else {
-        // Leaving the viewport: reset for the next scroll pass.
-        entry.target.classList.remove("shanzeh-play");
+   document.addEventListener("DOMContentLoaded", () => {
+
+    // Headings, story and delivery already use the original .reveal system.
+    // Animate only menu cards and footer here to avoid competing transforms.
+    const selectors = [
+      ".food-card",
+      ".footer-top"
+    ];
+  
+    const elements = document.querySelectorAll(
+      selectors.join(", ")
+    );
+  
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+  
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -35px 0px"
       }
+    );
+  
+    elements.forEach((element, index) => {
+      element.classList.add("cinematic-reveal");
+  
+      if (element.classList.contains("food-card")) {
+        const cardIndex = Array.from(
+          element.parentElement.children
+        ).indexOf(element);
+  
+        element.style.transitionDelay =
+          `${(cardIndex % 4) * 110}ms`;
+      }
+  
+      observer.observe(element);
     });
-  }, { threshold: 0.15, rootMargin: "0px 0px -35px 0px" });
+  
+  });
 
-  targets.forEach((element) => observer.observe(element));
-});
+/* Popup testing mode: show on every page refresh.
+   To remember the customer's choice and skip the popup later,
+   this behavior can be changed after client approval. */
+    
