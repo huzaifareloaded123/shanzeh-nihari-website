@@ -2423,3 +2423,94 @@ html {
   .section-heading.shanzeh-play h2::after,
   .footer-top.shanzeh-play .footer-brand { animation: none !important; }
 }
+
+/* ==========================================
+   SHANZEH NIHARI — SMOOTH SLIDER FIX
+   Keep all original CSS above this section
+   ========================================== */
+
+   .sn-hero-slider {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  
+  .sn-hero-slider .sn-hero-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    transform: translate3d(0, 0, 0);
+    transition: transform 950ms cubic-bezier(
+      0.22, 1, 0.36, 1
+    );
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  .sn-hero-slider .sn-hero-slide {
+    display: block !important;
+    position: relative !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    overflow: hidden;
+  }
+  
+  .sn-hero-slider .sn-hero-slide.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .sn-hero-slider .sn-hero-arrow,
+  .sn-hero-slider .sn-hero-dots,
+  .sn-hero-slider .sn-hero-progress {
+    position: absolute;
+    z-index: 20;
+  }
+  
+  .sn-hero-slider .sn-hero-progress {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .sn-hero-slider .sn-hero-progress span {
+    display: block;
+    height: 100%;
+    background: #ffda00;
+  }
+  
+  .sn-hero-slider .sn-hero-progress span.run {
+    animation: snProgressSmooth 5s linear forwards;
+  }
+  
+  @keyframes snProgressSmooth {
+    from {
+      width: 0%;
+    }
+  
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Ensure the banner uses the horizontal track layout */
+  
+  @media (max-width: 700px) {
+    .sn-hero-slider .sn-hero-track {
+      display: flex !important;
+    }
+  
+    .sn-hero-slider .sn-hero-slide {
+      flex: 0 0 100% !important;
+      min-width: 100% !important;
+    }
+  }
+  
