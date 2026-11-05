@@ -4,21 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#470E19">
+  <meta name="theme-color" content="#B5121B">
   <meta name="description" content="Order authentic Karachi Nihari from Shanzeh Nihari. Fresh, flavourful and delivered across Karachi.">
-
   <title>Shanzeh Nihari | Karachi Ki Asli Nihari</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ========================================
-       SHANZEH NIHARI — SMOOTH HERO SLIDER
-       ======================================== */
+    /* =========================================
+       SHANZEH NIHARI — HERO SLIDER
+       ========================================= */
 
     .sn-hero-slider {
       position: relative;
@@ -32,27 +30,29 @@
       box-shadow: 0 20px 55px rgba(0,0,0,.16);
     }
 
-    .sn-hero-track {
-      position: relative;
-      display: flex;
-      width: 100%;
-      height: 100%;
+    .sn-hero-slider .sn-hero-track {
+      position: relative !important;
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      width: 100% !important;
+      height: 100% !important;
       transform: translate3d(0,0,0);
       will-change: transform;
+      backface-visibility: hidden;
     }
 
-    .sn-hero-slide {
-      position: relative;
-      flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      min-width: 0;
-      background: #171717;
+    .sn-hero-slider .sn-hero-slide {
+      position: relative !important;
+      display: block !important;
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      height: 100% !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: none !important;
       overflow: hidden;
-    }
-
-    .sn-hero-slide.active {
-      z-index: 1;
+      background: #171717;
     }
 
     .sn-hero-slide::before {
@@ -67,6 +67,7 @@
         rgba(12,12,12,.55) 56%,
         rgba(12,12,12,.06) 100%
       );
+      pointer-events: none;
     }
 
     .sn-hero-slide::after {
@@ -254,9 +255,8 @@
     }
 
     @keyframes snHeroProgress {
-      to {
-        width: 100%;
-      }
+      from { width: 0%; }
+      to { width: 100%; }
     }
 
     .sn-demo-disclaimer {
@@ -347,17 +347,9 @@
         font-size: 24px;
       }
 
-      .sn-hero-prev {
-        left: 8px;
-      }
-
-      .sn-hero-next {
-        right: 8px;
-      }
-
-      .sn-hero-dots {
-        bottom: 22px;
-      }
+      .sn-hero-prev { left: 8px; }
+      .sn-hero-next { right: 8px; }
+      .sn-hero-dots { bottom: 22px; }
 
       .sn-demo-disclaimer {
         font-size: 6px;
@@ -389,7 +381,8 @@
   <header class="site-header">
     <div class="nav-container">
 
-      <a href="#home" class="brand" aria-label="Shanzeh Nihari Home">
+      <a href="#home" class="brand"
+         aria-label="Shanzeh Nihari Home">
         <span class="brand-icon">SN<span>.</span></span>
         <span class="brand-name">
           SHANZEH
@@ -397,7 +390,8 @@
         </span>
       </a>
 
-      <nav class="desktop-nav" aria-label="Main navigation">
+      <nav class="desktop-nav"
+           aria-label="Main navigation">
         <a href="#home" class="active">HOME</a>
         <a href="#menu">OUR MENU</a>
         <a href="#story">OUR STORY</a>
@@ -426,7 +420,9 @@
 
   <main>
 
-    <!-- PROMOTIONAL HERO SLIDER -->
+    <!-- =====================================
+         PROMOTIONAL HERO SLIDER
+         ===================================== -->
     <section
       class="sn-hero-slider"
       id="home"
@@ -436,7 +432,9 @@
       <div class="sn-hero-track">
 
         <!-- SLIDE 1 -->
-        <article class="sn-hero-slide active" aria-hidden="false">
+        <article class="sn-hero-slide active"
+                 aria-hidden="false">
+
           <div class="sn-hero-photo">
             <img
               src="https://nutriscan.app/calories-nutrition/images/nihari-a0961.webp"
@@ -467,10 +465,13 @@
           <span class="sn-hero-side-label">
             AUTHENTIC DESI FLAVOUR
           </span>
+
         </article>
 
         <!-- SLIDE 2 -->
-        <article class="sn-hero-slide" aria-hidden="true">
+        <article class="sn-hero-slide"
+                 aria-hidden="true">
+
           <div class="sn-hero-photo">
             <img
               src="https://assets-global.website-files.com/60d34b8627f6e735cf28df18/627b52e32833af41c139abf6_Beef%20Nihari%20Hero%204.3.jpg"
@@ -501,10 +502,13 @@
           <span class="sn-hero-side-label">
             MADE FOR NIHARI LOVERS
           </span>
+
         </article>
 
         <!-- SLIDE 3 -->
-        <article class="sn-hero-slide" aria-hidden="true">
+        <article class="sn-hero-slide"
+                 aria-hidden="true">
+
           <div class="sn-hero-photo">
             <img
               src="https://desi-bites.net/assets/dish-nihari-B46cdm7I.webp"
@@ -534,6 +538,7 @@
           <span class="sn-hero-side-label">
             SHANZEH NIHARI
           </span>
+
         </article>
 
       </div>
@@ -552,7 +557,9 @@
       >›</button>
 
       <!-- SLIDER DOTS -->
-      <div class="sn-hero-dots" aria-label="Choose promotional banner">
+      <div class="sn-hero-dots"
+           aria-label="Choose promotional banner">
+
         <button
           class="active"
           type="button"
@@ -577,7 +584,8 @@
       </div>
 
       <p class="sn-demo-disclaimer">
-        DEMO FOOD PHOTOGRAPHY · WILL BE REPLACED WITH SHANZEH NIHARI'S OWN PHOTOS
+        DEMO FOOD PHOTOGRAPHY · WILL BE REPLACED WITH
+        SHANZEH NIHARI'S OWN PHOTOS
       </p>
 
     </section>
@@ -593,10 +601,17 @@
     <!-- MENU -->
     <section class="menu-section" id="menu">
       <div class="section-heading">
-        <span class="section-kicker">FROM OUR KITCHEN</span>
-        <h2>THE NIHARI <em>COLLECTION</em></h2>
+        <span class="section-kicker">
+          FROM OUR KITCHEN
+        </span>
+
+        <h2>
+          THE NIHARI <em>COLLECTION</em>
+        </h2>
+
         <p>
-          Choose your favourite. We will take care of the flavour.
+          Choose your favourite. We will take
+          care of the flavour.
         </p>
       </div>
 
@@ -620,9 +635,10 @@
         </h2>
 
         <p>
-          Deep flavours, aromatic spices and the comforting
-          taste of a true Karachi favourite. Every serving
-          is made for people who appreciate great food.
+          Deep flavours, aromatic spices and the
+          comforting taste of a true Karachi favourite.
+          Every serving is made for people who
+          appreciate great food.
         </p>
 
         <a href="#menu" class="primary-button">
@@ -634,6 +650,7 @@
     <!-- DELIVERY -->
     <section class="delivery-section">
       <div class="delivery-inner">
+
         <div>
           <span class="section-kicker">
             CRAVING NIHARI?
@@ -652,6 +669,7 @@
         <a href="#menu" class="primary-button">
           ORDER NOW <span>↗</span>
         </a>
+
       </div>
     </section>
 
@@ -660,6 +678,7 @@
   <!-- FOOTER -->
   <footer class="footer" id="contact">
     <div class="footer-top">
+
       <div class="footer-brand">
         <div class="brand-name">
           SHANZEH <strong>NIHARI</strong>
@@ -675,6 +694,7 @@
         <a href="#menu">MENU</a>
         <a href="#story">OUR STORY</a>
       </div>
+
     </div>
 
     <div class="footer-bottom">
@@ -686,7 +706,9 @@
     </div>
   </footer>
 
-  <!-- CART DRAWER -->
+  <!-- =====================================
+       CART DRAWER
+       ===================================== -->
   <div class="cart-overlay" id="cartOverlay"></div>
 
   <aside
@@ -699,10 +721,13 @@
 
     <div class="cart-header">
       <div>
-        <span class="section-kicker">YOUR ORDER</span>
+        <span class="section-kicker">
+          YOUR ORDER
+        </span>
 
         <h2>
-          MY CART <span id="cartTitleCount">(0)</span>
+          MY CART
+          <span id="cartTitleCount">(0)</span>
         </h2>
       </div>
 
@@ -741,8 +766,11 @@
 
   </aside>
 
-  <!-- CHECKOUT MODAL -->
+  <!-- =====================================
+       CHECKOUT MODAL
+       ===================================== -->
   <div class="checkout-overlay" id="checkoutOverlay">
+
     <div
       class="checkout-modal"
       role="dialog"
@@ -816,9 +844,12 @@
         ></textarea>
 
         <div class="checkout-summary">
+
           <div>
             <span>SUBTOTAL</span>
-            <strong id="checkoutSubtotal">Rs. 0</strong>
+            <strong id="checkoutSubtotal">
+              Rs. 0
+            </strong>
           </div>
 
           <div>
@@ -828,8 +859,11 @@
 
           <div class="grand-total">
             <span>TOTAL</span>
-            <strong id="checkoutTotal">Rs. 200</strong>
+            <strong id="checkoutTotal">
+              Rs. 200
+            </strong>
           </div>
+
         </div>
 
         <button
@@ -843,15 +877,19 @@
           class="checkout-disclaimer"
           id="checkoutMessage"
         >
-          Demo checkout — online order submission is not active yet.
+          Demo checkout — online order submission
+          is not active yet.
         </p>
 
       </form>
     </div>
   </div>
 
-  <!-- ORDER TYPE SELECTION POPUP -->
+  <!-- =====================================
+       ORDER TYPE SELECTION POPUP
+       ===================================== -->
   <div class="order-modal-overlay" id="orderModal">
+
     <div
       class="order-modal"
       role="dialog"
@@ -866,11 +904,13 @@
       </div>
 
       <div class="order-modal-content">
+
         <h2 id="orderModalTitle">
           Select Your Order Type
         </h2>
 
         <div class="order-type-switch">
+
           <button
             type="button"
             class="order-type-btn active"
@@ -886,9 +926,13 @@
           >
             Pick-Up
           </button>
+
         </div>
 
-        <p class="order-modal-help" id="orderModalHelp">
+        <p
+          class="order-modal-help"
+          id="orderModalHelp"
+        >
           Please select your location
         </p>
 
@@ -908,6 +952,7 @@
 
         <!-- DELIVERY OPTIONS -->
         <div id="deliveryOptions">
+
           <label for="deliveryArea">
             Select Your Area
           </label>
@@ -946,10 +991,12 @@
             <option>Surjani Town</option>
             <option>Other Karachi Area</option>
           </select>
+
         </div>
 
         <!-- PICKUP OPTIONS -->
         <div id="pickupOptions" hidden>
+
           <label for="pickupBranch">
             Select Branch
           </label>
@@ -971,7 +1018,9 @@
               Directions available after address confirmation
             </span>
           </div>
+
         </div>
+
       </div>
 
       <div class="order-modal-footer">
@@ -987,31 +1036,44 @@
     </div>
   </div>
 
-  <!-- ========================================
+  <!-- =====================================
        SMOOTH AUTOPLAY SLIDER JAVASCRIPT
-       ======================================== -->
+       ===================================== -->
   <script>
     (() => {
-      const slider = document.querySelector(".sn-hero-slider");
+      "use strict";
+
+      const slider = document.querySelector(
+        ".sn-hero-slider"
+      );
 
       if (!slider) return;
 
-      const track = slider.querySelector(".sn-hero-track");
+      const track = slider.querySelector(
+        ".sn-hero-track"
+      );
 
       const slides = Array.from(
         track.querySelectorAll(".sn-hero-slide")
       );
 
       const dots = Array.from(
-        slider.querySelectorAll(".sn-hero-dots button")
+        slider.querySelectorAll(
+          ".sn-hero-dots button"
+        )
       );
 
       const progress = slider.querySelector(
         ".sn-hero-progress span"
       );
 
-      const prev = slider.querySelector(".sn-hero-prev");
-      const next = slider.querySelector(".sn-hero-next");
+      const prev = slider.querySelector(
+        ".sn-hero-prev"
+      );
+
+      const next = slider.querySelector(
+        ".sn-hero-next"
+      );
 
       if (slides.length < 2) return;
 
@@ -1027,42 +1089,63 @@
       let timer = null;
       let locked = false;
 
-      /*
-       * Clone the first slide.
-       * This allows the last slide to move smoothly
-       * forward into the first slide.
-       */
+      // Clone the first slide for seamless looping.
       const firstClone = slides[0].cloneNode(true);
 
       firstClone.classList.remove("active");
-      firstClone.setAttribute("aria-hidden", "true");
+      firstClone.setAttribute(
+        "aria-hidden",
+        "true"
+      );
 
       track.appendChild(firstClone);
 
-      /*
-       * Update active dots and progress bar.
-       */
+      // Set transform transition with important priority
+      // to avoid conflicts from the existing stylesheet.
+      function setTransition(enabled) {
+        const value = enabled && !reducedMotion
+          ? `transform ${TRANSITION_DURATION}ms cubic-bezier(.22,1,.36,1)`
+          : "none";
+
+        track.style.setProperty(
+          "transition",
+          value,
+          "important"
+        );
+      }
+
       function updateIndicators() {
         slides.forEach((slide, index) => {
-          const isActive = index === current;
+          const active = index === current;
 
-          slide.classList.toggle("active", isActive);
+          slide.classList.toggle(
+            "active",
+            active
+          );
 
           slide.setAttribute(
             "aria-hidden",
-            String(!isActive)
+            String(!active)
           );
         });
 
         dots.forEach((dot, index) => {
-          const isActive = index === current;
+          const active = index === current;
 
-          dot.classList.toggle("active", isActive);
+          dot.classList.toggle(
+            "active",
+            active
+          );
 
-          if (isActive) {
-            dot.setAttribute("aria-current", "true");
+          if (active) {
+            dot.setAttribute(
+              "aria-current",
+              "true"
+            );
           } else {
-            dot.removeAttribute("aria-current");
+            dot.removeAttribute(
+              "aria-current"
+            );
           }
         });
 
@@ -1077,9 +1160,20 @@
         }
       }
 
-      /*
-       * Move the entire slider track horizontally.
-       */
+      function resetToFirst() {
+        setTransition(false);
+
+        position = 0;
+
+        track.style.transform =
+          "translate3d(0,0,0)";
+
+        // Force the reset to complete without animation.
+        void track.offsetWidth;
+
+        locked = false;
+      }
+
       function moveTo(nextIndex, animate = true) {
         if (locked) return;
 
@@ -1088,21 +1182,29 @@
 
         current = movingToClone
           ? 0
-          : (nextIndex + slides.length) % slides.length;
+          : (
+              nextIndex + slides.length
+            ) % slides.length;
 
-        position = movingToClone
+        const targetPosition = movingToClone
           ? slides.length
           : current;
 
-        locked = animate && !reducedMotion;
+        const shouldAnimate =
+          animate && !reducedMotion;
 
-        track.style.transition =
-          animate && !reducedMotion
-            ? `transform ${TRANSITION_DURATION}ms cubic-bezier(.22,1,.36,1)`
-            : "none";
+        locked = shouldAnimate;
+
+        // Commit the current slide before moving.
+        // This avoids the browser merging two frames.
+        void track.offsetWidth;
+
+        setTransition(shouldAnimate);
+
+        position = targetPosition;
 
         track.style.transform =
-          `translate3d(-${position * 100}%, 0, 0)`;
+          `translate3d(-${position * 100}%,0,0)`;
 
         updateIndicators();
 
@@ -1111,44 +1213,24 @@
         }
       }
 
-      /*
-       * Instantly reset the invisible cloned slide
-       * after the transition completes.
-       */
-      function resetToFirst() {
-        track.style.transition = "none";
+      track.addEventListener(
+        "transitionend",
+        (event) => {
+          if (
+            event.target !== track ||
+            event.propertyName !== "transform"
+          ) {
+            return;
+          }
 
-        position = 0;
-
-        track.style.transform =
-          "translate3d(0, 0, 0)";
-
-        void track.offsetWidth;
-
-        locked = false;
-      }
-
-      /*
-       * Unlock slider when movement completes.
-       */
-      track.addEventListener("transitionend", (event) => {
-        if (
-          event.target !== track ||
-          event.propertyName !== "transform"
-        ) {
-          return;
+          if (position === slides.length) {
+            resetToFirst();
+          } else {
+            locked = false;
+          }
         }
+      );
 
-        if (position === slides.length) {
-          resetToFirst();
-        } else {
-          locked = false;
-        }
-      });
-
-      /*
-       * Start or restart 5-second autoplay.
-       */
       function restartAutoplay() {
         clearInterval(timer);
 
@@ -1164,9 +1246,6 @@
         }, SLIDE_INTERVAL);
       }
 
-      /*
-       * Manual navigation.
-       */
       function goTo(index) {
         if (locked) return;
 
@@ -1193,21 +1272,18 @@
         });
       });
 
-      /*
-       * Pause only when browser tab is hidden.
-       * Mouse hover will NOT stop autoplay.
-       */
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          clearInterval(timer);
-        } else {
-          restartAutoplay();
+      document.addEventListener(
+        "visibilitychange",
+        () => {
+          if (document.hidden) {
+            clearInterval(timer);
+          } else {
+            restartAutoplay();
+          }
         }
-      });
+      );
 
-      /*
-       * Initialize slider.
-       */
+      // Initialize without an opening animation.
       moveTo(0, false);
       restartAutoplay();
 
