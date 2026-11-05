@@ -6,63 +6,373 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#470E19">
   <meta name="description" content="Order authentic Karachi Nihari from Shanzeh Nihari. Fresh, flavourful and delivered across Karachi.">
+
   <title>Shanzeh Nihari | Karachi Ki Asli Nihari</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* Promotional hero slider — scoped styles to avoid changing existing sections */
-    .sn-hero-slider{position:relative;width:min(96%,1500px);height:clamp(440px,48vw,650px);margin:18px auto 34px;overflow:hidden;border-radius:22px;background:#171717;isolation:isolate;box-shadow:0 20px 55px rgba(0,0,0,.16)}
-    .sn-hero-track,.sn-hero-slide{position:absolute;inset:0}
-    .sn-hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .65s ease,visibility .65s ease;background:#171717;overflow:hidden}
-    .sn-hero-slide.active{opacity:1;visibility:visible;z-index:1}
-    .sn-hero-slide:before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(12,12,12,.98) 0%,rgba(12,12,12,.93) 35%,rgba(12,12,12,.55) 56%,rgba(12,12,12,.06) 100%)}
-    .sn-hero-slide:after{content:"";position:absolute;z-index:1;right:-13%;top:-40%;width:63%;height:180%;border-radius:50%;background:#f5a20b;opacity:.22;pointer-events:none}
-    .sn-hero-slide:nth-child(2):after{background:#c91627}
-    .sn-hero-photo{position:absolute;inset:0 0 0 36%;z-index:1}
-    .sn-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(1.12) contrast(1.04)}
-    .sn-hero-copy{position:absolute;z-index:3;left:7%;top:50%;transform:translateY(-50%);width:57%;color:#fff}
-    .sn-hero-kicker{display:inline-block;margin:0 0 24px;color:#ffc21a;font:800 12px/1.3 "Outfit",sans-serif;letter-spacing:3px}
-    .sn-hero-copy h1,.sn-hero-copy h2{margin:0;color:#fff;font:900 clamp(44px,6.2vw,91px)/.98 "Outfit",sans-serif;letter-spacing:-2.5px;text-transform:uppercase}
-    .sn-hero-copy h1 em,.sn-hero-copy h2 em{font-style:normal;color:#ffb20e}
-    .sn-hero-copy p{max-width:430px;margin:23px 0 27px;color:#f0ece5;font:500 clamp(14px,1.35vw,18px)/1.65 "DM Sans",sans-serif}
-    .sn-hero-cta{display:inline-flex;align-items:center;gap:24px;padding:15px 21px;background:#f4a10b;color:#171717;text-decoration:none;font:800 11px/1 "Outfit",sans-serif;letter-spacing:1.2px;border-radius:3px;transition:background .2s,transform .2s}
-    .sn-hero-cta:hover{background:#ffd04a;transform:translateY(-2px)}
-    .sn-hero-cta span{font-size:17px}
-    .sn-hero-side-label{position:absolute;z-index:3;right:25px;top:25px;padding:13px 15px;border:1px solid rgba(255,255,255,.55);color:#fff;font:700 9px "Outfit",sans-serif;letter-spacing:2px;writing-mode:vertical-rl}
-    .sn-hero-arrow{position:absolute;z-index:5;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#171717;font-size:30px;line-height:1;cursor:pointer}
-    .sn-hero-arrow:hover{background:#ffbd1b}
-    .sn-hero-prev{left:15px}.sn-hero-next{right:15px}
-    .sn-hero-dots{position:absolute;z-index:5;bottom:23px;left:50%;transform:translateX(-50%);display:flex;gap:9px}
-    .sn-hero-dots button{width:9px;height:9px;padding:0;border:0;border-radius:20px;background:rgba(255,255,255,.58);cursor:pointer;transition:width .25s,background .25s}
-    .sn-hero-dots button.active{width:32px;background:#ffc21a}
-    .sn-hero-progress{position:absolute;z-index:5;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.18)}
-    .sn-hero-progress span{display:block;width:0;height:100%;background:#ffc21a}
-    .sn-hero-progress span.run{animation:snHeroProgress 5s linear forwards}
-    .sn-demo-disclaimer{position:absolute;z-index:5;left:18px;bottom:12px;margin:0;color:rgba(255,255,255,.65);font:700 8px "DM Sans",sans-serif;letter-spacing:1px}
-    @keyframes snHeroProgress{to{width:100%}}
-    @media(max-width:700px){
-      .sn-hero-slider{width:calc(100% - 20px);height:590px;margin:12px auto 25px;border-radius:15px}
-      .sn-hero-slide:before{background:linear-gradient(0deg,rgba(10,10,10,.98) 0%,rgba(10,10,10,.88) 39%,rgba(10,10,10,.05) 100%)}
-      .sn-hero-photo{inset:0 0 27% 0}
-      .sn-hero-photo img{object-position:center 43%}
-      .sn-hero-slide:after{right:-35%;top:-38%;width:95%;height:110%;opacity:.16}
-      .sn-hero-copy{left:8%;top:auto;bottom:68px;transform:none;width:84%}
-      .sn-hero-kicker{font-size:9px;letter-spacing:2px;margin-bottom:13px}
-      .sn-hero-copy h1,.sn-hero-copy h2{font-size:clamp(39px,10vw,60px);letter-spacing:-1.4px}
-      .sn-hero-copy p{font-size:13px;margin:13px 0 17px;max-width:310px}
-      .sn-hero-cta{padding:13px 15px;font-size:9px}
-      .sn-hero-side-label{top:13px;right:13px;font-size:7px;padding:9px}
-      .sn-hero-arrow{width:32px;height:32px;font-size:24px}
-      .sn-hero-prev{left:8px}.sn-hero-next{right:8px}
-      .sn-hero-dots{bottom:22px}
-      .sn-demo-disclaimer{font-size:6px;left:9px;bottom:8px;letter-spacing:.45px}
-    }
-    @media(prefers-reduced-motion:reduce){.sn-hero-slide{transition:none}.sn-hero-progress span.run{animation:none}}
-  </style>
+    /* ========================================
+       SHANZEH NIHARI — SMOOTH HERO SLIDER
+       ======================================== */
 
+    .sn-hero-slider {
+      position: relative;
+      width: min(96%, 1500px);
+      height: clamp(440px, 48vw, 650px);
+      margin: 18px auto 34px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #171717;
+      isolation: isolate;
+      box-shadow: 0 20px 55px rgba(0,0,0,.16);
+    }
+
+    .sn-hero-track {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transform: translate3d(0,0,0);
+      will-change: transform;
+    }
+
+    .sn-hero-slide {
+      position: relative;
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      background: #171717;
+      overflow: hidden;
+    }
+
+    .sn-hero-slide.active {
+      z-index: 1;
+    }
+
+    .sn-hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        90deg,
+        rgba(12,12,12,.98) 0%,
+        rgba(12,12,12,.93) 35%,
+        rgba(12,12,12,.55) 56%,
+        rgba(12,12,12,.06) 100%
+      );
+    }
+
+    .sn-hero-slide::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      right: -13%;
+      top: -40%;
+      width: 63%;
+      height: 180%;
+      border-radius: 50%;
+      background: #f5a20b;
+      opacity: .22;
+      pointer-events: none;
+    }
+
+    .sn-hero-slide:nth-child(2)::after {
+      background: #c91627;
+    }
+
+    .sn-hero-photo {
+      position: absolute;
+      inset: 0 0 0 36%;
+      z-index: 1;
+    }
+
+    .sn-hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.12) contrast(1.04);
+    }
+
+    .sn-hero-copy {
+      position: absolute;
+      z-index: 3;
+      left: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 57%;
+      color: #fff;
+    }
+
+    .sn-hero-kicker {
+      display: inline-block;
+      margin: 0 0 24px;
+      color: #ffc21a;
+      font: 800 12px/1.3 "Outfit", sans-serif;
+      letter-spacing: 3px;
+    }
+
+    .sn-hero-copy h1,
+    .sn-hero-copy h2 {
+      margin: 0;
+      color: #fff;
+      font: 900 clamp(44px, 6.2vw, 91px)/.98 "Outfit", sans-serif;
+      letter-spacing: -2.5px;
+      text-transform: uppercase;
+    }
+
+    .sn-hero-copy h1 em,
+    .sn-hero-copy h2 em {
+      font-style: normal;
+      color: #ffb20e;
+    }
+
+    .sn-hero-copy p {
+      max-width: 430px;
+      margin: 23px 0 27px;
+      color: #f0ece5;
+      font: 500 clamp(14px, 1.35vw, 18px)/1.65 "DM Sans", sans-serif;
+    }
+
+    .sn-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      padding: 15px 21px;
+      background: #f4a10b;
+      color: #171717;
+      text-decoration: none;
+      font: 800 11px/1 "Outfit", sans-serif;
+      letter-spacing: 1.2px;
+      border-radius: 3px;
+      transition: background .2s, transform .2s;
+    }
+
+    .sn-hero-cta:hover {
+      background: #ffd04a;
+      transform: translateY(-2px);
+    }
+
+    .sn-hero-cta span {
+      font-size: 17px;
+    }
+
+    .sn-hero-side-label {
+      position: absolute;
+      z-index: 3;
+      right: 25px;
+      top: 25px;
+      padding: 13px 15px;
+      border: 1px solid rgba(255,255,255,.55);
+      color: #fff;
+      font: 700 9px "Outfit", sans-serif;
+      letter-spacing: 2px;
+      writing-mode: vertical-rl;
+    }
+
+    .sn-hero-arrow {
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      color: #171717;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .sn-hero-arrow:hover {
+      background: #ffbd1b;
+    }
+
+    .sn-hero-prev {
+      left: 15px;
+    }
+
+    .sn-hero-next {
+      right: 15px;
+    }
+
+    .sn-hero-dots {
+      position: absolute;
+      z-index: 10;
+      bottom: 23px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 9px;
+    }
+
+    .sn-hero-dots button {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 20px;
+      background: rgba(255,255,255,.58);
+      cursor: pointer;
+      transition: width .25s, background .25s;
+    }
+
+    .sn-hero-dots button.active {
+      width: 32px;
+      background: #ffc21a;
+    }
+
+    .sn-hero-progress {
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: rgba(255,255,255,.18);
+    }
+
+    .sn-hero-progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: #ffc21a;
+    }
+
+    .sn-hero-progress span.run {
+      animation: snHeroProgress 5s linear forwards;
+    }
+
+    @keyframes snHeroProgress {
+      to {
+        width: 100%;
+      }
+    }
+
+    .sn-demo-disclaimer {
+      position: absolute;
+      z-index: 10;
+      left: 18px;
+      bottom: 12px;
+      margin: 0;
+      color: rgba(255,255,255,.65);
+      font: 700 8px "DM Sans", sans-serif;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 700px) {
+      .sn-hero-slider {
+        width: calc(100% - 20px);
+        height: 590px;
+        margin: 12px auto 25px;
+        border-radius: 15px;
+      }
+
+      .sn-hero-slide::before {
+        background: linear-gradient(
+          0deg,
+          rgba(10,10,10,.98) 0%,
+          rgba(10,10,10,.88) 39%,
+          rgba(10,10,10,.05) 100%
+        );
+      }
+
+      .sn-hero-photo {
+        inset: 0 0 27% 0;
+      }
+
+      .sn-hero-photo img {
+        object-position: center 43%;
+      }
+
+      .sn-hero-slide::after {
+        right: -35%;
+        top: -38%;
+        width: 95%;
+        height: 110%;
+        opacity: .16;
+      }
+
+      .sn-hero-copy {
+        left: 8%;
+        top: auto;
+        bottom: 68px;
+        transform: none;
+        width: 84%;
+      }
+
+      .sn-hero-kicker {
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-bottom: 13px;
+      }
+
+      .sn-hero-copy h1,
+      .sn-hero-copy h2 {
+        font-size: clamp(39px, 10vw, 60px);
+        letter-spacing: -1.4px;
+      }
+
+      .sn-hero-copy p {
+        font-size: 13px;
+        margin: 13px 0 17px;
+        max-width: 310px;
+      }
+
+      .sn-hero-cta {
+        padding: 13px 15px;
+        font-size: 9px;
+      }
+
+      .sn-hero-side-label {
+        top: 13px;
+        right: 13px;
+        font-size: 7px;
+        padding: 9px;
+      }
+
+      .sn-hero-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 24px;
+      }
+
+      .sn-hero-prev {
+        left: 8px;
+      }
+
+      .sn-hero-next {
+        right: 8px;
+      }
+
+      .sn-hero-dots {
+        bottom: 22px;
+      }
+
+      .sn-demo-disclaimer {
+        font-size: 6px;
+        left: 9px;
+        bottom: 8px;
+        letter-spacing: .45px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sn-hero-progress span.run {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -95,13 +405,20 @@
       </nav>
 
       <div class="nav-actions">
-        <button class="cart-trigger" id="cartOpen" type="button"
-          aria-label="Open shopping cart">
+        <button
+          class="cart-trigger"
+          id="cartOpen"
+          type="button"
+          aria-label="Open shopping cart"
+        >
           <span class="cart-symbol">🛍</span>
           <span class="cart-label">MY CART</span>
           <span class="cart-count" id="cartCount">0</span>
         </button>
-        <a href="#menu" class="nav-order">ORDER ONLINE <span>↗</span></a>
+
+        <a href="#menu" class="nav-order">
+          ORDER ONLINE <span>↗</span>
+        </a>
       </div>
 
     </div>
@@ -109,61 +426,160 @@
 
   <main>
 
-    <!-- SHANZEH NIHARI PROMOTIONAL HERO SLIDER -->
-    <section class="sn-hero-slider" id="home" aria-label="Shanzeh Nihari promotions">
+    <!-- PROMOTIONAL HERO SLIDER -->
+    <section
+      class="sn-hero-slider"
+      id="home"
+      aria-label="Shanzeh Nihari promotions"
+    >
+
       <div class="sn-hero-track">
+
+        <!-- SLIDE 1 -->
         <article class="sn-hero-slide active" aria-hidden="false">
           <div class="sn-hero-photo">
-            <img src="https://nutriscan.app/calories-nutrition/images/nihari-a0961.webp"
-                 alt="Demo photograph of Pakistani nihari in a clay bowl">
+            <img
+              src="https://nutriscan.app/calories-nutrition/images/nihari-a0961.webp"
+              alt="Demo photograph of Pakistani nihari in a clay bowl"
+            >
           </div>
+
           <div class="sn-hero-copy">
-            <span class="sn-hero-kicker">SHANZEH NIHARI · KARACHI</span>
-            <h1>THE TASTE<br>OF <em>KARACHI.</em></h1>
-            <p>Rich, warming flavour. A classic worth coming back for.</p>
-            <a href="#menu" class="sn-hero-cta">EXPLORE OUR MENU <span>↗</span></a>
+            <span class="sn-hero-kicker">
+              SHANZEH NIHARI · KARACHI
+            </span>
+
+            <h1>
+              THE TASTE<br>
+              OF <em>KARACHI.</em>
+            </h1>
+
+            <p>
+              Rich, warming flavour. A classic worth
+              coming back for.
+            </p>
+
+            <a href="#menu" class="sn-hero-cta">
+              EXPLORE OUR MENU <span>↗</span>
+            </a>
           </div>
-          <span class="sn-hero-side-label">AUTHENTIC DESI FLAVOUR</span>
+
+          <span class="sn-hero-side-label">
+            AUTHENTIC DESI FLAVOUR
+          </span>
         </article>
 
+        <!-- SLIDE 2 -->
         <article class="sn-hero-slide" aria-hidden="true">
           <div class="sn-hero-photo">
-            <img src="https://assets-global.website-files.com/60d34b8627f6e735cf28df18/627b52e32833af41c139abf6_Beef%20Nihari%20Hero%204.3.jpg"
-                 alt="Demo photograph of richly garnished beef nihari">
+            <img
+              src="https://assets-global.website-files.com/60d34b8627f6e735cf28df18/627b52e32833af41c139abf6_Beef%20Nihari%20Hero%204.3.jpg"
+              alt="Demo photograph of richly garnished beef nihari"
+            >
           </div>
+
           <div class="sn-hero-copy">
-            <span class="sn-hero-kicker">A CLASSIC, FULL OF CHARACTER</span>
-            <h2>SLOW COOKED.<br><em>RICHLY LOVED.</em></h2>
-            <p>Deep colour, warming spices and the comfort of a true favourite.</p>
-            <a href="#menu" class="sn-hero-cta">FIND YOUR FAVOURITE <span>↗</span></a>
+            <span class="sn-hero-kicker">
+              A CLASSIC, FULL OF CHARACTER
+            </span>
+
+            <h2>
+              SLOW COOKED.<br>
+              <em>RICHLY LOVED.</em>
+            </h2>
+
+            <p>
+              Deep colour, warming spices and the
+              comfort of a true favourite.
+            </p>
+
+            <a href="#menu" class="sn-hero-cta">
+              FIND YOUR FAVOURITE <span>↗</span>
+            </a>
           </div>
-          <span class="sn-hero-side-label">MADE FOR NIHARI LOVERS</span>
+
+          <span class="sn-hero-side-label">
+            MADE FOR NIHARI LOVERS
+          </span>
         </article>
 
+        <!-- SLIDE 3 -->
         <article class="sn-hero-slide" aria-hidden="true">
           <div class="sn-hero-photo">
-            <img src="https://desi-bites.net/assets/dish-nihari-B46cdm7I.webp"
-                 alt="Demo photograph of nihari served with naan">
+            <img
+              src="https://desi-bites.net/assets/dish-nihari-B46cdm7I.webp"
+              alt="Demo photograph of nihari served with naan"
+            >
           </div>
+
           <div class="sn-hero-copy">
-            <span class="sn-hero-kicker">YOUR KARACHI FOOD CRAVING</span>
-            <h2>MAKE EVERY<br><em>BITE COUNT.</em></h2>
-            <p>Your nihari moment is just a few clicks away.</p>
-            <a href="#menu" class="sn-hero-cta">ORDER ONLINE <span>↗</span></a>
+            <span class="sn-hero-kicker">
+              YOUR KARACHI FOOD CRAVING
+            </span>
+
+            <h2>
+              MAKE EVERY<br>
+              <em>BITE COUNT.</em>
+            </h2>
+
+            <p>
+              Your nihari moment is just a few clicks away.
+            </p>
+
+            <a href="#menu" class="sn-hero-cta">
+              ORDER ONLINE <span>↗</span>
+            </a>
           </div>
-          <span class="sn-hero-side-label">SHANZEH NIHARI</span>
+
+          <span class="sn-hero-side-label">
+            SHANZEH NIHARI
+          </span>
         </article>
+
       </div>
 
-      <button class="sn-hero-arrow sn-hero-prev" type="button" aria-label="Previous banner">‹</button>
-      <button class="sn-hero-arrow sn-hero-next" type="button" aria-label="Next banner">›</button>
+      <!-- SLIDER ARROWS -->
+      <button
+        class="sn-hero-arrow sn-hero-prev"
+        type="button"
+        aria-label="Previous banner"
+      >‹</button>
+
+      <button
+        class="sn-hero-arrow sn-hero-next"
+        type="button"
+        aria-label="Next banner"
+      >›</button>
+
+      <!-- SLIDER DOTS -->
       <div class="sn-hero-dots" aria-label="Choose promotional banner">
-        <button class="active" type="button" aria-label="Banner 1" aria-current="true"></button>
-        <button type="button" aria-label="Banner 2"></button>
-        <button type="button" aria-label="Banner 3"></button>
+        <button
+          class="active"
+          type="button"
+          aria-label="Banner 1"
+          aria-current="true"
+        ></button>
+
+        <button
+          type="button"
+          aria-label="Banner 2"
+        ></button>
+
+        <button
+          type="button"
+          aria-label="Banner 3"
+        ></button>
       </div>
-      <div class="sn-hero-progress"><span></span></div>
-      <p class="sn-demo-disclaimer">DEMO FOOD PHOTOGRAPHY · WILL BE REPLACED WITH SHANZEH NIHARI'S OWN PHOTOS</p>
+
+      <!-- PROGRESS BAR -->
+      <div class="sn-hero-progress">
+        <span></span>
+      </div>
+
+      <p class="sn-demo-disclaimer">
+        DEMO FOOD PHOTOGRAPHY · WILL BE REPLACED WITH SHANZEH NIHARI'S OWN PHOTOS
+      </p>
+
     </section>
 
     <!-- PROMISE STRIP -->
@@ -179,11 +595,13 @@
       <div class="section-heading">
         <span class="section-kicker">FROM OUR KITCHEN</span>
         <h2>THE NIHARI <em>COLLECTION</em></h2>
-        <p>Choose your favourite. We will take care of the flavour.</p>
+        <p>
+          Choose your favourite. We will take care of the flavour.
+        </p>
       </div>
 
       <div class="menu-grid" id="menuGrid">
-        <!-- Menu cards are generated by script.js -->
+        <!-- Menu generated by script.js -->
       </div>
     </section>
 
@@ -191,13 +609,22 @@
     <section class="story-section" id="story">
       <div class="story-inner">
         <div class="story-decoration">✦</div>
-        <span class="section-kicker">THE SHANZEH EXPERIENCE</span>
-        <h2>NOT JUST NIHARI.<br><em>A TASTE TO REMEMBER.</em></h2>
+
+        <span class="section-kicker">
+          THE SHANZEH EXPERIENCE
+        </span>
+
+        <h2>
+          NOT JUST NIHARI.<br>
+          <em>A TASTE TO REMEMBER.</em>
+        </h2>
+
         <p>
-          Deep flavours, aromatic spices and the comforting taste
-          of a true Karachi favourite. Every serving is made
-          for people who appreciate great food.
+          Deep flavours, aromatic spices and the comforting
+          taste of a true Karachi favourite. Every serving
+          is made for people who appreciate great food.
         </p>
+
         <a href="#menu" class="primary-button">
           EXPLORE THE MENU <span>↗</span>
         </a>
@@ -208,10 +635,20 @@
     <section class="delivery-section">
       <div class="delivery-inner">
         <div>
-          <span class="section-kicker">CRAVING NIHARI?</span>
-          <h2>YOUR NEXT FAVOURITE<br>MEAL IS ONE CLICK AWAY.</h2>
-          <p>Order online for delivery within Karachi.</p>
+          <span class="section-kicker">
+            CRAVING NIHARI?
+          </span>
+
+          <h2>
+            YOUR NEXT FAVOURITE<br>
+            MEAL IS ONE CLICK AWAY.
+          </h2>
+
+          <p>
+            Order online for delivery within Karachi.
+          </p>
         </div>
+
         <a href="#menu" class="primary-button">
           ORDER NOW <span>↗</span>
         </a>
@@ -224,17 +661,27 @@
   <footer class="footer" id="contact">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="brand-name">SHANZEH <strong>NIHARI</strong></div>
-        <p>Karachi ki asli nihari, made for every craving.</p>
+        <div class="brand-name">
+          SHANZEH <strong>NIHARI</strong>
+        </div>
+
+        <p>
+          Karachi ki asli nihari, made for every craving.
+        </p>
       </div>
+
       <div class="footer-links">
         <a href="#home">HOME</a>
         <a href="#menu">MENU</a>
         <a href="#story">OUR STORY</a>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© <span id="year"></span> SHANZEH NIHARI.</span>
+      <span>
+        © <span id="year"></span> SHANZEH NIHARI.
+      </span>
+
       <span>MADE FOR NIHARI LOVERS ✦</span>
     </div>
   </footer>
@@ -242,19 +689,35 @@
   <!-- CART DRAWER -->
   <div class="cart-overlay" id="cartOverlay"></div>
 
-  <aside class="cart-drawer" id="cartDrawer"
-    aria-label="Shopping cart" aria-modal="true" role="dialog">
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-label="Shopping cart"
+    aria-modal="true"
+    role="dialog"
+  >
+
     <div class="cart-header">
       <div>
         <span class="section-kicker">YOUR ORDER</span>
-        <h2>MY CART <span id="cartTitleCount">(0)</span></h2>
+
+        <h2>
+          MY CART <span id="cartTitleCount">(0)</span>
+        </h2>
       </div>
-      <button class="close-cart" id="cartClose" type="button"
-        aria-label="Close cart">✕</button>
+
+      <button
+        class="close-cart"
+        id="cartClose"
+        type="button"
+        aria-label="Close cart"
+      >✕</button>
     </div>
 
     <div class="cart-items" id="cartItems">
-      <p class="empty-cart">Your cart is empty. Let's fix that!</p>
+      <p class="empty-cart">
+        Your cart is empty. Let's fix that!
+      </p>
     </div>
 
     <div class="cart-footer">
@@ -262,217 +725,500 @@
         <span>SUBTOTAL</span>
         <strong id="cartSubtotal">Rs. 0</strong>
       </div>
-      <p class="delivery-note">Delivery charges: Rs. 200 within Karachi</p>
-      <button class="checkout-button" id="checkoutOpen" type="button">
+
+      <p class="delivery-note">
+        Delivery charges: Rs. 200 within Karachi
+      </p>
+
+      <button
+        class="checkout-button"
+        id="checkoutOpen"
+        type="button"
+      >
         PROCEED TO CHECKOUT ↗
       </button>
     </div>
+
   </aside>
 
   <!-- CHECKOUT MODAL -->
   <div class="checkout-overlay" id="checkoutOverlay">
-    <div class="checkout-modal" role="dialog"
-      aria-modal="true" aria-labelledby="checkoutHeading">
-      <button class="checkout-close" id="checkoutClose"
-        type="button" aria-label="Close checkout">✕</button>
+    <div
+      class="checkout-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="checkoutHeading"
+    >
 
-      <span class="section-kicker">ALMOST THERE</span>
-      <h2 id="checkoutHeading">COMPLETE YOUR ORDER</h2>
+      <button
+        class="checkout-close"
+        id="checkoutClose"
+        type="button"
+        aria-label="Close checkout"
+      >✕</button>
+
+      <span class="section-kicker">
+        ALMOST THERE
+      </span>
+
+      <h2 id="checkoutHeading">
+        COMPLETE YOUR ORDER
+      </h2>
 
       <form id="checkoutForm">
-        <label for="customerName">FULL NAME</label>
-        <input id="customerName" name="customerName"
-          placeholder="Your name" required autocomplete="name">
 
-        <label for="customerPhone">PHONE NUMBER</label>
-        <input id="customerPhone" name="customerPhone"
-          type="tel" placeholder="03XXXXXXXXX"
-          required autocomplete="tel">
+        <label for="customerName">
+          FULL NAME
+        </label>
 
-        <label for="customerAddress">DELIVERY ADDRESS (KARACHI)</label>
-        <textarea id="customerAddress" name="customerAddress"
+        <input
+          id="customerName"
+          name="customerName"
+          placeholder="Your name"
+          required
+          autocomplete="name"
+        >
+
+        <label for="customerPhone">
+          PHONE NUMBER
+        </label>
+
+        <input
+          id="customerPhone"
+          name="customerPhone"
+          type="tel"
+          placeholder="03XXXXXXXXX"
+          required
+          autocomplete="tel"
+        >
+
+        <label for="customerAddress">
+          DELIVERY ADDRESS (KARACHI)
+        </label>
+
+        <textarea
+          id="customerAddress"
+          name="customerAddress"
           placeholder="House number, street, area, Karachi"
-          rows="3" required></textarea>
+          rows="3"
+          required
+        ></textarea>
 
-        <label for="customerNotes">ORDER NOTES (OPTIONAL)</label>
-        <textarea id="customerNotes" name="customerNotes"
-          placeholder="Any special instructions?" rows="2"></textarea>
+        <label for="customerNotes">
+          ORDER NOTES (OPTIONAL)
+        </label>
+
+        <textarea
+          id="customerNotes"
+          name="customerNotes"
+          placeholder="Any special instructions?"
+          rows="2"
+        ></textarea>
 
         <div class="checkout-summary">
-          <div><span>SUBTOTAL</span><strong id="checkoutSubtotal">Rs. 0</strong></div>
-          <div><span>DELIVERY</span><strong>Rs. 200</strong></div>
+          <div>
+            <span>SUBTOTAL</span>
+            <strong id="checkoutSubtotal">Rs. 0</strong>
+          </div>
+
+          <div>
+            <span>DELIVERY</span>
+            <strong>Rs. 200</strong>
+          </div>
+
           <div class="grand-total">
-            <span>TOTAL</span><strong id="checkoutTotal">Rs. 200</strong>
+            <span>TOTAL</span>
+            <strong id="checkoutTotal">Rs. 200</strong>
           </div>
         </div>
 
-        <button class="checkout-button" type="submit">
+        <button
+          class="checkout-button"
+          type="submit"
+        >
           PLACE ORDER ↗
         </button>
-        <p class="checkout-disclaimer" id="checkoutMessage">
+
+        <p
+          class="checkout-disclaimer"
+          id="checkoutMessage"
+        >
           Demo checkout — online order submission is not active yet.
         </p>
+
       </form>
     </div>
   </div>
 
-<!-- ORDER TYPE SELECTION POPUP -->
-<div class="order-modal-overlay" id="orderModal">
-  <div class="order-modal" role="dialog"
-       aria-modal="true"
-       aria-labelledby="orderModalTitle">
+  <!-- ORDER TYPE SELECTION POPUP -->
+  <div class="order-modal-overlay" id="orderModal">
+    <div
+      class="order-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="orderModalTitle"
+    >
 
-    <div class="order-modal-banner">
-      <div class="order-modal-logo">
-        <span>🐮</span>
-      </div>
-    </div>
-
-    <div class="order-modal-content">
-      <h2 id="orderModalTitle">Select Your Order Type</h2>
-
-      <div class="order-type-switch">
-        <button type="button"
-                class="order-type-btn active"
-                id="deliveryTab">
-          Delivery
-        </button>
-        <button type="button"
-                class="order-type-btn"
-                id="pickupTab">
-          Pick-Up
-        </button>
-      </div>
-
-      <p class="order-modal-help" id="orderModalHelp">
-        Please select your location
-      </p>
-
-      <button type="button"
-              class="use-location-btn"
-              id="useLocationBtn">
-        ◎ &nbsp; Use Current Location
-      </button>
-
-      <p class="location-status"
-         id="locationStatus"
-         aria-live="polite"></p>
-
-      <!-- DELIVERY OPTIONS -->
-      <div id="deliveryOptions">
-        <label for="deliveryArea">Select Your Area</label>
-        <select id="deliveryArea">
-          <option value="">Please select your location</option>
-          <option>Gulshan-e-Iqbal</option>
-          <option>Gulistan-e-Johar</option>
-          <option>North Nazimabad</option>
-          <option>Nazimabad</option>
-          <option>Federal B Area</option>
-          <option>Saddar</option>
-          <option>Clifton</option>
-          <option>DHA</option>
-          <option>PECHS</option>
-          <option>Bahadurabad</option>
-          <option>Tariq Road</option>
-          <option>Malir</option>
-          <option>Korangi</option>
-          <option>Landhi</option>
-          <option>Shah Faisal Colony</option>
-          <option>Gulberg</option>
-          <option>North Karachi</option>
-          <option>New Karachi</option>
-          <option>Buffer Zone</option>
-          <option>Orangi Town</option>
-          <option>Baldia Town</option>
-          <option>Lyari</option>
-          <option>Garden</option>
-          <option>Jamshed Road</option>
-          <option>Defence View</option>
-          <option>Scheme 33</option>
-          <option>Safoora</option>
-          <option>Surjani Town</option>
-          <option>Other Karachi Area</option>
-        </select>
-      </div>
-
-      <!-- PICKUP OPTIONS -->
-      <div id="pickupOptions" hidden>
-        <label for="pickupBranch">Select Branch</label>
-        <select id="pickupBranch">
-          <option value="main">
-            Shanzeh Nihari — Main Branch
-          </option>
-        </select>
-
-        <div class="branch-location-card">
-          <strong>📍 Branch Location</strong>
-          <p>XYZ Street, Karachi (Temporary Address)</p>
-          <span>Directions available after address confirmation</span>
+      <div class="order-modal-banner">
+        <div class="order-modal-logo">
+          <span>🐮</span>
         </div>
       </div>
-    </div>
 
-    <div class="order-modal-footer">
-      <button type="button"
-              class="order-modal-select"
-              id="confirmOrderType">
-        Select
-      </button>
-    </div>
+      <div class="order-modal-content">
+        <h2 id="orderModalTitle">
+          Select Your Order Type
+        </h2>
 
+        <div class="order-type-switch">
+          <button
+            type="button"
+            class="order-type-btn active"
+            id="deliveryTab"
+          >
+            Delivery
+          </button>
+
+          <button
+            type="button"
+            class="order-type-btn"
+            id="pickupTab"
+          >
+            Pick-Up
+          </button>
+        </div>
+
+        <p class="order-modal-help" id="orderModalHelp">
+          Please select your location
+        </p>
+
+        <button
+          type="button"
+          class="use-location-btn"
+          id="useLocationBtn"
+        >
+          ◎ &nbsp; Use Current Location
+        </button>
+
+        <p
+          class="location-status"
+          id="locationStatus"
+          aria-live="polite"
+        ></p>
+
+        <!-- DELIVERY OPTIONS -->
+        <div id="deliveryOptions">
+          <label for="deliveryArea">
+            Select Your Area
+          </label>
+
+          <select id="deliveryArea">
+            <option value="">
+              Please select your location
+            </option>
+            <option>Gulshan-e-Iqbal</option>
+            <option>Gulistan-e-Johar</option>
+            <option>North Nazimabad</option>
+            <option>Nazimabad</option>
+            <option>Federal B Area</option>
+            <option>Saddar</option>
+            <option>Clifton</option>
+            <option>DHA</option>
+            <option>PECHS</option>
+            <option>Bahadurabad</option>
+            <option>Tariq Road</option>
+            <option>Malir</option>
+            <option>Korangi</option>
+            <option>Landhi</option>
+            <option>Shah Faisal Colony</option>
+            <option>Gulberg</option>
+            <option>North Karachi</option>
+            <option>New Karachi</option>
+            <option>Buffer Zone</option>
+            <option>Orangi Town</option>
+            <option>Baldia Town</option>
+            <option>Lyari</option>
+            <option>Garden</option>
+            <option>Jamshed Road</option>
+            <option>Defence View</option>
+            <option>Scheme 33</option>
+            <option>Safoora</option>
+            <option>Surjani Town</option>
+            <option>Other Karachi Area</option>
+          </select>
+        </div>
+
+        <!-- PICKUP OPTIONS -->
+        <div id="pickupOptions" hidden>
+          <label for="pickupBranch">
+            Select Branch
+          </label>
+
+          <select id="pickupBranch">
+            <option value="main">
+              Shanzeh Nihari — Main Branch
+            </option>
+          </select>
+
+          <div class="branch-location-card">
+            <strong>📍 Branch Location</strong>
+
+            <p>
+              XYZ Street, Karachi (Temporary Address)
+            </p>
+
+            <span>
+              Directions available after address confirmation
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-modal-footer">
+        <button
+          type="button"
+          class="order-modal-select"
+          id="confirmOrderType"
+        >
+          Select
+        </button>
+      </div>
+
+    </div>
   </div>
-</div>
 
-
+  <!-- ========================================
+       SMOOTH AUTOPLAY SLIDER JAVASCRIPT
+       ======================================== -->
   <script>
     (() => {
-      const slider = document.querySelector('.sn-hero-slider');
+      const slider = document.querySelector(".sn-hero-slider");
+
       if (!slider) return;
-      const slides = [...slider.querySelectorAll('.sn-hero-slide')];
-      const dots = [...slider.querySelectorAll('.sn-hero-dots button')];
-      const progress = slider.querySelector('.sn-hero-progress span');
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const track = slider.querySelector(".sn-hero-track");
+
+      const slides = Array.from(
+        track.querySelectorAll(".sn-hero-slide")
+      );
+
+      const dots = Array.from(
+        slider.querySelectorAll(".sn-hero-dots button")
+      );
+
+      const progress = slider.querySelector(
+        ".sn-hero-progress span"
+      );
+
+      const prev = slider.querySelector(".sn-hero-prev");
+      const next = slider.querySelector(".sn-hero-next");
+
+      if (slides.length < 2) return;
+
+      const SLIDE_INTERVAL = 5000;
+      const TRANSITION_DURATION = 950;
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
       let current = 0;
-      let timer;
+      let position = 0;
+      let timer = null;
+      let locked = false;
 
-      function show(index) {
-        current = (index + slides.length) % slides.length;
-        slides.forEach((slide, i) => {
-          const active = i === current;
-          slide.classList.toggle('active', active);
-          slide.setAttribute('aria-hidden', String(!active));
+      /*
+       * Clone the first slide.
+       * This allows the last slide to move smoothly
+       * forward into the first slide.
+       */
+      const firstClone = slides[0].cloneNode(true);
+
+      firstClone.classList.remove("active");
+      firstClone.setAttribute("aria-hidden", "true");
+
+      track.appendChild(firstClone);
+
+      /*
+       * Update active dots and progress bar.
+       */
+      function updateIndicators() {
+        slides.forEach((slide, index) => {
+          const isActive = index === current;
+
+          slide.classList.toggle("active", isActive);
+
+          slide.setAttribute(
+            "aria-hidden",
+            String(!isActive)
+          );
         });
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === current);
-          if (i === current) dot.setAttribute('aria-current', 'true');
-          else dot.removeAttribute('aria-current');
+
+        dots.forEach((dot, index) => {
+          const isActive = index === current;
+
+          dot.classList.toggle("active", isActive);
+
+          if (isActive) {
+            dot.setAttribute("aria-current", "true");
+          } else {
+            dot.removeAttribute("aria-current");
+          }
         });
-        progress.classList.remove('run');
-        void progress.offsetWidth;
-        if (!reducedMotion) progress.classList.add('run');
+
+        if (progress) {
+          progress.classList.remove("run");
+
+          void progress.offsetWidth;
+
+          if (!reducedMotion) {
+            progress.classList.add("run");
+          }
+        }
       }
 
-      function restart() {
-        clearInterval(timer);
-        // Autoplay must work even when the device prefers reduced motion.
-        // That preference only disables visual animation, not slide changes.
-        timer = setInterval(() => show(current + 1), 5000);
-      }
-      function go(index) { show(index); restart(); }
+      /*
+       * Move the entire slider track horizontally.
+       */
+      function moveTo(nextIndex, animate = true) {
+        if (locked) return;
 
-      slider.querySelector('.sn-hero-prev').addEventListener('click', () => go(current - 1));
-      slider.querySelector('.sn-hero-next').addEventListener('click', () => go(current + 1));
-      dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
-      // Keep autoplay running while the cursor is on the banner or a control has focus.
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) clearInterval(timer);
-        else restart();
+        const movingToClone =
+          nextIndex === slides.length;
+
+        current = movingToClone
+          ? 0
+          : (nextIndex + slides.length) % slides.length;
+
+        position = movingToClone
+          ? slides.length
+          : current;
+
+        locked = animate && !reducedMotion;
+
+        track.style.transition =
+          animate && !reducedMotion
+            ? `transform ${TRANSITION_DURATION}ms cubic-bezier(.22,1,.36,1)`
+            : "none";
+
+        track.style.transform =
+          `translate3d(-${position * 100}%, 0, 0)`;
+
+        updateIndicators();
+
+        if (!locked && movingToClone) {
+          resetToFirst();
+        }
+      }
+
+      /*
+       * Instantly reset the invisible cloned slide
+       * after the transition completes.
+       */
+      function resetToFirst() {
+        track.style.transition = "none";
+
+        position = 0;
+
+        track.style.transform =
+          "translate3d(0, 0, 0)";
+
+        void track.offsetWidth;
+
+        locked = false;
+      }
+
+      /*
+       * Unlock slider when movement completes.
+       */
+      track.addEventListener("transitionend", (event) => {
+        if (
+          event.target !== track ||
+          event.propertyName !== "transform"
+        ) {
+          return;
+        }
+
+        if (position === slides.length) {
+          resetToFirst();
+        } else {
+          locked = false;
+        }
       });
-      show(0);
-      restart();
+
+      /*
+       * Start or restart 5-second autoplay.
+       */
+      function restartAutoplay() {
+        clearInterval(timer);
+
+        timer = setInterval(() => {
+          if (locked) return;
+
+          const nextIndex =
+            current === slides.length - 1
+              ? slides.length
+              : current + 1;
+
+          moveTo(nextIndex);
+        }, SLIDE_INTERVAL);
+      }
+
+      /*
+       * Manual navigation.
+       */
+      function goTo(index) {
+        if (locked) return;
+
+        moveTo(index);
+        restartAutoplay();
+      }
+
+      prev.addEventListener("click", () => {
+        goTo(current - 1);
+      });
+
+      next.addEventListener("click", () => {
+        const nextIndex =
+          current === slides.length - 1
+            ? slides.length
+            : current + 1;
+
+        goTo(nextIndex);
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          goTo(index);
+        });
+      });
+
+      /*
+       * Pause only when browser tab is hidden.
+       * Mouse hover will NOT stop autoplay.
+       */
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearInterval(timer);
+        } else {
+          restartAutoplay();
+        }
+      });
+
+      /*
+       * Initialize slider.
+       */
+      moveTo(0, false);
+      restartAutoplay();
+
+      console.log(
+        "Shanzeh Nihari smooth slider initialized."
+      );
     })();
   </script>
 
+  <!-- ORIGINAL ORDERING SYSTEM -->
   <script src="script.js"></script>
+
 </body>
 </html>
