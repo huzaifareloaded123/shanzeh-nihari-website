@@ -553,3 +553,63 @@ document.addEventListener("DOMContentLoaded", () => {
    To remember the customer's choice and skip the popup later,
    this behavior can be changed after client approval. */
     
+/* SHANZEH HEADER LOCATION DISPLAY */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const locationBtn = document.getElementById("headerLocationBtn");
+  const typeLabel = document.getElementById("headerOrderType");
+  const locationLabel = document.getElementById("headerLocationText");
+  const modal = document.getElementById("orderModal");
+
+  if (!locationBtn || !typeLabel || !locationLabel) return;
+
+  function updateHeaderLocation() {
+    let saved = null;
+
+    try {
+      saved = JSON.parse(
+        localStorage.getItem("shanzehOrderPreference")
+      );
+    } catch (error) {
+      saved = null;
+    }
+
+    if (!saved) {
+      typeLabel.textContent = "SELECT LOCATION";
+      locationLabel.textContent = "Choose your area";
+      return;
+    }
+
+    if (saved.type === "delivery") {
+      typeLabel.textContent = "DELIVERY";
+      locationLabel.textContent =
+        saved.area || "Current Location";
+    } else if (saved.type === "pickup") {
+      typeLabel.textContent = "PICKUP";
+      locationLabel.textContent =
+        saved.branch === "main"
+          ? "Shanzeh Nihari — Main Branch"
+          : saved.branch || "Select Branch";
+    }
+  }
+
+  // Open existing location popup.
+  locationBtn.addEventListener("click", () => {
+    if (!modal) return;
+
+    modal.classList.remove("is-hidden");
+    document.body.style.overflow = "hidden";
+  });
+
+  // Update header after customer confirms selection.
+  const confirmBtn = document.getElementById("confirmOrderType");
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", () => {
+      // Run after the existing popup click handler.
+      setTimeout(updateHeaderLocation, 0);
+    });
+  }
+
+  updateHeaderLocation();
+});
