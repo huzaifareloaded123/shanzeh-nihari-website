@@ -369,70 +369,63 @@
 
 <body>
 
-  <!-- TOP ANNOUNCEMENT -->
-  <div class="announcement">
-    <span class="announcement-dot"></span>
-    KARACHI DELIVERY AVAILABLE
-    <span class="announcement-separator">✦</span>
-    FLAT RS. 200 DELIVERY
-  </div>
+  
+<!-- SHANZEH NIHARI — MINIMAL TOP HEADER -->
+<header class="site-header shanzeh-minimal-header">
+  <div class="nav-container">
 
-  <!-- NAVIGATION -->
-  <header class="site-header">
-    <div class="nav-container">
-
-      <a href="#home" class="brand"
-         aria-label="Shanzeh Nihari Home">
-        <span class="brand-icon">SN<span>.</span></span>
-        <span class="brand-name">
-          SHANZEH
-          <strong>NIHARI</strong>
-        </span>
-      </a>
-
-      <nav class="desktop-nav"
-           aria-label="Main navigation">
-        <a href="#home" class="active">HOME</a>
-        <a href="#menu">OUR MENU</a>
-        <a href="#story">OUR STORY</a>
-        <a href="#contact">CONTACT</a>
-      </nav>
+    <!-- LEFT: LOCATION + PHONE -->
+    <div class="shanzeh-header-left">
 
       <button
-      type="button"
-      class="header-location-btn"
-      id="headerLocationBtn"
-      aria-label="Change delivery or pickup location"
-    >
-      <span class="header-location-icon">📍</span>
-    
-      <span class="header-location-details">
-        <small id="headerOrderType">SELECT LOCATION</small>
-        <strong id="headerLocationText">Choose your area</strong>
-      </span>
-    
-      <span class="header-location-arrow">›</span>
-    </button>
-    
-      <div class="nav-actions">
-        <button
-          class="cart-trigger"
-          id="cartOpen"
-          type="button"
-          aria-label="Open shopping cart"
-        >
-          <span class="cart-symbol">🛍</span>
-          <span class="cart-label">MY CART</span>
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
+        type="button"
+        class="shanzeh-location-pill"
+        id="headerLocationBtn"
+        aria-label="Change delivery or pickup location"
+      >
+        <span class="shanzeh-pill-icon">📍</span>
 
-        <a href="#menu" class="nav-order">
-          ORDER ONLINE <span>↗</span>
-        </a>
-      </div>
+        <span class="shanzeh-pill-copy">
+          <small id="headerOrderType">SELECT LOCATION</small>
+          <strong id="headerLocationText">Choose location</strong>
+        </span>
+
+        <span class="shanzeh-pill-chevron">›</span>
+      </button>
+
+      <a
+        class="shanzeh-phone-pill"
+        href="tel:YOUR_NUMBER"
+        aria-label="Call Shanzeh Nihari"
+      >
+        <span class="shanzeh-pill-icon">☎</span>
+        <strong>CALL US</strong>
+      </a>
 
     </div>
-  </header>
+
+    <!-- CENTER: BRAND LOGO -->
+    <a href="#home"
+       class="shanzeh-center-logo"
+       aria-label="Shanzeh Nihari Home">
+      <span class="shanzeh-logo-initials">SN</span>
+      <span class="shanzeh-logo-name">SHANZEH</span>
+      <span class="shanzeh-logo-subtitle">NIHARI</span>
+    </a>
+
+    <!-- RIGHT: CART -->
+    <button
+      type="button"
+      class="cart-trigger shanzeh-header-cart"
+      id="cartOpen"
+      aria-label="Open shopping cart"
+    >
+      <span class="cart-symbol">🛒</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+  </div>
+</header>
 
   <main>
 
