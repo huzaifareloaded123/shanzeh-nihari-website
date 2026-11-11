@@ -2514,3 +2514,44 @@ html {
     }
   }
   
+
+/* =====================================================
+   SHANZEH — MINIMAL HEADER (matches current index.html)
+   ===================================================== */
+.site-header.shanzeh-minimal-header{position:relative;top:auto;z-index:100;background:#101010;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.shanzeh-minimal-header .nav-container{position:relative;display:flex;align-items:center;justify-content:space-between;max-width:none;width:100%;height:76px;min-height:76px;padding:0 28px;margin:0;gap:12px}
+.shanzeh-header-left{display:flex;align-items:center;gap:10px;min-width:0;z-index:2}
+.shanzeh-location-pill,.shanzeh-phone-pill{display:inline-flex;align-items:center;gap:8px;min-height:43px;padding:5px 12px;border:0;border-radius:50px;background:#fff;color:#171717;font-family:"DM Sans",sans-serif;text-align:left;text-decoration:none}
+.shanzeh-location-pill{width:185px;max-width:100%;cursor:pointer}
+.shanzeh-phone-pill{font-size:12px;font-weight:800}
+.shanzeh-pill-icon{display:grid;place-items:center;flex-shrink:0;width:29px;height:29px;border-radius:50%;background:#f0f0f0;font-size:14px}
+.shanzeh-pill-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:2px}
+.shanzeh-pill-copy small{font-size:8px;font-weight:900;color:#b5121b;letter-spacing:.4px}
+.shanzeh-pill-copy strong{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:800;color:#171717}
+.shanzeh-pill-chevron{font-size:21px;color:#555}
+.shanzeh-minimal-header .shanzeh-center-logo{position:absolute;left:50%;top:7px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;width:83px;height:83px;border:2px solid #e7b93b;border-radius:50%;background:#111;color:#fff;text-decoration:none;z-index:3}
+.shanzeh-logo-initials{font:900 27px/1 "Outfit",sans-serif;color:#ffce38}
+.shanzeh-logo-name{margin-top:3px;font:900 9px "Outfit",sans-serif;letter-spacing:.5px}
+.shanzeh-logo-subtitle{font:800 9px "Outfit",sans-serif;letter-spacing:1.2px;color:#ffce38}
+.shanzeh-minimal-header .shanzeh-header-cart{position:relative;display:grid;place-items:center;flex-shrink:0;width:43px;height:43px;min-width:43px;padding:0;margin-left:auto;border:0;border-radius:50%;background:#fff;color:#111;z-index:2}
+.shanzeh-header-cart .cart-count{position:absolute;right:-5px;top:-5px;min-width:18px;width:18px;height:18px;padding:0;background:#d31c27;color:#fff;font-size:10px}
+@media(max-width:700px){.shanzeh-minimal-header .nav-container{height:70px;min-height:70px;padding:0 12px;gap:6px}.shanzeh-header-left{gap:6px}.shanzeh-location-pill{width:137px;min-height:37px;padding:4px 7px;gap:5px}.shanzeh-pill-icon{width:24px;height:24px;font-size:12px}.shanzeh-pill-copy strong{font-size:9px}.shanzeh-pill-copy small{font-size:7px}.shanzeh-pill-chevron{font-size:16px}.shanzeh-phone-pill{display:none}.shanzeh-minimal-header .shanzeh-center-logo{width:65px;height:65px;top:5px}.shanzeh-logo-initials{font-size:20px}.shanzeh-logo-name,.shanzeh-logo-subtitle{font-size:7px}.shanzeh-minimal-header .shanzeh-header-cart{width:37px;height:37px;min-width:37px}}
+
+/* =====================================================
+   CATEGORY NAVIGATION — screenshot-inspired orange bar
+   ===================================================== */
+.menu-category-bar{position:sticky;top:0;z-index:120;width:100%;background:#f5a018;border-bottom:1px solid rgba(0,0,0,.09);box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.menu-category-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:56px;max-width:100%;margin:auto;padding:7px 16px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth}
+.menu-category-inner::-webkit-scrollbar{display:none}
+.menu-category-link{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:36px;padding:9px 19px;border-radius:50px;color:#171717;font:800 12px/1.2 "DM Sans",sans-serif;white-space:nowrap;text-decoration:none;transition:color .22s ease}
+.menu-category-link.active{color:#fff}
+.menu-category-link:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.menu-active-pill{position:absolute;left:0;top:50%;width:0;height:36px;border-radius:50px;background:#171717;box-shadow:0 3px 9px rgba(0,0,0,.18);transform:translate3d(0,0,0);margin-top:-18px;pointer-events:none;z-index:1;transition:transform 380ms cubic-bezier(.2,.8,.2,1),width 380ms cubic-bezier(.2,.8,.2,1)}
+.menu-collections{background:#fff4e4}
+.menu-category-section{scroll-margin-top:70px;padding-top:74px;padding-bottom:85px}
+.menu-category-section + .menu-category-section{border-top:1px solid #ead7c7}
+.menu-category-section .section-heading{margin-bottom:36px}
+.menu-category-section .section-heading h2{margin:0;color:#301019;font-size:clamp(32px,4.4vw,54px);letter-spacing:-1.3px}
+.menu-category-section .section-heading h2::after{content:"";display:block;width:65px;height:4px;margin:17px auto 0;border-radius:4px;background:#d71920}
+@media(max-width:700px){.menu-category-inner{justify-content:flex-start;gap:2px;min-height:52px;padding:7px 12px}.menu-category-link{padding:9px 15px;font-size:11px}.menu-category-section{padding:58px 5% 70px;scroll-margin-top:64px}.menu-category-section .section-heading{margin-bottom:28px}}
+@media(prefers-reduced-motion:reduce){.menu-active-pill,.menu-category-link{transition:none!important}.menu-category-inner{scroll-behavior:auto!important}}

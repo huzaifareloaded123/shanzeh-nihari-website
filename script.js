@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = [
     {
       id: 1,
+      category: "nihari",
       name: "Single Nihari",
       price: 500,
       description: "Traditional nihari with rich aromatic gravy.",
@@ -14,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 2,
+      category: "nihari",
       name: "Single Nihari Fry",
       price: 600,
       description: "Our classic nihari with a delicious fried finish.",
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 3,
+      category: "nihari",
       name: "Double Nihari",
       price: 1050,
       description: "A generous serving of authentic nihari.",
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 4,
+      category: "nihari",
       name: "Nalli Nihari",
       price: 800,
       description: "Rich nihari with flavourful nalli.",
@@ -35,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 5,
+      category: "nihari",
       name: "Maghaz Nihari",
       price: 800,
       description: "A traditional Karachi specialty.",
@@ -42,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 6,
+      category: "nihari",
       name: "Desi Ghee Tarka",
       price: 150,
       description: "Extra desi ghee tarka for a richer flavour.",
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 7,
+      category: "nihari",
       name: "Single Special Nihari",
       price: 1350,
       description: "Our premium special nihari serving.",
@@ -56,11 +63,18 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 8,
+      category: "nihari",
       name: "Special Nihari Thaal",
       price: 1850,
       description: "Our signature nihari thaal experience.",
       badge: "SIGNATURE"
-    }
+    },
+    // Owner's banner items; prices are temporary demo values.
+    { id: 9, category: "biryani-pulao", name: "Beef Pulao", price: 450, description: "Beef pulao — demo menu item.", badge: "DEMO PRICE" },
+    { id: 10, category: "biryani-pulao", name: "Chana Pulao", price: 300, description: "Chana pulao — demo menu item.", badge: "DEMO PRICE" },
+    { id: 11, category: "biryani-pulao", name: "Chicken Biryani", price: 380, description: "Chicken biryani — demo menu item.", badge: "DEMO PRICE" },
+    { id: 12, category: "breakfast", name: "Halwa Puri", price: 250, description: "Traditional halwa puri breakfast — demo menu item.", badge: "DEMO PRICE" },
+    { id: 13, category: "breakfast", name: "Papay Chana", price: 220, description: "Papay chana — demo menu item.", badge: "DEMO PRICE" }
   ];
 
   // Temporary food image.
@@ -73,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const $ = (selector) => document.querySelector(selector);
 
   const menuGrid = $("#menuGrid");
+  const riceMenuGrid = $("#riceMenuGrid");
+  const breakfastMenuGrid = $("#breakfastMenuGrid");
   const cartDrawer = $("#cartDrawer");
   const cartOverlay = $("#cartOverlay");
   const cartItems = $("#cartItems");
@@ -94,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // MENU CARDS
   function renderMenu() {
-    menuGrid.innerHTML = menu.map((item) => `
+    const renderCards = (items) => items.map((item) => `
       <article class="food-card">
         <div class="food-image">
           <img
@@ -122,6 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       </article>
     `).join("");
+    menuGrid.innerHTML = renderCards(menu.filter(item => item.category === "nihari"));
+    if (riceMenuGrid) riceMenuGrid.innerHTML = renderCards(menu.filter(item => item.category === "biryani-pulao"));
+    if (breakfastMenuGrid) breakfastMenuGrid.innerHTML = renderCards(menu.filter(item => item.category === "breakfast"));
   }
 
   // CART
@@ -221,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // CLICK HANDLERS
-  menuGrid.addEventListener("click", (event) => {
+  document.querySelector("#menu").addEventListener("click", (event) => {
     const button = event.target.closest("[data-add]");
     if (button) addItem(Number(button.dataset.add));
   });
@@ -612,4 +631,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateHeaderLocation();
+});
+
+
+/* =====================================================
+   MENU CATEGORY NAVIGATION — sticky / smooth / scroll spy
+   ===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const bar = document.getElementById("menuCategoryBar");
+  const inner = document.getElementById("menuCategoryInner");
+  const pill = document.getElementById("menuActivePill");
+  if (!bar || !inner || !pill) return;
+  const links = [...inner.querySelectorAll("[data-category]")];
+  const sections = links.map(link => document.getElementById(link.dataset.category));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let active = "nihari";
+  let raf = 0;
+  let programmaticUntil = 0;
+  function positionPill(link) {
+    if (!link) return;
+    pill.style.width = `${link.offsetWidth}px`;
+    pill.style.transform = `translate3d(${link.offsetLeft}px,0,0)`;
+  }
+  function selectCategory(id) {
+    const link = links.find(el => el.dataset.category === id);
+    if (!link) return;
+    active = id;
+    links.forEach(el => {
+      const selected = el === link;
+      el.classList.toggle("active", selected);
+      if (selected) el.setAttribute("aria-current", "true");
+      else el.removeAttribute("aria-current");
+    });
+    positionPill(link);
+    // Keep selected tab visible in the horizontally scrollable mobile bar.
+    const desired = link.offsetLeft + link.offsetWidth / 2 - inner.clientWidth / 2;
+    inner.scrollTo({left: desired, behavior: reduceMotion.matches ? "instant" : "smooth"});
+  }
+  function getOffset() { return bar.getBoundingClientRect().height + 12; }
+  links.forEach(link => link.addEventListener("click", event => {
+    const target = document.getElementById(link.dataset.category);
+    if (!target) return;
+    event.preventDefault();
+    selectCategory(link.dataset.category);
+    programmaticUntil = performance.now() + (reduceMotion.matches ? 100 : 1100);
+    const top = target.getBoundingClientRect().top + window.scrollY - getOffset();
+    window.scrollTo({top, behavior: reduceMotion.matches ? "instant" : "smooth"});
+    history.replaceState(null, "", `#${link.dataset.category}`);
+  }));
+  function spy() {
+    raf = 0;
+    if (performance.now() < programmaticUntil) return;
+    const cutoff = getOffset() + 85;
+    let current = "nihari";
+    sections.forEach(section => {
+      if (section && section.getBoundingClientRect().top <= cutoff) current = section.id;
+    });
+    if (current !== active) selectCategory(current);
+  }
+  window.addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(spy); }, {passive:true});
+  window.addEventListener("resize", () => { positionPill(links.find(el => el.dataset.category === active)); spy(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => selectCategory(active));
+  requestAnimationFrame(() => { selectCategory(active); spy(); });
+  window.addEventListener("load", () => { selectCategory(active); spy(); });
 });
