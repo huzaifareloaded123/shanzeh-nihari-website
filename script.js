@@ -83,6 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80";
 
   const cart = new Map();
+  function getOrderPreference() {
+    try { return JSON.parse(localStorage.getItem("shanzehOrderPreference")) || null; }
+    catch { return null; }
+  }
+  function deliveryCharge() { return getOrderPreference()?.type === "pickup" ? 0 : DELIVERY_FEE; }
+  function updateOrderModeUI() {
+    const fee = deliveryCharge();
+    const note = document.querySelector(".delivery-note");
+    if (note) note.textContent = fee ? "Delivery charges: Rs. 200 within Karachi" : "Pickup — no delivery charge";
+    const summary = document.querySelector(".checkout-summary > div:nth-child(2) strong");
+    if (summary) summary.textContent = money(fee);
+    const address = document.querySelector("#customerAddress");
+    const addressLabel = document.querySelector('label[for="customerAddress"]');
+    if (address) { address.required = fee > 0; address.placeholder = fee ? "House number, street, area, Karachi" : "Optional pickup notes / address"; }
+    if (addressLabel) addressLabel.textContent = fee ? "DELIVERY ADDRESS (KARACHI)" : "ADDRESS (OPTIONAL FOR PICKUP)";
+    const price = document.querySelector(".premium-delivery-price");
+    if (price) price.innerHTML = fee ? 'Karachi delivery <strong>Rs. 200</strong>' : 'Pickup <strong>Free</strong>';
+  }
 
   const $ = (selector) => document.querySelector(selector);
 
@@ -147,13 +165,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCart() {
     const count = getItemCount();
     const subtotal = getSubtotal();
+    updateOrderModeUI();
 
     $("#cartCount").textContent = count;
     $("#cartTitleCount").textContent = `(${count})`;
     $("#cartSubtotal").textContent = money(subtotal);
     $("#checkoutSubtotal").textContent = money(subtotal);
     $("#checkoutTotal").textContent = money(
-      count ? subtotal + DELIVERY_FEE : 0
+      count ? subtotal + deliveryCharge() : 0
     );
 
     $("#checkoutOpen").disabled = count === 0;
@@ -289,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const phone = $("#customerPhone").value.trim();
     const address = $("#customerAddress").value.trim();
 
-    if (!name || !phone || !address) {
+    if (!name || !phone || (deliveryCharge() > 0 && !address)) {
       $("#checkoutMessage").textContent =
         "Please complete all required fields.";
       return;
@@ -325,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderMenu();
   updateCart();
+  document.addEventListener("shanzeh:order-preference-changed", updateCart);
 
   console.log("Shanzeh Nihari demo loaded.");
 });
@@ -501,6 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       modal.classList.add("is-hidden");
       document.body.style.overflow = "";
+      document.dispatchEvent(new CustomEvent("shanzeh:order-preference-changed"));
     });
   
     // Keep the page behind the modal from scrolling
@@ -625,8 +646,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (confirmBtn) {
     confirmBtn.addEventListener("click", () => {
-      // Run after the existing popup click handler.
-      setTimeout(updateHeaderLocation, 0);
+      // Confirm handler saves preference first; invalid selection leaves modal visible.
+      setTimeout(() => {
+        if (modal && modal.classList.contains("is-hidden")) updateHeaderLocation();
+      }, 0);
     });
   }
 
@@ -668,7 +691,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const desired = link.offsetLeft + link.offsetWidth / 2 - inner.clientWidth / 2;
     inner.scrollTo({left: desired, behavior: reduceMotion.matches ? "instant" : "smooth"});
   }
-  function getOffset() { return bar.getBoundingClientRect().height + 12; }
+  function getOffset() {
+    const header = document.querySelector(".site-header");
+    return (header ? header.getBoundingClientRect().height : 0) + bar.getBoundingClientRect().height + 12;
+  }
   links.forEach(link => link.addEventListener("click", event => {
     const target = document.getElementById(link.dataset.category);
     if (!target) return;

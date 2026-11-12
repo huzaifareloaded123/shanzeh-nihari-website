@@ -2555,3 +2555,127 @@ html {
 .menu-category-section .section-heading h2::after{content:"";display:block;width:65px;height:4px;margin:17px auto 0;border-radius:4px;background:#d71920}
 @media(max-width:700px){.menu-category-inner{justify-content:flex-start;gap:2px;min-height:52px;padding:7px 12px}.menu-category-link{padding:9px 15px;font-size:11px}.menu-category-section{padding:58px 5% 70px;scroll-margin-top:64px}.menu-category-section .section-heading{margin-bottom:28px}}
 @media(prefers-reduced-motion:reduce){.menu-active-pill,.menu-category-link{transition:none!important}.menu-category-inner{scroll-behavior:auto!important}}
+
+/* ============================================================
+   PHASE 2 — RESPONSIVE PREMIUM FINISH
+   Compatible with Phase 1 premium index.html.
+   Kept as scoped overrides so original cart, checkout, menu,
+   slider and location popup rules remain intact.
+   ============================================================ */
+:root { --sh-ink:#231d1a; --sh-red:#9f0d17; --sh-cream:#fff9ef; --sh-line:#e9dfd2; }
+html { scroll-behavior:smooth; }
+body { background:var(--sh-cream); color:var(--sh-ink); }
+.site-header.premium-header { position:sticky; top:0; z-index:130; width:100%; background:#fff9ef; border-bottom:1px solid var(--sh-line); box-shadow:0 4px 20px rgba(35,18,12,.055); }
+.premium-header .nav-container.premium-nav { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); max-width:1440px; min-height:74px; height:auto; padding:9px clamp(20px,4vw,72px); gap:18px; margin:auto; }
+.premium-header .shanzeh-center-logo.premium-brand { position:static; left:auto; top:auto; transform:none; display:inline-flex; flex-direction:row; width:auto; height:auto; justify-self:start; gap:12px; padding:0; border:0; border-radius:0; background:transparent; color:var(--sh-red); box-shadow:none; text-align:left; }
+.premium-header .premium-brand .shanzeh-logo-initials { flex:none; display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:var(--sh-red); color:#ffcf20; font-size:18px; letter-spacing:-1px; }
+.premium-header .premium-brand .shanzeh-logo-name { margin:0; color:var(--sh-red); font:900 clamp(19px,2vw,27px)/1 'Outfit',sans-serif; letter-spacing:-.7px; }
+.premium-header .premium-brand .shanzeh-logo-subtitle { color:#2c2622; font:800 9px/1.4 'Outfit',sans-serif; letter-spacing:3.2px; }
+.premium-header .premium-nav-links { justify-self:center; gap:34px; }
+.premium-header .premium-nav-links a { text-decoration:none; }
+.premium-header .premium-nav-actions { justify-self:end; min-width:0; }
+.premium-header .shanzeh-header-cart { margin-left:0; width:44px; height:44px; min-width:44px; border:1px solid #eadfce; border-radius:50%; background:#fff; }
+.premium-header .premium-order-link { min-height:43px; border-radius:30px; box-shadow:0 5px 14px rgba(159,13,23,.12); }
+.premium-header .premium-location-strip { min-height:43px; padding:5px clamp(20px,4vw,72px); background:#fff0d5; }
+.premium-header .shanzeh-location-pill { width:auto; max-width:min(70vw,390px); min-height:30px; padding:0; }
+.premium-header .shanzeh-pill-icon { background:transparent; width:25px; height:25px; }
+.premium-header .shanzeh-pill-copy strong { max-width:320px; }
+.premium-header .premium-delivery-price { font-size:11px; }
+/* Keep content from stretching unnaturally on wide monitors. */
+.menu-category-section .menu-grid { max-width:1280px; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.menu-category-section { padding:70px clamp(22px,5vw,76px) 82px; }
+.menu-category-section .section-heading { margin-bottom:34px; }
+.menu-category-section .section-heading h2 { font-size:clamp(30px,3.6vw,49px); line-height:1.14; }
+.menu-category-section .food-card { border-radius:15px; box-shadow:0 6px 22px rgba(30,18,12,.06); }
+.menu-category-section .food-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(30,18,12,.1); }
+.menu-category-section .food-image { height:clamp(175px,18vw,225px); }
+.menu-category-section .food-info { padding:19px; }
+.menu-category-section .food-info h3 { font-size:18px; margin-bottom:7px; }
+.menu-category-section .food-info p { font-size:13px; line-height:1.55; min-height:0; }
+.menu-category-section .food-bottom { margin-top:16px; }
+.menu-category-section .price { font-size:19px; }
+.menu-category-section .add-btn { min-height:40px; padding:10px 14px; border-radius:9px; }
+.menu-category-bar { top:116px; z-index:115; }
+.menu-category-section { scroll-margin-top:180px; }
+.story-section { padding:82px 5%; }
+.story-section p { line-height:1.7; }
+.delivery-section { padding:55px 5%; }
+.footer { padding-top:50px; }
+@media (min-width:901px) and (max-width:1199px) {
+ .premium-header .nav-container.premium-nav { gap:12px; padding-inline:24px; }
+ .premium-header .premium-nav-links { gap:20px; }
+ .menu-category-section .menu-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+ .menu-category-section .food-info { padding:16px; }
+}
+@media (max-width:900px) {
+ .premium-header .nav-container.premium-nav { grid-template-columns:minmax(0,1fr) auto; min-height:65px; padding:8px 4%; }
+ .premium-header .premium-nav-links { display:none; }
+ .premium-header .premium-nav-actions { gap:8px; }
+ .menu-category-bar { top:105px; }
+ .menu-category-section { scroll-margin-top:165px; }
+ .menu-category-section .menu-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px; }
+ .menu-category-section .food-image { height:190px; }
+}
+@media (max-width:600px) {
+ html { scroll-padding-top:116px; }
+ .premium-header .nav-container.premium-nav { min-height:58px; padding:7px 13px; gap:7px; }
+ .premium-header .shanzeh-center-logo.premium-brand { gap:7px; min-width:0; }
+ .premium-header .premium-brand .shanzeh-logo-initials { width:36px; height:36px; font-size:15px; border-radius:9px; }
+ .premium-header .premium-brand .shanzeh-logo-name { font-size:17px; }
+ .premium-header .premium-brand .shanzeh-logo-subtitle { font-size:7px; letter-spacing:2.3px; }
+ .premium-header .premium-nav-actions { gap:5px; }
+ .premium-header .shanzeh-header-cart { width:36px; height:36px; min-width:36px; padding:6px; }
+ .premium-header .premium-order-link { min-height:35px; padding:10px 11px; font-size:10px; gap:4px; }
+ .premium-header .premium-location-strip { min-height:39px; padding:4px 13px; gap:6px; }
+ .premium-header .shanzeh-location-pill { max-width:calc(100vw - 125px); gap:5px; }
+ .premium-header .shanzeh-pill-icon { width:20px; height:20px; font-size:14px; }
+ .premium-header .shanzeh-pill-copy small { font-size:7px; letter-spacing:.4px; }
+ .premium-header .shanzeh-pill-copy strong { max-width:calc(100vw - 160px); font-size:10px; }
+ .premium-header .shanzeh-pill-chevron { font-size:14px; }
+ .premium-header .premium-delivery-price { font-size:9px; }
+ .sn-hero-slider { height:clamp(345px,100vw,420px); }
+ .sn-hero-copy { bottom:49px; }
+ .sn-hero-copy h1,.sn-hero-copy h2 { font-size:clamp(32px,9vw,46px); line-height:1.07; }
+ .sn-hero-copy p { font-size:12px; line-height:1.45; margin:10px 0 13px; }
+ .sn-hero-cta { padding:12px 16px; font-size:10px; }
+ .promise-strip { padding:12px 4%; gap:8px; font-size:9px; }
+ .menu-category-bar { top:97px; }
+ .menu-category-inner { min-height:48px; }
+ .menu-category-section { padding:42px 14px 53px; scroll-margin-top:151px; }
+ .menu-category-section .section-heading { margin-bottom:22px; }
+ .menu-category-section .section-heading h2 { font-size:clamp(28px,8vw,36px); }
+ .menu-category-section .menu-grid { grid-template-columns:1fr; gap:12px; }
+ /* Horizontal food rows reduce the feeling of an endless wall of cards. */
+ .menu-category-section .food-card { display:grid; grid-template-columns:110px minmax(0,1fr); min-height:124px; border-radius:13px; }
+ .menu-category-section .food-image { height:100%; min-height:124px; }
+ .menu-category-section .food-info { padding:11px 12px; display:flex; flex-direction:column; min-width:0; }
+ .menu-category-section .food-info h3 { font-size:15px; line-height:1.25; margin-bottom:5px; }
+ .menu-category-section .food-info p { font-size:11px; line-height:1.35; min-height:0; }
+ .menu-category-section .food-bottom { margin-top:auto; padding-top:8px; }
+ .menu-category-section .price { font-size:15px; white-space:nowrap; }
+ .menu-category-section .add-btn { min-height:34px; padding:8px 10px; font-size:11px; }
+ .menu-category-section .food-badge { top:7px; left:7px; padding:5px 6px; font-size:8px; }
+ .story-section { padding:57px 6%; }
+ .story-section h2 { font-size:clamp(29px,8vw,40px); }
+ .story-section p { font-size:14px; line-height:1.6; }
+ .delivery-section { padding:40px 6%; }
+ .delivery-section h2 { font-size:clamp(26px,7vw,36px); }
+ .footer { padding:40px 6% 22px; }
+ .footer-bottom { margin-top:30px; }
+ .cart-header { padding:21px; }
+ .cart-items { padding:18px; }
+ .cart-footer { padding:19px; }
+ .checkout-modal { max-height:calc(100dvh - 22px); padding:24px 18px; }
+}
+@media (max-width:360px) {
+ .premium-header .premium-order-link { padding:9px 8px; }
+ .premium-header .premium-brand .shanzeh-logo-name { font-size:15px; }
+ .premium-header .premium-delivery-price { font-size:8px; }
+ .menu-category-section .food-card { grid-template-columns:95px minmax(0,1fr); }
+ .menu-category-section .food-info { padding:9px; }
+ .menu-category-section .food-info h3 { font-size:14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .menu-category-section .food-card,.menu-category-section .food-image img { transition:none!important; }
+ .menu-category-section .food-card:hover { transform:none; }
+}
