@@ -2960,3 +2960,37 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
     overflow-x: clip;
   }
 }
+
+/* SHANZEH MOBILE INTERFACE POLISH — desktop untouched */
+@media screen and (max-width:760px) {
+  body { background:#fffaf4; }
+  .site-header.sn-reference-header { background:#a60e19!important; box-shadow:0 2px 9px rgba(55,0,0,.10)!important; }
+  .sn-reference-header .sn-header-inner { min-height:69px; padding:0 12px; gap:7px; }
+  .sn-header-pill.sn-location-button { background:#fff!important; border-radius:30px!important; min-height:39px; padding:6px 9px; box-shadow:none!important; }
+  .sn-pill-copy strong { font-size:10px; }
+  .sn-header-logo { width:70px; height:70px; margin-bottom:-8px; box-shadow:0 3px 10px #0002; }
+  .sn-cart-button { background:#fff!important; border-radius:50%!important; width:42px; height:42px; }
+  .sn-hero-slider { width:calc(100% - 20px)!important; height:clamp(340px,105vw,455px)!important; margin:12px auto 10px!important; border-radius:17px!important; overflow:hidden; box-shadow:0 6px 20px #00000016; }
+  .sn-hero-photo { inset:0 0 14% 0; }
+  .sn-hero-copy { bottom:52px; }
+  .sn-hero-copy h1,.sn-hero-copy h2 { font-size:clamp(33px,9vw,49px); line-height:1.02; }
+  .sn-hero-copy p { font-size:12px; line-height:1.45; margin:10px 0 13px; }
+  .sn-hero-kicker { margin-bottom:9px; }
+  .sn-hero-cta { padding:12px 16px; min-height:40px; }
+  .sn-hero-arrow { width:32px; height:32px; background:#ffffffe8; }
+  .promise-strip { padding:12px 9px; gap:8px; font-size:9px; }
+  .menu-category-bar { top:0!important; background:#f5a018!important; border:0!important; box-shadow:0 2px 9px #00000012; }
+  .menu-category-inner { display:flex; align-items:center; justify-content:space-evenly; width:100%; min-height:54px; padding:6px 8px; gap:3px; overflow-x:auto; scrollbar-width:none; }
+  .menu-category-inner::-webkit-scrollbar { display:none; }
+  .menu-category-link { flex:0 0 auto; font-size:clamp(11px,2.85vw,13px); padding:10px 9px; white-space:nowrap; border-radius:22px; }
+  .menu-active-pill { border-radius:22px; }
+  .menu-category-section { padding:24px 12px 36px; }
+  .menu-collections .menu-category-section .shanzeh-photo-banner { box-shadow:0 4px 15px #00000012; border-radius:13px!important; margin-bottom:18px!important; }
+  .menu-category-section .food-card { box-shadow:0 3px 14px #0000000d; border:1px solid #eee9e3; }
+  .menu-category-section .food-info { background:#fff; }
+  .shanzeh-intro { margin-top:22px; }
+}
+@media screen and (max-width:360px) {
+  .sn-reference-header .sn-header-inner { padding:0 8px; }
+  .menu-category-link { font-size:10px; padding:9px 7px; }
+}
