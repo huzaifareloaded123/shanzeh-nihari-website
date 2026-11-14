@@ -2940,3 +2940,23 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
   .menu-category-inner { scroll-behavior:auto; }
   .menu-category-section .food-card { transition:none; }
 }
+
+/* MOBILE BANNER FIX: preserve complete artwork, never crop text.
+   Desktop CSS is intentionally untouched. */
+@media screen and (max-width: 760px) {
+  .menu-collections .menu-category-section .shanzeh-photo-banner {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    border-radius: 12px !important;
+    margin: 0 auto 20px !important;
+  }
+  .menu-collections .menu-category-section {
+    overflow-x: clip;
+  }
+}
