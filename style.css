@@ -2852,3 +2852,20 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
 .menu-category-section {
   scroll-margin-top: 80px !important;
 }
+
+/* FOOTER — POWERED BY HS */
+
+.footer-credit {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.footer-credit .footer-hs {
+  font-family: "Outfit", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
