@@ -77,10 +77,23 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 13, category: "breakfast", name: "Paye", price: 220, description: "Traditional paye — temporary demo price.", badge: "DEMO PRICE" }
   ];
 
-  // Temporary food image.
-  // Replace with original restaurant photographs later.
-  const foodImage =
-    "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80";
+  // Distinct demo food photographs for each menu item.
+  // Replace with actual Shanzeh Nihari dish photographs after owner approval.
+  const foodImages = {
+    1: "single-nihari.webp",
+    2: "single-nihari-fry.webp",
+    3: "double-nihari.webp",
+    4: "nalli-nihari.webp",
+    5: "maghaz-nihari.webp",
+    6: "desi-ghee-tarka.webp",
+    7: "single-special-nihari.webp",
+    8: "special-nihari-thaal.webp",
+    9: "beef-pulao.webp",
+    10: "chana-pulao.webp",
+    11: "chicken-biryani.webp",
+    12: "halwa-puri.webp",
+    13: "paye.webp",
+  };
 
   const cart = new Map();
   function getOrderPreference() {
@@ -132,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <article class="food-card">
         <div class="food-image">
           <img
-            src="${foodImage}"
+            src="${foodImages[item.id]}"
             alt="${item.name} — illustrative food photo"
             loading="lazy"
           >
