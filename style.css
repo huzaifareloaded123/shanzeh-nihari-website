@@ -2744,3 +2744,43 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
 /* Photographic menu banners — three sections, no duplicate headings */
 .menu-collections .shanzeh-photo-banner{display:block;width:min(100%,1060px);height:auto;aspect-ratio:7.1/1;object-fit:fill;margin:0 auto 28px;border-radius:18px;box-shadow:0 10px 26px rgba(51,15,12,.12)}
 @media(max-width:650px){.menu-collections .shanzeh-photo-banner{width:100%;margin-bottom:22px;border-radius:12px;aspect-ratio:5.6/1;object-fit:cover}}
+
+/* SHANZEH NIHARI — INTRO SECTION */
+
+.shanzeh-intro {
+  max-width: 1200px;
+  margin: 45px auto 60px;
+  padding: 25px;
+  background: #f7f7f7;
+  border-radius: 14px;
+}
+
+.shanzeh-intro-content {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  border-left: 4px solid #c62828;
+}
+
+.shanzeh-intro-content p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #292929;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .shanzeh-intro {
+    margin: 30px 15px;
+    padding: 15px;
+  }
+
+  .shanzeh-intro-content {
+    padding: 16px;
+  }
+
+  .shanzeh-intro-content p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
