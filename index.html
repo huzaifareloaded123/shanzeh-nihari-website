@@ -441,31 +441,27 @@ body { background:var(--premium-ivory); }
 <body>
 
   
-<!-- SHANZEH NIHARI — PREMIUM, ORDER-FIRST HEADER -->
-<header class="site-header shanzeh-minimal-header premium-header">
-  <div class="nav-container premium-nav">
-    <a href="#home" class="shanzeh-center-logo premium-brand" aria-label="Shanzeh Nihari Home">
-      <span class="shanzeh-logo-initials" aria-hidden="true">SN</span>
-      <span class="premium-brand-text"><span class="shanzeh-logo-name">Shanzeh</span><span class="shanzeh-logo-subtitle">NIHARI</span></span>
-    </a>
-    <nav class="premium-nav-links" aria-label="Main navigation">
-      <a href="#home" aria-current="page">Home</a>
-      <a href="#menu">Menu</a>
-    </nav>
-    <div class="premium-nav-actions">
-      <button type="button" class="cart-trigger shanzeh-header-cart" id="cartOpen" aria-label="Open shopping cart">
-        <span class="cart-symbol" aria-hidden="true">🛒</span><span class="cart-count" id="cartCount">0</span>
+<!-- SHANZEH NIHARI — CENTERED COW LOGO HEADER -->
+<header class="site-header premium-header sn-reference-header">
+  <div class="sn-header-inner">
+    <div class="sn-header-left">
+      <button type="button" class="sn-header-pill sn-location-button" id="headerLocationBtn" aria-label="Change delivery or pickup location">
+        <span class="sn-pill-icon" aria-hidden="true">⌖</span>
+        <span class="sn-pill-copy"><small id="headerOrderType">SELECT LOCATION</small><strong id="headerLocationText">Choose your Karachi area</strong></span>
+        <span class="sn-chevron" aria-hidden="true">›</span>
       </button>
-      <a class="premium-order-link" href="#menu">Order Now <span aria-hidden="true">↗</span></a>
+      <a class="sn-header-pill sn-phone-pill" href="tel:+922130000000" aria-label="Call Shanzeh Nihari demo phone number">
+        <span class="sn-pill-icon" aria-hidden="true">☎</span><strong>021 3000 0000</strong>
+      </a>
     </div>
-  </div>
-  <div class="premium-location-strip">
-    <button type="button" class="shanzeh-location-pill" id="headerLocationBtn" aria-label="Change delivery or pickup location">
-      <span class="shanzeh-pill-icon" aria-hidden="true">⌖</span>
-      <span class="shanzeh-pill-copy"><small id="headerOrderType">SELECT LOCATION</small><strong id="headerLocationText">Choose your Karachi area</strong></span>
-      <span class="shanzeh-pill-chevron" aria-hidden="true">⌄</span>
-    </button>
-    <span class="premium-delivery-price">Karachi delivery <strong>Rs. 200</strong></span>
+    <a href="#home" class="sn-header-logo" aria-label="Shanzeh Nihari home">
+      <span class="sn-logo-chefhat" aria-hidden="true"><span class="sn-hat-puff"></span><span class="sn-hat-band"></span></span>
+      <span class="sn-logo-cow" aria-hidden="true">🐮</span>
+      <span class="sn-logo-caption">SHANZEH<small>NIHARI</small></span>
+    </a>
+    <div class="sn-header-right">
+      <button type="button" class="cart-trigger sn-cart-button" id="cartOpen" aria-label="Open shopping cart"><span aria-hidden="true">🛒</span><span class="cart-count" id="cartCount">0</span></button>
+    </div>
   </div>
 </header>
 
@@ -674,7 +670,7 @@ body { background:var(--premium-ivory); }
       </section>
     </div>
 
-  </main>
+    </main>
 
   <!-- FOOTER -->
   <footer class="footer" id="contact">
@@ -693,6 +689,7 @@ body { background:var(--premium-ivory); }
       <div class="footer-links">
         <a href="#home">HOME</a>
         <a href="#menu">MENU</a>
+        
       </div>
 
     </div>
