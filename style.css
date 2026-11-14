@@ -2679,3 +2679,32 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
  .menu-category-section .food-card,.menu-category-section .food-image img { transition:none!important; }
  .menu-category-section .food-card:hover { transform:none; }
 }
+
+/* SHANZEH NIHARI — CATEGORY BRAND COLORS */
+
+.menu-category-bar {
+  background: #B5121B !important;
+  border-color: #970C14 !important;
+}
+
+.menu-category-link {
+  color: #FFFFFF !important;
+}
+
+.menu-category-link.active,
+.menu-category-link[aria-current="true"] {
+  color: #27150C !important;
+}
+
+.menu-active-pill {
+  background: #FFD21F !important;
+  box-shadow: 0 3px 12px rgba(0,0,0,.12) !important;
+}
+
+.menu-category-link:hover {
+  color: #FFD21F !important;
+}
+
+.menu-category-link.active:hover {
+  color: #27150C !important;
+}
