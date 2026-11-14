@@ -2830,3 +2830,25 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
     line-height: 1.8;
   }
 }
+
+/* SHANZEH — HEADER SCROLL FIX */
+
+/* Header stays in its normal position */
+.site-header,
+.site-header.premium-header,
+.site-header.sn-reference-header {
+  position: relative !important;
+  top: auto !important;
+}
+
+/* Only the menu category navigation stays sticky */
+.menu-category-bar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+}
+
+/* Category sections align correctly when clicked */
+.menu-category-section {
+  scroll-margin-top: 80px !important;
+}
