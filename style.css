@@ -2994,3 +2994,35 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
   .sn-reference-header .sn-header-inner { padding:0 8px; }
   .menu-category-link { font-size:10px; padding:9px 7px; }
 }
+
+
+/* Floating Go to Cart shortcut — works on desktop and mobile */
+.floating-go-to-cart {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 11px 17px;
+  border: 2px solid #ffd43b;
+  border-radius: 999px;
+  background: #ae101b;
+  color: #fff;
+  box-shadow: 0 9px 25px rgba(54, 10, 10, .23);
+  font: 800 14px/1.2 "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.floating-go-to-cart[hidden] { display: none !important; }
+.floating-go-to-cart:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(54,10,10,.3); }
+.floating-go-to-cart:focus-visible { outline: 3px solid #ffca28; outline-offset: 3px; }
+.floating-cart-count { display: grid; place-items: center; min-width: 25px; height: 25px; padding: 0 5px; border-radius: 50%; background: #ffca28; color: #511014; font-size: 12px; }
+body.no-scroll .floating-go-to-cart { display: none !important; }
+@media (max-width: 760px) {
+  .floating-go-to-cart { right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 14px; min-height: 46px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }

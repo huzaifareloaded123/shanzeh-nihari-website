@@ -125,6 +125,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItems = $("#cartItems");
   const checkoutOverlay = $("#checkoutOverlay");
 
+  // Floating cart shortcut, shown only while the cart contains items.
+  const floatingCartButton = document.createElement("button");
+  floatingCartButton.type = "button";
+  floatingCartButton.id = "floatingGoToCart";
+  floatingCartButton.className = "floating-go-to-cart";
+  floatingCartButton.setAttribute("aria-label", "Go to Cart");
+  floatingCartButton.hidden = true;
+  floatingCartButton.innerHTML = '<span aria-hidden="true">🛒</span> Go to Cart <span class="floating-cart-count" id="floatingCartCount">0</span>';
+  document.body.appendChild(floatingCartButton);
+  floatingCartButton.addEventListener("click", () => openCart());
+
+
   const money = (amount) =>
     "Rs. " + amount.toLocaleString("en-PK");
 
@@ -178,6 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCart() {
     const count = getItemCount();
     const subtotal = getSubtotal();
+    floatingCartButton.hidden = count === 0;
+    $("#floatingCartCount").textContent = count;
     updateOrderModeUI();
 
     $("#cartCount").textContent = count;
@@ -226,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cart.set(id, (cart.get(id) || 0) + 1);
     updateCart();
-    openCart();
+    // Keep browsing; the floating Go to Cart button appears instead.
   }
 
   function changeQuantity(id, difference) {
