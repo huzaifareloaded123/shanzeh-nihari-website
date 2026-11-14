@@ -650,75 +650,23 @@ body { background:var(--premium-ivory); }
         <span class="menu-active-pill" id="menuActivePill" aria-hidden="true"></span>
         <a href="#nihari" class="menu-category-link active" data-category="nihari" aria-current="true">Nihari</a>
         <a href="#biryani-pulao" class="menu-category-link" data-category="biryani-pulao">Biryani / Pulao</a>
-        <a href="#paye" class="menu-category-link" data-category="paye">Paye</a>
-        <a href="#breakfast" class="menu-category-link" data-category="breakfast">Halwa Puri</a>
+        <a href="#breakfast" class="menu-category-link" data-category="breakfast">Breakfast</a>
       </div>
     </nav>
 
     <!-- MENU SECTIONS: original category cards remain powered by script.js -->
     <div id="menu" class="menu-collections">
-      <section class="menu-section menu-category-section" id="nihari" data-menu-section="nihari" aria-labelledby="nihariHeading">
-        <div class="shanzeh-category-banner banner-nihari" aria-label="NIHARI menu banner">
-          <div class="category-banner-content">
-            <span class="category-banner-kicker">OUR SIGNATURE</span>
-            <h2>NIHARI</h2>
-            <p>Slow-cooked. Deeply satisfying.</p>
-          </div>
-          <div class="category-banner-art" aria-hidden="true">
-            <span class="banner-orbit banner-orbit-one"></span><span class="banner-orbit banner-orbit-two"></span>
-            <svg viewBox="0 0 260 170" role="presentation" focusable="false"><ellipse cx="133" cy="142" rx="103" ry="15" fill="#210c09" opacity=".15"/><path d="M52 91 Q58 150 130 151 Q204 150 210 91Z" fill="#fff4d9"/><ellipse cx="131" cy="91" rx="81" ry="33" fill="#fff4d9"/><ellipse cx="131" cy="89" rx="68" ry="23" fill="#a63b1d"/><path d="M87 88q25-22 44 0t42-2" fill="none" stroke="#ffd76b" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="80" r="7" fill="#4b8d38"/><circle cx="149" cy="99" r="6" fill="#4b8d38"/><circle cx="169" cy="80" r="5" fill="#b92921"/><path d="M102 47q-10-14 0-25M132 45q-9-14 0-27M163 47q-9-14 0-25" stroke="#fff4d9" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/></svg>
-          </div>
-          <span class="category-banner-stamp" aria-hidden="true">SHANZEH<br>NIHARI</span>
-        </div>
-        <div class="section-heading"><h2 id="nihariHeading">NIHARI’S</h2></div>
+      <section class="menu-section menu-category-section" id="nihari" data-menu-section="nihari">
+        <img class="shanzeh-photo-banner" src="nihari-banner.webp" alt="Nihari menu banner" loading="lazy">
         <div class="menu-grid" id="menuGrid"></div>
       </section>
-      <section class="menu-section menu-category-section" id="biryani-pulao" data-menu-section="biryani-pulao" aria-labelledby="riceHeading">
-        <div class="shanzeh-category-banner banner-biryani" aria-label="BIRYANI / PULAO menu banner">
-          <div class="category-banner-content">
-            <span class="category-banner-kicker">FRAGRANT & FRESH</span>
-            <h2>BIRYANI / PULAO</h2>
-            <p>Every grain, full of flavour.</p>
-          </div>
-          <div class="category-banner-art" aria-hidden="true">
-            <span class="banner-orbit banner-orbit-one"></span><span class="banner-orbit banner-orbit-two"></span>
-            <svg viewBox="0 0 260 170" role="presentation" focusable="false"><ellipse cx="133" cy="142" rx="103" ry="15" fill="#210c09" opacity=".15"/><path d="M52 91 Q58 150 130 151 Q204 150 210 91Z" fill="#fff4d9"/><ellipse cx="131" cy="91" rx="81" ry="33" fill="#fff4d9"/><ellipse cx="131" cy="89" rx="68" ry="23" fill="#d99428"/><path d="M87 88q25-22 44 0t42-2" fill="none" stroke="#ffd76b" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="80" r="7" fill="#4b8d38"/><circle cx="149" cy="99" r="6" fill="#4b8d38"/><circle cx="169" cy="80" r="5" fill="#b92921"/><path d="M102 47q-10-14 0-25M132 45q-9-14 0-27M163 47q-9-14 0-25" stroke="#fff4d9" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/></svg>
-          </div>
-          <span class="category-banner-stamp" aria-hidden="true">SHANZEH<br>NIHARI</span>
-        </div>
-        <div class="section-heading"><h2 id="riceHeading">BIRYANI / PULAO</h2></div>
+      <section class="menu-section menu-category-section" id="biryani-pulao" data-menu-section="biryani-pulao">
+        <img class="shanzeh-photo-banner" src="biryani-banner.webp" alt="Biryani and Pulao menu banner" loading="lazy">
         <div class="menu-grid" id="riceMenuGrid"></div>
       </section>
-      <section class="menu-section menu-category-section" id="paye" data-menu-section="paye" aria-labelledby="payeHeading">
-        <div class="shanzeh-category-banner banner-paye" aria-label="PAYE menu banner">
-          <div class="category-banner-content">
-            <span class="category-banner-kicker">DESI COMFORT</span>
-            <h2>PAYE</h2>
-            <p>A traditional favourite.</p>
-          </div>
-          <div class="category-banner-art" aria-hidden="true">
-            <span class="banner-orbit banner-orbit-one"></span><span class="banner-orbit banner-orbit-two"></span>
-            <svg viewBox="0 0 260 170" role="presentation" focusable="false"><ellipse cx="133" cy="142" rx="103" ry="15" fill="#210c09" opacity=".15"/><path d="M52 91 Q58 150 130 151 Q204 150 210 91Z" fill="#fff4d9"/><ellipse cx="131" cy="91" rx="81" ry="33" fill="#fff4d9"/><ellipse cx="131" cy="89" rx="68" ry="23" fill="#8c4a2b"/><path d="M87 88q25-22 44 0t42-2" fill="none" stroke="#ffd76b" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="80" r="7" fill="#4b8d38"/><circle cx="149" cy="99" r="6" fill="#4b8d38"/><circle cx="169" cy="80" r="5" fill="#b92921"/><path d="M102 47q-10-14 0-25M132 45q-9-14 0-27M163 47q-9-14 0-25" stroke="#fff4d9" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/></svg>
-          </div>
-          <span class="category-banner-stamp" aria-hidden="true">SHANZEH<br>NIHARI</span>
-        </div>
-        <div class="section-heading"><h2 id="payeHeading">PAYE</h2></div>
-        <p class="category-menu-pending">Paye menu and prices will be added after confirmation from the restaurant.</p>
-      </section>
-      <section class="menu-section menu-category-section" id="breakfast" data-menu-section="breakfast" aria-labelledby="breakfastHeading">
-        <div class="shanzeh-category-banner banner-halwa" aria-label="HALWA PURI menu banner">
-          <div class="category-banner-content">
-            <span class="category-banner-kicker">BREAKFAST FAVOURITES</span>
-            <h2>HALWA PURI</h2>
-            <p>A little joy in every bite.</p>
-          </div>
-          <div class="category-banner-art" aria-hidden="true">
-            <span class="banner-orbit banner-orbit-one"></span><span class="banner-orbit banner-orbit-two"></span>
-            <svg viewBox="0 0 260 170" role="presentation" focusable="false"><ellipse cx="133" cy="142" rx="103" ry="15" fill="#210c09" opacity=".15"/><path d="M52 91 Q58 150 130 151 Q204 150 210 91Z" fill="#fff4d9"/><ellipse cx="131" cy="91" rx="81" ry="33" fill="#fff4d9"/><ellipse cx="131" cy="89" rx="68" ry="23" fill="#c77c2e"/><path d="M87 88q25-22 44 0t42-2" fill="none" stroke="#ffd76b" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="80" r="7" fill="#4b8d38"/><circle cx="149" cy="99" r="6" fill="#4b8d38"/><circle cx="169" cy="80" r="5" fill="#b92921"/><path d="M102 47q-10-14 0-25M132 45q-9-14 0-27M163 47q-9-14 0-25" stroke="#fff4d9" stroke-width="5" stroke-linecap="round" fill="none" opacity=".8"/></svg>
-          </div>
-          <span class="category-banner-stamp" aria-hidden="true">SHANZEH<br>NIHARI</span>
-        </div>
-        <div class="section-heading"><h2 id="breakfastHeading">BREAKFAST</h2></div>
+
+      <section class="menu-section menu-category-section" id="breakfast" data-menu-section="breakfast">
+        <img class="shanzeh-photo-banner" src="breakfast-banner.webp" alt="Breakfast menu banner" loading="lazy">
         <div class="menu-grid" id="breakfastMenuGrid"></div>
       </section>
     </div>

@@ -2740,3 +2740,7 @@ body { background:var(--sh-cream); color:var(--sh-ink); }
 .banner-biryani{background:#72151b}.banner-biryani::before{background:#f5b83c}.banner-paye{background:#822b1c}.banner-paye::before{background:#ffd35a}.banner-halwa{background:#a21a1c}.banner-halwa::before{background:#f5c84a}
 .category-menu-pending{width:min(100%,1060px);margin:0 auto 22px;padding:14px 18px;background:#fff5e8;border:1px solid #eedbc3;border-radius:10px;color:#715341;font-size:14px}
 @media(max-width:650px){.menu-collections .shanzeh-category-banner{width:calc(100% - 24px);min-height:155px;margin:0 auto 22px;padding:22px 19px;border-radius:16px;gap:4px}.shanzeh-category-banner::before{right:-26%;width:85%}.category-banner-kicker{font-size:8px;letter-spacing:1.5px;margin-bottom:8px}.shanzeh-category-banner h2{font-size:clamp(26px,7.1vw,42px);letter-spacing:-.8px}.shanzeh-category-banner p{font-size:10px;margin-top:9px}.category-banner-art{flex-basis:38%;min-width:110px}.category-banner-stamp{font-size:6px;right:10px;bottom:9px}.category-menu-pending{width:calc(100% - 24px);font-size:12px}}
+
+/* Photographic menu banners — three sections, no duplicate headings */
+.menu-collections .shanzeh-photo-banner{display:block;width:min(100%,1060px);height:auto;aspect-ratio:7.1/1;object-fit:fill;margin:0 auto 28px;border-radius:18px;box-shadow:0 10px 26px rgba(51,15,12,.12)}
+@media(max-width:650px){.menu-collections .shanzeh-photo-banner{width:100%;margin-bottom:22px;border-radius:12px;aspect-ratio:5.6/1;object-fit:cover}}

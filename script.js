@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 10, category: "biryani-pulao", name: "Chana Pulao", price: 300, description: "Chana pulao — demo menu item.", badge: "DEMO PRICE" },
     { id: 11, category: "biryani-pulao", name: "Chicken Biryani", price: 380, description: "Chicken biryani — demo menu item.", badge: "DEMO PRICE" },
     { id: 12, category: "breakfast", name: "Halwa Puri", price: 250, description: "Traditional halwa puri breakfast — demo menu item.", badge: "DEMO PRICE" },
-    { id: 13, category: "breakfast", name: "Papay Chana", price: 220, description: "Papay chana — demo menu item.", badge: "DEMO PRICE" }
+    { id: 13, category: "breakfast", name: "Paye", price: 220, description: "Traditional paye — temporary demo price.", badge: "DEMO PRICE" }
   ];
 
   // Temporary food image.
