@@ -3043,3 +3043,30 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
     background-position: center 30px !important;
   }
 }
+
+/* SHANZEH — SN WATERMARK VISIBILITY FIX */
+
+.menu-collections {
+  position: relative !important;
+  isolation: isolate;
+}
+
+.menu-collections::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image: url("./sn-watermark.png");
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 320px auto;
+  opacity: 0.45;
+}
+
+@media (max-width: 760px) {
+  .menu-collections::before {
+    background-size: 210px auto;
+  }
+}
