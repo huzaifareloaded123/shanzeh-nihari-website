@@ -3027,46 +3027,37 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
 
-/* SHANZEH NIHARI — SN WATERMARK */
+/* SHANZEH — WIDELY SPACED PAGE WATERMARK */
 
-.menu-collections {
-  background-image: url("sn-watermark.png") !important;
-  background-repeat: repeat !important;
-  background-position: center 55px !important;
-  background-size: 370px auto !important;
-  background-color: #fffaf5 !important;
+body {
+  background-color: #ffffff;
+  background-image: url("./sn-watermark.png");
+  background-repeat: repeat;
+  background-size: 650px 650px;
+  background-position: center top;
+  background-attachment: scroll;
 }
 
-@media (max-width: 760px) {
-  .menu-collections {
-    background-size: 230px auto !important;
-    background-position: center 30px !important;
-  }
-}
-
-/* SHANZEH — SN WATERMARK VISIBILITY FIX */
-
+/* Keep the menu area transparent so the watermark shows */
 .menu-collections {
-  position: relative !important;
-  isolation: isolate;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .menu-collections::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-
-  background-image: url("./sn-watermark.png");
-  background-repeat: repeat;
-  background-position: center top;
-  background-size: 320px auto;
-  opacity: 0.45;
+  content: none !important;
 }
 
+/* Preserve clean, readable food cards */
+.menu-card,
+.food-card {
+  background-color: #ffffff;
+}
+
+/* Mobile watermark spacing */
 @media (max-width: 760px) {
-  .menu-collections::before {
-    background-size: 210px auto;
+  body {
+    background-size: 420px 420px;
+    background-position: center top;
   }
 }
