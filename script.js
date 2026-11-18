@@ -101,6 +101,19 @@ document.addEventListener("DOMContentLoaded", () => {
     catch { return null; }
   }
   function deliveryCharge() { return getOrderPreference()?.type === "pickup" ? 0 : DELIVERY_FEE; }
+  // Shared cart persists between the menu and the separate checkout page.
+  const CART_KEY = "shanzehCheckoutCart";
+  function saveCartForCheckout() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify([...cart.entries()])); } catch (_) {}
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    if (Array.isArray(saved)) saved.forEach(([id, qty]) => {
+      if (menu.some(item => item.id === Number(id)) && Number.isInteger(qty) && qty > 0 && qty <= 99)
+        cart.set(Number(id), qty);
+    });
+  } catch (_) {}
+
   function updateOrderModeUI() {
     const fee = deliveryCharge();
     const note = document.querySelector(".delivery-note");
@@ -188,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // CART
   function updateCart() {
+    saveCartForCheckout();
     const count = getItemCount();
     const subtotal = getSubtotal();
     floatingCartButton.hidden = count === 0;
@@ -274,10 +288,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function openCheckout() {
     if (getItemCount() === 0) return;
 
-    closeCart();
-    checkoutOverlay.classList.add("open");
-    document.body.classList.add("no-scroll");
-    $("#customerName").focus();
+    // Carry the exact selected items to the separate checkout page.
+    saveCartForCheckout();
+    window.location.href = "checkout.html";
   }
 
   function closeCheckout() {
