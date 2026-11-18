@@ -3026,3 +3026,20 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
   .floating-go-to-cart { right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 14px; min-height: 46px; font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
+
+/* SHANZEH NIHARI — SN WATERMARK */
+
+.menu-collections {
+  background-image: url("sn-watermark.png") !important;
+  background-repeat: repeat !important;
+  background-position: center 55px !important;
+  background-size: 370px auto !important;
+  background-color: #fffaf5 !important;
+}
+
+@media (max-width: 760px) {
+  .menu-collections {
+    background-size: 230px auto !important;
+    background-position: center 30px !important;
+  }
+}
