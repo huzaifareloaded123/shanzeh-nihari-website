@@ -3026,37 +3026,27 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
   .floating-go-to-cart { right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); padding: 10px 14px; min-height: 46px; font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
-
-
-/* SHANZEH — FOUR STATIONARY SN MARKS, ONLY WHILE MENU IS VISIBLE */
-.menu-collections {
-  position: relative !important;
-  isolation: isolate;
-  background: #ffffff !important;
-  background-image: none !important;
-}
-/* The sticky background stays in place during menu scrolling and exits with menu. */
-.menu-collections::before {
-  content: "" !important;
-  display: block !important;
-  position: sticky !important;
-  top: 0 !important;
-  height: 100vh !important;
-  width: 100% !important;
-  margin-bottom: -100vh !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-  background: url("./sn-menu-fixed.png") center center / 100% 100% no-repeat !important;
-  opacity: 1 !important;
-}
-.menu-collections > .menu-category-section {
-  position: relative;
-  z-index: 1;
-  background: transparent !important;
-  background-image: none !important;
+/* SHANZEH — EXACT SN MONOGRAM, SPACED MENU WATERMARKS */
+/* Replace earlier SN watermark rules with this block. */
+@media (min-width: 761px) {
+  .menu-collections {
+    background-image: url("./sn-menu-fixed.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: 100vw 100vh !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-color: #ffffff !important;
+  }
+  .menu-collections::before { content: none !important; }
 }
 @media (max-width: 760px) {
-  .menu-collections::before {
-    background-size: 190% 100% !important;
+  .menu-collections {
+    background-image: url("./sn-menu-fixed.png") !important;
+    background-repeat: repeat-y !important;
+    background-size: 100% auto !important;
+    background-position: center top !important;
+    background-color: #ffffff !important;
   }
+  .menu-collections::before { content: none !important; }
 }
+/* Note: On mobile, fixed backgrounds are unreliable in some browsers. */
