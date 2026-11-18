@@ -3027,37 +3027,32 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
 
-/* SHANZEH — WIDELY SPACED PAGE WATERMARK */
-
-body {
-  background-color: #ffffff;
-  background-image: url("./sn-watermark.png");
-  background-repeat: repeat;
-  background-size: 650px 650px;
-  background-position: center top;
-  background-attachment: scroll;
+/* SHANZEH — SN WATERMARK: direct on visible menu background.
+   Only the white menu surface is affected; cards and controls stay intact. */
+.menu-collections {
+  background-color: #ffffff !important;
+  background-image: url("./sn-watermark.png") !important;
+  background-repeat: repeat !important;
+  background-size: 590px 590px !important;
+  background-position: center 65px !important;
+  background-attachment: scroll !important;
 }
 
-/* Keep the menu area transparent so the watermark shows */
-.menu-collections {
+/* Avoid opaque section layers hiding the watermark. */
+.menu-collections > .menu-category-section,
+.menu-collections .menu-category-section {
   background-color: transparent !important;
   background-image: none !important;
 }
 
-.menu-collections::before {
-  content: none !important;
-}
-
-/* Preserve clean, readable food cards */
-.menu-card,
-.food-card {
+/* Food cards remain fully readable. */
+.menu-collections .food-card {
   background-color: #ffffff;
 }
 
-/* Mobile watermark spacing */
 @media (max-width: 760px) {
-  body {
-    background-size: 420px 420px;
-    background-position: center top;
+  .menu-collections {
+    background-size: 410px 410px !important;
+    background-position: center 30px !important;
   }
 }
