@@ -3027,32 +3027,25 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
 
-/* SHANZEH — SN WATERMARK: direct on visible menu background.
-   Only the white menu surface is affected; cards and controls stay intact. */
+/* SHANZEH — RANDOM SCATTERED SN BACKGROUND (DESKTOP + MOBILE) */
+/* Transparent PNG tile contains small, softly rotated SN marks at varied positions. */
 .menu-collections {
   background-color: #ffffff !important;
   background-image: url("./sn-watermark.png") !important;
   background-repeat: repeat !important;
-  background-size: 590px 590px !important;
-  background-position: center 65px !important;
+  background-size: 1200px 1000px !important;
+  background-position: center top !important;
   background-attachment: scroll !important;
 }
-
-/* Avoid opaque section layers hiding the watermark. */
 .menu-collections > .menu-category-section,
 .menu-collections .menu-category-section {
   background-color: transparent !important;
   background-image: none !important;
 }
-
-/* Food cards remain fully readable. */
-.menu-collections .food-card {
-  background-color: #ffffff;
-}
-
+.menu-collections .food-card { background-color: #ffffff; }
 @media (max-width: 760px) {
   .menu-collections {
-    background-size: 410px 410px !important;
-    background-position: center 30px !important;
+    background-size: 850px auto !important;
+    background-position: center top !important;
   }
 }
