@@ -325,6 +325,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Allow the custom validation message to appear even for an empty number.
+  // Restrict typing/pasting to 11 numeric digits without changing the checkout layout.
+  const phoneInput = $("#customerPhone");
+  phoneInput.required = false;
+  phoneInput.setAttribute("inputmode", "numeric");
+  phoneInput.setAttribute("maxlength", "11");
+  phoneInput.addEventListener("input", () => {
+    phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+    if (/^\d{11}$/.test(phoneInput.value) &&
+        $("#checkoutMessage").textContent === "Please Enter a valid phone number") {
+      $("#checkoutMessage").textContent = "";
+    }
+  });
+
   // DEMO CHECKOUT — DOES NOT SEND AN ORDER
   $("#checkoutForm").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -335,7 +349,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const phone = $("#customerPhone").value.trim();
     const address = $("#customerAddress").value.trim();
 
-    if (!name || !phone || (deliveryCharge() > 0 && !address)) {
+    // Pakistan phone numbers must contain exactly 11 digits.
+    if (!/^\d{11}$/.test(phone)) {
+      $("#checkoutMessage").textContent = "Please Enter a valid phone number";
+      $("#customerPhone").focus();
+      return;
+    }
+
+    if (!name || (deliveryCharge() > 0 && !address)) {
       $("#checkoutMessage").textContent =
         "Please complete all required fields.";
       return;
