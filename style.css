@@ -3028,28 +3028,27 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .floating-go-to-cart { transition: none; } }
 
 
-/* SHANZEH NIHARI — SN WATERMARK (MENU ONLY) */
-/* Requires sn-menu-fixed.png alongside index.html and style.css. */
+/* SHANZEH — SUBTLE SN LOGOS, LIMITED TO MENU ONLY */
+/* Uses existing sn-menu-fixed.png in the project root. */
 .menu-collections {
   position: relative !important;
   isolation: isolate;
   background: #fff !important;
   background-image: none !important;
+  overflow: clip;
 }
 .menu-collections::before {
   content: "" !important;
   display: block !important;
   position: sticky !important;
   top: 0 !important;
-  height: 100vh !important;
   width: 100% !important;
+  height: 100vh !important;
   margin-bottom: -100vh !important;
   z-index: 0 !important;
   pointer-events: none !important;
-  background-image: url("./sn-menu-fixed.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: 100% 100% !important;
+  background: url("./sn-menu-fixed.png") center center / contain no-repeat !important;
+  opacity: 0.19 !important;
 }
 .menu-collections > .menu-category-section {
   position: relative;
@@ -3057,6 +3056,11 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
   background: transparent !important;
   background-image: none !important;
 }
+/* All sections after the menu retain their own clean backgrounds. */
+.shanzeh-intro { position: relative; z-index: 1; }
 @media (max-width: 760px) {
-  .menu-collections::before { background-size: 190% 100% !important; }
+  .menu-collections::before {
+    background-size: 155% auto !important;
+    opacity: 0.15 !important;
+  }
 }
