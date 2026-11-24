@@ -435,7 +435,30 @@ body { background:var(--premium-ivory); }
  .menu-category-section { scroll-margin-top:125px; }
 }
 
-  </style>
+  
+/* HERO ONLY — softer image blend and restrained typography */
+.sn-hero-slider .sn-hero-slide { background:#29130e !important; }
+.sn-hero-slider .sn-hero-photo { inset:0 0 0 25% !important; }
+.sn-hero-slider .sn-hero-photo img { filter:none !important; object-position:center !important; }
+.sn-hero-slider .sn-hero-slide::after { display:none !important; }
+.sn-hero-slider .sn-hero-slide::before { background:linear-gradient(90deg,#29130e 0%,#29130e 24%,rgba(41,19,14,.96) 27%,rgba(41,19,14,.70) 38%,rgba(41,19,14,.18) 53%,transparent 68%) !important; }
+.sn-hero-slider .sn-hero-copy { width:36% !important; left:8% !important; }
+.sn-hero-slider .sn-hero-copy h1,.sn-hero-slider .sn-hero-copy h2 { font-size:clamp(30px,3.5vw,54px) !important; line-height:1.12 !important; letter-spacing:-1px !important; }
+.sn-hero-slider .sn-hero-copy p { font-size:clamp(13px,1.15vw,16px) !important; max-width:330px; }
+.sn-hero-slider .sn-hero-slide.active .sn-hero-copy { animation:snCopyReveal .85s ease both; }
+@keyframes snCopyReveal { from {opacity:0;} to {opacity:1;} }
+@media(max-width:700px) {
+ .sn-hero-slider { height:clamp(440px,125vw,560px) !important; }
+ .sn-hero-slider .sn-hero-photo { inset:0 0 32% 0 !important; }
+ .sn-hero-slider .sn-hero-slide::before { background:linear-gradient(0deg,#29130e 0%,#29130e 31%,rgba(41,19,14,.94) 34%,rgba(41,19,14,.48) 45%,transparent 65%) !important; }
+ .sn-hero-slider .sn-hero-copy { width:86% !important; left:7% !important; bottom:49px !important; }
+ .sn-hero-slider .sn-hero-copy h1,.sn-hero-slider .sn-hero-copy h2 { font-size:clamp(27px,7vw,39px) !important; }
+ .sn-hero-slider .sn-hero-copy p { font-size:12px !important; margin:8px 0 12px !important; }
+}
+@media(prefers-reduced-motion:reduce){.sn-hero-slider .sn-hero-slide.active .sn-hero-copy {animation:none !important;}}
+.sn-hero-image-note { text-align:center; font:500 10px/1.4 'DM Sans',sans-serif; color:#65534a; background:#fff9ef; margin:0; padding:4px 12px; }
+
+</style>
 </head>
 
 <body>
@@ -628,11 +651,9 @@ body { background:var(--premium-ivory); }
         <span></span>
       </div>
 
-      <p class="sn-demo-disclaimer">
-        ILLUSTRATIVE FOOD IMAGES
-      </p>
-
     </section>
+
+    <p class="sn-hero-image-note">AI-generated food illustrations</p>
 
     <!-- PROMISE STRIP -->
     <div class="promise-strip">
