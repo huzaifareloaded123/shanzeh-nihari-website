@@ -4,7 +4,7 @@ const CART_KEY = "shanzehCheckoutCart";
 const $ = id => document.getElementById(id);
 const money = value => "Rs. " + value.toLocaleString("en-PK");
 let cart = [];
-try { const data = JSON.parse(localStorage.getItem(CART_KEY) || "[]"); if(Array.isArray(data)) cart = data.filter(([id,q])=>MENU.some(p=>p.id===Number(id)) && Number.isInteger(q) && q>0 && q<=99).map(([id,q])=>[Number(id),q]); } catch(_){}
+try { const data = JSON.parse(localStorage.getItem(CART_KEY) || "[]"); if(Array.isArray(data)) cart = data.filter(([id,q])=>MENU.some(p=>p.id===Number(id) && p.id>=1 && p.id<=8) && Number.isInteger(q) && q>0 && q<=99).map(([id,q])=>[Number(id),q]); } catch(_){}
 let preference = null;
 try { preference = JSON.parse(localStorage.getItem("shanzehOrderPreference") || "null"); } catch(_){}
 const pickup = preference?.type === "pickup";

@@ -3064,3 +3064,36 @@ body.no-scroll .floating-go-to-cart { display: none !important; }
     opacity: 0.15 !important;
   }
 }
+
+
+/* MOBILE FIX: keep category bar sticky and SN watermarks visible */
+@media screen and (max-width: 760px) {
+  /* Clipping the root scroll container can prevent sticky on mobile browsers. */
+  html, body { overflow-x: visible !important; }
+  .menu-category-bar { display: block !important; position: -webkit-sticky !important; position: sticky !important; top: 0 !important; z-index: 500 !important; visibility: visible !important; }
+  .menu-category-inner { display: flex !important; }
+  .menu-collections { overflow: visible !important; }
+  .menu-collections::before {
+    display: block !important;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 54px !important;
+    height: calc(100dvh - 54px) !important;
+    margin-bottom: calc(-100dvh + 54px) !important;
+    background-image: url("./sn-menu-fixed.png") !important;
+    background-position: center center !important;
+    background-size: 125% 100% !important;
+    background-repeat: no-repeat !important;
+    opacity: .25 !important;
+    pointer-events: none !important;
+  }
+  .menu-collections > .menu-category-section { position: relative; z-index: 1; }
+}
+
+/* Coming soon: retain menu layout, disable ordering */
+.menu-category-section .food-card.is-coming-soon .food-image img { opacity: .48; filter: saturate(.65); }
+.menu-category-section .food-card.is-coming-soon .food-info { opacity: .62; }
+.menu-category-section .food-card.is-coming-soon .food-badge { background: #d4a017 !important; color: #241700 !important; opacity: 1 !important; }
+.menu-category-section .food-card.is-coming-soon:hover { transform: none !important; }
+.menu-category-section .food-card.is-coming-soon:hover .food-image img { transform: none !important; }
+.menu-category-section .food-card.is-coming-soon .add-btn:disabled { background: #e5e5e5 !important; color: #555 !important; cursor: not-allowed; box-shadow: none !important; }

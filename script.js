@@ -77,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 13, category: "breakfast", name: "Paye", price: 220, description: "Traditional paye — temporary demo price.", badge: "DEMO PRICE" }
   ];
 
+  const isAvailable = item => item.category === "nihari";
+
   // Distinct demo food photographs for each menu item.
   // Replace with actual Shanzeh Nihari dish photographs after owner approval.
   const foodImages = {
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   try {
     const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
     if (Array.isArray(saved)) saved.forEach(([id, qty]) => {
-      if (menu.some(item => item.id === Number(id)) && Number.isInteger(qty) && qty > 0 && qty <= 99)
+      if (menu.some(item => item.id === Number(id) && isAvailable(item)) && Number.isInteger(qty) && qty > 0 && qty <= 99)
         cart.set(Number(id), qty);
     });
   } catch (_) {}
@@ -167,28 +169,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // MENU CARDS
   function renderMenu() {
     const renderCards = (items) => items.map((item) => `
-      <article class="food-card">
+      <article class="food-card${isAvailable(item) ? "" : " is-coming-soon"}">
         <div class="food-image">
           <img
             src="${foodImages[item.id]}"
             alt="${item.name} — illustrative food photo"
             loading="lazy"
           >
-          <span class="food-badge">${item.badge}</span>
+          <span class="food-badge">${isAvailable(item) ? item.badge : "COMING SOON"}</span>
         </div>
 
         <div class="food-info">
           <h3>${item.name}</h3>
-          <p>${item.description}</p>
+          <p>${isAvailable(item) ? item.description : "Available soon."}</p>
 
           <div class="food-bottom">
-            <span class="price">${money(item.price)}</span>
+            <span class="price">${isAvailable(item) ? money(item.price) : "--"}</span>
             <button
               class="add-btn"
               type="button"
-              data-add="${item.id}"
+              ${isAvailable(item) ? `data-add="${item.id}"` : 'disabled aria-disabled="true"'}
             >
-              + ADD TO CART
+              ${isAvailable(item) ? "+ ADD TO CART" : "COMING SOON"}
             </button>
           </div>
         </div>
@@ -250,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function addItem(id) {
-    if (!menu.some((item) => item.id === id)) return;
+    if (!menu.some((item) => item.id === id && isAvailable(item))) return;
 
     cart.set(id, (cart.get(id) || 0) + 1);
     updateCart();
@@ -258,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changeQuantity(id, difference) {
-    if (!cart.has(id)) return;
+    if (!cart.has(id) || !menu.some(item => item.id === id && isAvailable(item))) return;
 
     const next = cart.get(id) + difference;
 
@@ -753,8 +755,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inner.scrollTo({left: desired, behavior: reduceMotion.matches ? "instant" : "smooth"});
   }
   function getOffset() {
-    const header = document.querySelector(".site-header");
-    return (header ? header.getBoundingClientRect().height : 0) + bar.getBoundingClientRect().height + 12;
+    return bar.getBoundingClientRect().height + 12;
   }
   links.forEach(link => link.addEventListener("click", event => {
     const target = document.getElementById(link.dataset.category);
